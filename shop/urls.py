@@ -2,7 +2,6 @@ from django.urls import path, include
 from .views import (
     ItemDetailView, ItemView, checkout,
     view_404,
-    home_view,
     add_to_cart,
     OrderSummaryView,
     ShopView,
