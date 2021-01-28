@@ -1,0 +1,46 @@
+{% extends "main.html" %}
+{% block main_body %}
+
+        <!-- lodaer  -->
+        {% include "loader.html" %}
+        <!-- loader end  -->
+        <!-- main start  -->
+        <div id="main">
+            <!-- header  -->
+            {% include "header.html" %}
+            <!--header end -->	
+            <!-- wrapper  -->	
+            <div id="wrapper">
+                <!-- content  -->	
+                <div class="content full-height">
+                    <div class="body-bg">
+                        <div class="bg"  data-bg="images/bg/1.jpg"></div>
+                        <div class="overlay"></div>
+                    </div>
+                    <!--error-wrap-->
+                    <div class="error-wrap fl-wrap">
+                        <div class="container">
+                            <h2>404</h2>
+                            <p>We're sorry, but the Page you were looking for, couldn't be found.</p>
+                            <div class="clearfix"></div>
+                            <div class="dots-separator fl-wrap"><span></span></div>
+                            <a href="index.html" class="btn">Back to Home Page <i class="fal fa-long-arrow-right"></i></a>
+                            <div class="section-dec sec-dec_top"></div>
+                            <div class="section-dec sec-dec_bottom"></div>
+                        </div>
+                    </div>
+                    <!--error-wrap end-->                                    
+                </div>
+                <!-- content end  -->
+            </div>
+            <!-- wrapper end -->
+            {% include "reservation.html" %}
+            <!-- cursor-->
+            <div class="element">
+                <div class="element-item"></div>
+            </div>
+            <!-- cursor end-->                                                    
+        </div>
+        <!-- Main end -->
+        <!--=============== scripts  ===============-->
+        {% endblock main_body %}
