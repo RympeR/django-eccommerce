@@ -35,8 +35,8 @@ def get_coupon(request, code):
 def item_list(request):
     return render(request, 'menu3.html')
     
-def home_view(request):
-    return render(request, 'index.html')
+# def home_view(request):
+#     return render(request, 'index.html')
 
 def checkout(request):
     return render(request, 'checkout.html')
