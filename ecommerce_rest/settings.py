@@ -1,3 +1,4 @@
+import django_heroku
 """
 Django settings for ecommerce_rest project.
 
@@ -146,3 +147,4 @@ AUTHENTICATION_BACKENDS = (
 )
 SITE_ID = 1
 # LOGIN_REDIRECT_URL = '/'
+django_heroku.settings(locals())
