@@ -24,8 +24,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'g^v$p)78)x+7a+&tjtvio4pirjif*nlsl4irtv=xjpd5_l5-ze'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
+DEBUG = True
+DEBUG_PROPAGATE_EXCEPTIONS = True
 ALLOWED_HOSTS = [
     'tokyo-test.herokuapp.com',
     '127.0.0.1',
@@ -36,13 +36,15 @@ DEFAULT_FROM_EMAIL = 'georg.rashkov@gmail.com'
 # Application definition
 # EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend')
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
+    'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'shop',
+    'ecommerce_rest',
     'phonenumber_field',
     'crispy_forms',
     'django.contrib.sites',
@@ -68,7 +70,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates')
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'static'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -84,8 +87,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ecommerce_rest.wsgi.application'
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -135,10 +139,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL  = '/photos/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFIELS_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static'),
+    # os.path.join(BASE_DIR, 'staticfiles'),
+    '/var/www/static/'
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/photos')
 
 
@@ -165,4 +171,5 @@ LOGGING = {
         },
     },
 }
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 django_heroku.settings(locals())
