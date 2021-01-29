@@ -5,7 +5,7 @@ import sys
 
 
 def main():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ecommerce_rest.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tokyo_rest.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

@@ -39,164 +39,59 @@
                                 <div class="col-md-8">
                                     <div class="fl-wrap post-container">
                                         <!-- post -->
-                                        <div class="post fl-wrap fw-post">
-                                            <h2><a href="blog-single.html">The Secret Ingredient</a></h2>
-                                            <ul class="blog-title-opt">
-                                                <li><a href="#">12 may 2020</a></li>
-                                                <li> - </li>
-                                                <li><a href="#">Interviews </a></li>
-                                                <li><a href="#">Receipts</a></li>
-                                            </ul>
-                                            <!-- blog media -->
-                                            <div class="blog-media fl-wrap">
-                                                <div class="single-slider-wrap">
-                                                    <div class="single-slider fl-wrap">
-                                                        <div class="swiper-container">
-                                                            <div class="swiper-wrapper lightgallery">
-                                                                <div class="swiper-slide hov_zoom"><img src="images/all/1.jpg" alt=""><a href="images/all/1.jpg" class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a></div>
-                                                                <div class="swiper-slide hov_zoom"><img src="images/all/1.jpg" alt=""><a href="images/all/1.jpg" class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a></div>
-                                                                <div class="swiper-slide hov_zoom"><img src="images/all/1.jpg" alt=""><a href="images/all/1.jpg" class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a></div>
+                                        {% for post in object_list %}
+                                            <div class="post fl-wrap fw-post">
+                                                <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                                                <ul class="blog-title-opt">
+                                                    <li><a href="#">{{ post.date_added }}</a></li>
+                                                </ul>
+                                                <!-- blog media -->
+                                                <div class="blog-media fl-wrap">
+                                                    <div class="single-slider-wrap">
+                                                        <div class="single-slider fl-wrap">
+                                                            <div class="swiper-container">
+                                                                <div class="swiper-wrapper lightgallery">
+                                                                    <div class="swiper-slide hov_zoom">
+                                                                        <img src="{{ post.proposition_photo.url }}" alt="">
+                                                                        <a href="{{ post.proposition_photo.url }}" class="box-media-zoom   popup-image">
+                                                                            </a></div>
+                                                                </div>
                                                             </div>
-                                                            <div class="ss-slider-pagination"></div>
-                                                            <div class="ss-slider-cont ss-slider-cont-prev"><i class="fas fa-caret-left"></i></div>
-                                                            <div class="ss-slider-cont ss-slider-cont-next"><i class="fas fa-caret-right"></i></div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <!-- blog media end -->
-                                            <div class="blog-text fl-wrap">
-                                                <div class="pr-tags fl-wrap">
-                                                    <span>Tags : </span>
-                                                    <ul>
-                                                        <li><a href="#">12 may 2020</a></li>
-                                                        <li> - </li>
-                                                        <li><a href="#">Interviews </a></li>
-                                                        <li><a href="#">Receipts</a></li>
-                                                    </ul>
+                                                <!-- blog media end -->
+                                                <div class="blog-text fl-wrap">
+                                                    <div class="pr-tags fl-wrap">
+                                                        <span>Tags : </span>
+                                                        <ul>
+                                                            
+                                                            <li><a href="#">{{ post.date_added }}</a></li>
+                                                            <li> - </li>
+                                                            {% for tag in post.tag.all %}
+                                                            <li><a href="#">{{ tag.tag_name }} </a></li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                    <p>
+                                                        {{ post.short_description }}
+                                                    </p>
                                                 </div>
-                                                <p>
-                                                    Vestibulum orci felis, ullamcorper non condimentum non, ultrices ac nunc. Mauris non ligula suscipit, vulputate mi accumsan, dapibus felis. Nullam sed sapien dui. Nulla auctor sit amet sem non porta. Praesent eu massa vel diam laoreet elementum ac sed felis. Donec suscipit ultricies risus sed mollis. Donec volutpat porta risus posuere imperdiet. Sed viverra dolor sed dolor placerat ornare ut . Integer iaculis tellus nulla, quis imperdiet magna venenatis vitae..
-                                                </p>
-                                                <a href="blog-single.html" class="btn">Read more <i class="fal fa-long-arrow-right"></i></a>
-                                                <ul class="post-counter">
-                                                    <li><i class="far fa-eye"></i><span>687</span></li>
-                                                    <li><i class="far fa-comment"></i><span>10</span></li>
-                                                </ul>
                                             </div>
-                                        </div>
-                                        <!-- post end-->
-                                        <!-- post -->
-                                        <div class="post fl-wrap fw-post">
-                                            <h2><a href="blog-single.html">Pasta Receipt</a></h2>
-                                            <ul class="blog-title-opt">
-                                                <li><a href="#">12 may 2020</a></li>
-                                                <li> - </li>
-                                                <li><a href="#">Interviews </a></li>
-                                                <li><a href="#">Receipts</a></li>
-                                            </ul>
-                                            <!-- blog media -->
-                                            <div class="blog-media fl-wrap">
-                                                <img src="images/all/1.jpg" class="respimg" alt="">
+                                        {% endfor %}
+                                        {% if is_paginated %}  
+                                            <div class="pagination fl-wrap" style="width:20%;">
+                                                {% if page_obj.has_previous %}                                              
+                                                <a href="?page={{ page_obj.previous_page_number }}" class="prevposts-link"><i class="fal fa-long-arrow-left"></i></a>
+                                                {% endif %}
+                                                
+                                                <a href="?page={{ page_obj.number }}" class="current-page">{{ page_obj.number }}</a>
+                                                
+                                                {% if page_obj.has_next %}                                              
+                                                    <a href="?page={{ page_obj.next_page_number }}" class="nextposts-link"><i class="fal fa-long-arrow-right"></i></a>
+                                                {% endif %}
                                             </div>
-                                            <!-- blog media end -->
-                                            <div class="blog-text fl-wrap">
-                                                <div class="pr-tags fl-wrap">
-                                                    <span>Tags : </span>
-                                                    <ul>
-                                                        <li><a href="#">Dishes</a></li>
-                                                        <li><a href="#">Photography</a></li>
-                                                        <li><a href="#">Receipts</a></li>
-                                                    </ul>
-                                                </div>
-                                                <p>
-                                                    Vestibulum orci felis, ullamcorper non condimentum non, ultrices ac nunc. Mauris non ligula suscipit, vulputate mi accumsan, dapibus felis. Nullam sed sapien dui. Nulla auctor sit amet sem non porta. Praesent eu massa vel diam laoreet elementum ac sed felis. Donec suscipit ultricies risus sed mollis. Donec volutpat porta risus posuere imperdiet. Sed viverra dolor sed dolor placerat ornare ut . Integer iaculis tellus nulla, quis imperdiet magna venenatis vitae..
-                                                </p>
-                                                <a href="blog-single.html" class="btn">Read more <i class="fal fa-long-arrow-right"></i></a>
-                                                <ul class="post-counter">
-                                                    <li><i class="far fa-eye"></i><span>567</span></li>
-                                                    <li><i class="far fa-comment"></i><span>3</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- post end--> 
-                                        <!-- post -->
-                                        <div class="post fl-wrap fw-post">
-                                            <h2><a href="blog-single.html">Jazz Band Bingo</a></h2>
-                                            <ul class="blog-title-opt">
-                                                <li><a href="#">12 may 2020</a></li>
-                                                <li> - </li>
-                                                <li><a href="#">Interviews </a></li>
-                                                <li><a href="#">Events</a></li>
-                                            </ul>
-                                            <!-- blog media -->
-                                            <div class="blog-media fl-wrap">
-                                                <img src="images/all/1.jpg" class="respimg" alt="">
-                                            </div>
-                                            <!-- blog media end -->
-                                            <div class="blog-text fl-wrap">
-                                                <div class="pr-tags fl-wrap">
-                                                    <span>Tags : </span>
-                                                    <ul>
-                                                        <li><a href="#">Dishes</a></li>
-                                                        <li><a href="#">Photography</a></li>
-                                                        <li><a href="#">Receipts</a></li>
-                                                    </ul>
-                                                </div>
-                                                <p>
-                                                    Vestibulum orci felis, ullamcorper non condimentum non, ultrices ac nunc. Mauris non ligula suscipit, vulputate mi accumsan, dapibus felis. Nullam sed sapien dui. Nulla auctor sit amet sem non porta. Praesent eu massa vel diam laoreet elementum ac sed felis. Donec suscipit ultricies risus sed mollis. Donec volutpat porta risus posuere imperdiet. Sed viverra dolor sed dolor placerat ornare ut . Integer iaculis tellus nulla, quis imperdiet magna venenatis vitae..
-                                                </p>
-                                                <a href="blog-single.html" class="btn">Read more <i class="fal fa-long-arrow-right"></i></a>
-                                                <ul class="post-counter">
-                                                    <li><i class="far fa-eye"></i><span>134</span></li>
-                                                    <li><i class="far fa-comment"></i><span>40</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- post end-->
-                                        <!-- post -->
-                                        <div class="post fl-wrap fw-post">
-                                            <h2><a href="blog-single.html">Burger Big Daddy Receipt</a></h2>
-                                            <ul class="blog-title-opt">
-                                                <li><a href="#">12 may 2020</a></li>
-                                                <li> - </li>
-                                                <li><a href="#">Interviews </a></li>
-                                                <li><a href="#">Receipts</a></li>
-                                            </ul>
-                                            <!-- blog media -->
-                                            <div class="blog-media fl-wrap">
-                                                <img src="images/all/1.jpg" class="respimg" alt="">
-                                            </div>
-                                            <!-- blog media end -->
-                                            <div class="blog-text fl-wrap">
-                                                <div class="pr-tags fl-wrap">
-                                                    <span>Tags : </span>
-                                                    <ul>
-                                                        <li><a href="#">Dishes</a></li>
-                                                        <li><a href="#">Photography</a></li>
-                                                        <li><a href="#">Receipts</a></li>
-                                                    </ul>
-                                                </div>
-                                                <p>
-                                                    Vestibulum orci felis, ullamcorper non condimentum non, ultrices ac nunc. Mauris non ligula suscipit, vulputate mi accumsan, dapibus felis. Nullam sed sapien dui. Nulla auctor sit amet sem non porta. Praesent eu massa vel diam laoreet elementum ac sed felis. Donec suscipit ultricies risus sed mollis. Donec volutpat porta risus posuere imperdiet. Sed viverra dolor sed dolor placerat ornare ut . Integer iaculis tellus nulla, quis imperdiet magna venenatis vitae..
-                                                </p>
-                                                <a href="blog-single.html" class="btn">Read more <i class="fal fa-long-arrow-right"></i></a>
-                                                <ul class="post-counter">
-                                                    <li><i class="far fa-eye"></i><span>227</span></li>
-                                                    <li><i class="far fa-comment"></i><span>3</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- post end-->                                        
-                                        <!--pagination-->   
-                                        <div class="pagination fl-wrap">
-                                            <a href="#" class="prevposts-link"><i class="fal fa-long-arrow-left"></i></a>
-                                            <a href="#">01.</a>
-                                            <a href="#" class="current-page">02.</a>
-                                            <a href="#">03.</a>
-                                            <a href="#">04.</a>
-                                            <a href="#" class="nextposts-link"><i class="fal fa-long-arrow-right"></i></a>
-                                        </div>
+                                        {% endif %}
                                         <!--pagination end-->                                          
                                     </div>
                                 </div>
@@ -218,14 +113,14 @@
                                         <div class="main-sidebar-widget fl-wrap">
                                             <h3>About Us</h3>
                                             <div class="about-widget">
-                                                <img src="images/all/1.jpg" alt="">
+                                                <img src="{% static "images/all/1.jpg" %}" alt="">
                                                 <h4>Restabook restaurant</h4>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eaque ipsa quae ab illo inventore veritatis et quasi architecto. </p>
                                             </div>
                                         </div>
                                         <!-- main-sidebar-widget end-->
                                         <!-- main-sidebar-widget-->   
-                                        <div class="main-sidebar-widget fl-wrap">
+                                        <!-- s
                                             <h3>Recent Posts</h3>
                                             <div class="recent-post-widget">
                                                 <ul>
@@ -261,52 +156,8 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!-- main-sidebar-widget end-->  
-                                        <!-- main-sidebar-widget-->   
-                                        <div class="main-sidebar-widget fl-wrap">
-                                            <h3>Resent tags </h3>
-                                            <div class="tags-widget">
-                                                <div class="tagcloud">
-                                                    <a href="#">Lifystyle</a>
-                                                    <a href="#">Travel</a>
-                                                    <a href="#">Trip</a>
-                                                    <a href="#">Outdoor</a>
-                                                    <a href="#">Camping</a>
-                                                    <a href="#">Photos</a>
-                                                    <a href="#">Adventure</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- main-sidebar-widget end-->                       
-                                        <!-- main-sidebar-widget end-->
-                                        <!-- main-sidebar-widget-->   
-                                        <div class="main-sidebar-widget fl-wrap">
-                                            <h3>Categories</h3>
-                                            <div class="category-widget">
-                                                <ul class="cat-item">
-                                                    <li><a href="#">Seafood</a><span>12</span></li>
-                                                    <li><a href="#">Receipts</a><span>21</span></li>
-                                                    <li><a href="#">Dishes</a><span>34</span></li>
-                                                    <li><a href="#">Travel</a><span>8</span></li>
-                                                    <li><a href="#">Photos</a><span>9</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- main-sidebar-widget end-->
-                                        <!-- main-sidebar-widget-->   
-                                        <div class="main-sidebar-widget fl-wrap">
-                                            <h3>Social widget</h3>
-                                            <div class="social-widget">
-                                                <ul>
-                                                    <li><a href="#" target="_blank" ><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                                    <li><a href="#" target="_blank" ><i class="fab fa-instagram"></i></a></li>
-                                                    <li><a href="#" target="_blank" ><i class="fab fa-pinterest"></i></a></li>
-                                                    <li><a href="#" target="_blank" ><i class="fab fa-tumblr"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
                                         <!-- main-sidebar-widget end--> 
                                     </div>
                                     <!-- main-sidebar end-->                                        
