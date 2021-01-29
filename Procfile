@@ -1,1 +1,1 @@
-web: gunicorn ecommerce_rest.wsgi
+web: gunicorn tokyo_rest.wsgi
