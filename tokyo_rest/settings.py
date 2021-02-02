@@ -26,7 +26,7 @@ MAIN_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'l4#kaf4r-xch9m47l!y0@@puce@n7*edwvu)2iz1-gb*z1&j(&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'tokyo-test.herokuapp.com',
