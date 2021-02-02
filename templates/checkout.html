@@ -1,36 +1,44 @@
 {% extends "main.html" %}
 {% block main_body %}
 {% load static %}
-        <!-- lodaer  -->
-        {% include "loader.html" %}
-        <!-- loader end  -->
-        <!-- main start  -->
-        <div id="main">
-            <!-- header  -->
-            {% include "header.html" %}
-            <!--header end -->	
-            <!-- wrapper  -->	
-            <div id="wrapper">
-                <!-- content  -->	
-                <div class="content">
-                    <!--  section  -->  
-                    <section class="parallax-section hero-section hidden-section" data-scrollax-parent="true">
-                        <div class="bg par-elem "  data-bg="images/bg/1.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
-                        <div class="overlay"></div>
-                        <div class="container">
-                            <div class="section-title">
+{% load cart_template_tags %}
+<!-- lodaer  -->
+{% include "loader.html" %}
+<!-- loader end  -->
+<!-- main start  -->
+<div id="main">
+    <!-- header  -->
+    {% include "header.html" %}
+    <!--header end -->
+    <!-- wrapper  -->
+    <div id="wrapper">
+        <!-- content  -->
+        <div class="content">
+            <!--  section  -->
+            <section class="parallax-section hero-section hidden-section" data-scrollax-parent="true">
+                <div class="bg par-elem " data-bg="images/bg/1.jpg" data-scrollax="properties: { translateY: '30%' }">
+                </div>
+                <div class="overlay"></div>
+                    <div class="container">
+                        <div class="section-title">
+                            {% if request.session.lang == "uk" %}
+                                <h4>Замовляйте їжу з доставкою додому</h4>
+                                <h2>Процес оформлення замовлення</h2>
+                            {% else %}
                                 <h4>Order food with home delivery</h4>
                                 <h2>Checkout Process</h2>
-                                <div class="dots-separator fl-wrap"><span></span></div>
-                            </div>
-                        </div>
-                        <div class="hero-section-scroll">
-                            <div class="mousey">
-                                <div class="scroller"></div>
-                            </div>
-                        </div>
-                        <div class="brush-dec"></div>
-                    </section>
+                            {% endif %
+                                    
+                        <div class="dots-separator fl-wrap"><span></span></div>
+                    </div>
+                </div>
+                <div class="hero-section-scroll">
+                    <div class="mousey">
+                        <div class="scroller"></div>
+                    </div>
+                </div>
+                <div class="brush-dec"></div>
+            </section>
                     <!--  section  end-->  
                     <!--  section  -->   
                     <section class="hidden-section">
@@ -39,29 +47,44 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="check-out_wrap fl-wrap">
-                                        <h4 class="cart-title">Your Information</h4>
-                                        <form  class="custom-form">
-                                            <fieldset>
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <input type="text" name="name"   placeholder="Your Name *" value=""/>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <input type="text"  name="email"   placeholder="Email Address *" value=""/>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <input type="text"  name="phone"  placeholder="Phone *" value=""/>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <input type="text"  name="city"   placeholder="City  *" value=""/>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <input type="text"  name="country"   placeholder="Country  *" value=""/>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <input type="text"  name="code"   placeholder="Postal code*" value=""/>
-                                                    </div>
-                                                    <div class="col-sm-12">
+                                        <h4 class="cart-title">
+                                            {% if request.session.lang == "uk" %}
+                                                Ваша інформація
+                                            {% else %}
+                                                Your Information
+                                            {% endif %}</h4>
+                        <form class="custom-form" name="custom_form">
+                            <fieldset>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input type="text" required id="name" name="name" placeholder="Your Name *"
+                                            value="" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" required id="phone" name="phone" placeholder="Phone *"
+                                            value="" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" required id="person_amount" name="person_amount"
+                                            placeholder="person_amount  *" value="" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" required id="street_address" name="street_address"
+                                            placeholder="street_address  *" value="" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" required id="apartment_address" name="apartment_address"
+                                            placeholder="apartment_address  *" value="" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="checkbox" id="need_learning_branch" name="need_learning_branch"
+                                            placeholder="need_learning_branch  *" value="" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="checkbox" id="dont_recall" name="dont_recall"
+                                            placeholder="dont_recall  *" value="" />
+                                    </div>
+                                    <!-- <div class="col-sm-12">
                                                         <h4 class="cart-title">Payment method</h4>
                                                     </div>
                                                     <div class="col-sm-6">
@@ -81,62 +104,105 @@
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <p style="padding-top:20px; text-align: left; font-size: 10px">*Three digits number on the back of your card</p>
-                                                    </div>
-                                                </div>
-                                                <textarea name="comments"  id="comments" cols="30" rows="3" placeholder="Addtional Notes"></textarea>
-                                                <div class="clearfix"></div>
-                                                <button class="btn color-bg">Confirm and Pay<i class="fal fa-long-arrow-right"></i></button>
-                                            </fieldset>
-                                        </form>
-                                    </div>
+                                                    </div> -->
                                 </div>
-                                <div class="col-md-4">
-                                    <!-- CART TOTALS  -->
-                                    <div class="cart-totals dark-bg fl-wrap">
-                                        <h3>Cart totals</h3>
-                                        <table class="total-table">
-                                            <tbody>
-                                                <tr>
-                                                    <th>Cart Subtotal:</th>
-                                                    <td>$240.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Shipping Total:</th>
-                                                    <td>$12.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Total:</th>
-                                                    <td>$252.00</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <button type="submit" class="cart-totals_btn color-bg">Proceed to Checkout</button>
-                                    </div>
-                                    <!-- /CART TOTALS  -->                              
-                                </div>
-                            </div>
-                            <!-- /CHECKOUT TABLE -->
-                        </div>
-                        <div class="section-bg">
-                            <div class="bg"  data-bg="images/bg/dec/section-bg.png"></div>
-                        </div>
-                    </section>
-                    <!--  section end  -->  
-                    <div class="brush-dec2 brush-dec_bottom"></div>
+                                <!-- <textarea name="comments"  id="comments" cols="30" rows="3" placeholder="Addtional Notes"></textarea> -->
+                                <div class="clearfix"></div>
+                                <button onclick="sendData()" class="btn color-bg">
+                                    {% if request.session.lang == "uk" %}
+                                        Сплатити
+                                    {% else %}
+                                        Confirm and Pay
+                                    {% endif %}<i class="fal fa-long-arrow-right"></i></button>
+                            </fieldset>
+                        </form>
+                    </div>
                 </div>
-                <!-- content end  -->
-                <!-- footer -->
-                <div class="height-emulator fl-wrap"></div>
-                {% include "footer.html" %}
-                <!-- footer end-->                                
-            </div>
-            <!-- wrapper end -->
-            {% include "reservation.html" %}
-            <!-- cursor-->
-            <div class="element">
-                <div class="element-item"></div>
-            </div>
-            <!-- cursor end-->                                                    
+                <script>
+                    function sendData() {
+                        var oldForm = document.forms.custom_form,
+                            formData = new FormData(oldForm);
+                        console.log(
+                            formData.get("street_address"),
+                            formData === oldForm
+                        );
+
+                    }
+                </script>
+                <div class="col-md-4">
+                    <!-- CART TOTALS  -->
+                    {% if object.get_total %}
+                        <div class="cart-totals dark-bg fl-wrap">
+                            <h3>
+                                {% if request.session.lang == "uk" %}
+                                    Підсумок картки
+                                {% else %}
+                                    Cart totals
+                                {% endif %}
+                            </h3>
+                            <table class="total-table">
+                                <tbody>
+                                    <tr>
+                                        <th>{% if request.session.lang == "uk" %}
+                                                Перед підсумок:
+                                            {% else %}
+                                                Before the result:
+                                            {% endif %}</th>
+                                        <td>
+                                            ₴{{ request|total_order }}
+                                        </td>
+                                    </tr>
+                                    <!-- <tr>
+                                                            <th>Shipping Total:</th>
+                                                            <td>₴12.00</td>
+                                                        </tr> -->
+                                    <tr>
+                                        <th>{% if request.session.lang == "uk" %}
+                                                Усього:
+                                            {% else %}
+                                                Total:
+                                            {% endif %}</th>
+                                        <td>
+                                            ₴{{ object.get_total }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button type="submit" class="cart-totals_btn color-bg"><a
+                                    href='/checkout/'>
+                                    {% if request.session.lang == "uk" %}
+                                        Перейти до сплати
+                                    {% else %}
+                                        Proceed to checkout
+                                    {% endif %}</a></button>
+                        </div>
+                    {% endif %}
+                    <!-- /CART TOTALS  -->
+                </div>
         </div>
-        <!-- Main end -->
-        {% endblock main_body %}
+        <!-- /CHECKOUT TABLE -->
+    </div>
+    <div class="section-bg">
+        <div class="bg" data-bg="images/bg/dec/section-bg.png"></div>
+    </div>
+    </section>
+    <!--  section end  -->
+    <div class="brush-dec2 brush-dec_bottom"></div>
+</div>
+<!-- content end  -->
+<!-- footer -->
+<div class="height-emulator fl-wrap"></div>
+{% include "footer.html" %}
+<!-- footer end-->
+</div>
+<!-- wrapper end -->
+{% include "reservation.html" %}
+<!-- cursor-->
+<div class="element">
+    <div class="element-item"></div>
+</div>
+<!-- cursor end-->
+</div>
+<!-- Main end -->
+{% endif %}
+{% endblock main_body %}

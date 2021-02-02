@@ -20,8 +20,13 @@
                 <div class="overlay"></div>
                 <div class="container">
                     <div class="section-title">
-                        <h4>Order food with home delivery</h4>
-                        <h2>Our Shop</h2>
+                        {% if request.session.lang == "uk" %}
+                            <h4>Замовляй їжу з нашим сервісом</h4>
+                            <h2>Наш магазин</h2>
+                        {% else %}
+                            <h4>Order food with our service </h4>
+                            <h2>Our shop</h2>
+                        {% endif %}
                         <div class="dots-separator fl-wrap"><span></span></div>
                     </div>
                 </div>
@@ -97,7 +102,11 @@
                                     <!-- blog media end -->
                                     <div class="blog-text fl-wrap">
                                         <div class="pr-tags fl-wrap">
-                                            <span>Category : </span>
+                                            <span>{% if request.session.lang == "uk" %}
+                                                Категорія
+                                            {% else %}
+                                                Category
+                                            {% endif %} : </span>
                                             <ul>
                                                 <li><a href="#">{{ object.category }} </a></li>
                                             </ul>
@@ -107,10 +116,12 @@
                                     </div>
                                     <div class="shop-item-footer fl-wrap">
                                         <div class="qty_btn">
-                                            <input type="number" name="cartqty" value="1" max="50" min="1"
-                                                class="order-count">
 
-                                            <button class="btn"><a href="{{ object.get_add_to_cart_url }}" style="color:#fff" >Add to cart</a> <i
+                                            <button class="btn"><a href="{{ object.get_add_to_cart_url }}" style="color:#fff" >{% if request.session.lang == "uk" %}
+                                                Замовити
+                                            {% else %}
+                                                Add to cart
+                                            {% endif %}</a> <i
                                                     class="fal fa-long-arrow-right"></i></button>
                                         </div>
                                         <!-- <ul class="post-counter">
@@ -188,6 +199,7 @@
                                         </div> -->
                                 <!--end respond-->
                                 <!--post-related-->
+                                {% comment %}
                                 <div class="post-related fl-wrap">
                                     <h6 class="comments-title">You Might Also Like</h6>
                                     <!-- post-related -->
@@ -215,15 +227,21 @@
                                         <!-- 3 end-->
                                     </div>
                                 </div>
+                                {% endcomment %}
                                 <!-- post-related  end-->
                             </div>
                             <div class="clearfix"></div>
-                            <div class="bold-separator bold-separator_dark"><span></span></div>
-                            <div class="clearfix"></div>
-                            <a href="shop.html" class="btn  shop-btn">Back to Shop<i
+                            <!-- <div class="bold-separator bold-separator_dark"><span></span></div>
+                            <div class="clearfix"></div> -->
+                            <a href="{% url 'core:shop' %}" class="btn  shop-btn">{% if request.session.lang == "uk" %}
+                                Назад до магазину 
+                            {% else %}
+                                Back to Shop
+                            {% endif %}<i
                                     class="fal fa-long-arrow-right"></i></a>
                         </div>
                         <!--  sidebar  -->
+                        {% comment %}         
                         <div class="col-md-4">
                             <!-- main-sidebar -->
                             <div class="main-sidebar fixed-bar fl-wrap">
@@ -326,6 +344,7 @@
                             </div>
                             <!-- main-sidebar end-->
                         </div>
+                        {% endcomment %}
                         <!--  sidebar end-->
                     </div>
                     <div class="fl-wrap limit-box"></div>

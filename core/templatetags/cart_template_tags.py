@@ -1,5 +1,5 @@
 from django import template
-from core.models import Order, OrderItem, Category, SessionOrder
+from core.models import MainSlider, Order, OrderItem, Category, SessionOrder, MainSlider, ItemTag
 from django.db.models import Sum
 
 
@@ -63,6 +63,21 @@ def total_order(request):
 @register.filter
 def categories(request):
     qs = Category.objects.all()
+    if qs.exists():
+        return qs
+    return 0
+
+
+@register.filter
+def main_slider(request):
+    qs = MainSlider.objects.all()
+    if qs.exists():
+        return qs
+    return 0
+
+@register.filter
+def product_tags(request):
+    qs = ItemTag.objects.filter(display_on_main=True)
     if qs.exists():
         return qs
     return 0

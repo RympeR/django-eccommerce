@@ -21,10 +21,22 @@
                     <div class="error-wrap fl-wrap">
                         <div class="container">
                             <h2>404</h2>
-                            <p>We're sorry, but the Page you were looking for, couldn't be found.</p>
+                            <p>
+                                {% if request.session.lang == "uk" %}
+                                    На жаль, сторінку, яку ви шукали, не вдалося знайти. 
+                                {% else %}
+                                    We're sorry, but the Page you were looking for, couldn't be found.
+                                {% endif %}
+                            </p>
                             <div class="clearfix"></div>
                             <div class="dots-separator fl-wrap"><span></span></div>
-                            <a href="index.html" class="btn">Back to Home Page <i class="fal fa-long-arrow-right"></i></a>
+                            <a href="{% url  'core:menu' %}" class="btn">
+                                {% if request.session.lang == "uk" %}
+                                    Повернутися на головну сторінку
+                                {% else %}
+                                    Back to Home Page
+                                {% endif %}
+                             <i class="fal fa-long-arrow-right"></i></a>
                             <div class="section-dec sec-dec_top"></div>
                             <div class="section-dec sec-dec_bottom"></div>
                         </div>

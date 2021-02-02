@@ -20,6 +20,7 @@ LABEL_CHOICES = (
 
 class Category(models.Model):
     category_name = models.CharField('Категория', max_length=200)
+    category_eng_name = models.CharField('Категория Eng', max_length=200, null=True, blank=True)
     label = models.CharField(max_length=20, blank=True, null=True)
 
     class Meta:
@@ -32,16 +33,35 @@ class Category(models.Model):
 
     def __str__(self) -> str:
         return self.category_name
+class ItemTag(models.Model):
+    item_tag_name = models.CharField('Тэг', max_length=20)
+    item_tag_eng_name = models.CharField('Тэг Eng', max_length=20,null=True, blank=True)
+    display_on_main = models.BooleanField('Отображается на главной')
+    slug = models.SlugField(null=True, blank=True)
+    class Meta:
+        verbose_name = 'Тэг'
+        verbose_name_plural = 'Тэги'
 
+    def __str__(self):
+        return self.item_tag_name
+
+    def get_absolute_url(self):
+        return reverse("core:shop-product", kwargs={
+            'slug': self.slug
+        })
+    
 class Item(models.Model):
     title = models.CharField(max_length=100)
+    title_eng = models.CharField(max_length=100, null=True, blank=True)
     price = models.FloatField()
     discount_price = models.FloatField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     
     slug = models.SlugField()
     description = models.TextField()
-    image = models.ImageField(blank=True, null=True)
+    english_description =  models.TextField(null=True, blank=True)
+    image = models.ImageField(upload_to='photos',blank=True, null=True)
+    item_tag = models.ManyToManyField(ItemTag, verbose_name='Тэги товара')
 
     @property
     def short_description(self):
@@ -80,7 +100,7 @@ class UserProfile(models.Model):
     name = models.CharField(max_length=200, null=True)
     phone = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=200, null=True)
-    profile_pc = models.ImageField(default='1.jpg', null=True, blank=True)
+    profile_pc = models.ImageField(upload_to='photos',default='1.jpg', null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     stripe_customer_id = models.CharField(max_length=50, blank=True, null=True)
     one_click_purchasing = models.BooleanField(default=False)
@@ -141,6 +161,8 @@ class Order(models.Model):
     coupon = models.ForeignKey(
         'Coupon', on_delete=models.SET_NULL, blank=True, null=True)
     being_delivered = models.BooleanField(default=False)
+    need_learning_branch = models.BooleanField(default=False)
+    dont_recall = models.BooleanField(default=False)
     received = models.BooleanField(default=False)
     refund_requested = models.BooleanField(default=False)
     refund_granted = models.BooleanField(default=False)
@@ -194,6 +216,7 @@ class Payment(models.Model):
 
 class Coupon(models.Model):
     code = models.CharField(max_length=15)
+    discount_percent = models.IntegerField()
     amount = models.FloatField()
     class Meta:
         verbose_name = 'Купон'
@@ -212,3 +235,31 @@ class Refund(models.Model):
         verbose_name_plural = 'Возвраты'
     def __str__(self):
         return f"{self.pk}"
+
+class MainSlider(models.Model):
+    slider_title = models.CharField('Заголовок слайда', max_length=35, default='Изучите наше меню')
+    slider_eng_title = models.CharField('Заголовок слайда eng', max_length=35, default='Изучите наше меню', null=True, blank=True)
+    slider_text = models.CharField('Текст слайда', max_length=50)
+    slider_eng_text = models.CharField('Текст слайда eng', max_length=50, null=True, blank=True)
+    image = models.ImageField(upload_to='photos',blank=True, null=True)
+    button_text = models.CharField('Текст кнопки',blank=True, null=True,max_length=20 )
+    button_eng_text = models.CharField('Текст кнопки',blank=True, null=True,max_length=20)
+
+    @property
+    def short_description(self):
+        return truncatechars(self.slider_text, 20)
+
+    def admin_photo(self):
+        return mark_safe('<img src="{}" width="100" /'.format(self.image.url))
+    
+    admin_photo.short_description = 'Превью'
+    admin_photo.allow_tags = True
+
+    class Meta:
+        verbose_name = 'Слайд'
+        verbose_name_plural = 'Слайды'
+
+    def __str__(self):
+        return self.slider_text
+
+

@@ -1,3 +1,4 @@
+import django_heroku
 """
 Django settings for tokyo_rest project.
 
@@ -25,7 +26,7 @@ MAIN_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'l4#kaf4r-xch9m47l!y0@@puce@n7*edwvu)2iz1-gb*z1&j(&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'tokyo-test.herokuapp.com',
@@ -157,3 +158,4 @@ MEDIA_URL  = '/photos/'
 #     },
 # }
 
+django_heroku.settings(locals())

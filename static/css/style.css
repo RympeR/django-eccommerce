@@ -283,12 +283,12 @@ blockquote p {
 	float:left;
 	height:25px;
 	position:relative;
-	top:23px;
+	top:14px;
 	left:25px;
 }
 .logo-holder img {
-	width:auto;
-	height:25px;
+	width:76px;
+	height:40px;
 }
 .header-inner {
 	top:50px;
@@ -799,7 +799,7 @@ footer.fixed-footer:before {
 	top:4px;
 }
 .footer-logo img {
-	height:25px;
+	height:60px;
 	width:auto;
 }
 .footer-top .lang-wrap {
@@ -3251,6 +3251,7 @@ h4.cart-title {
 }
 .custom-form textarea,
 .custom-form input[type="text"],
+.custom-form input[type="number"],
 .custom-form input[type=email],
 .custom-form input[type=password] {
 	float: left;

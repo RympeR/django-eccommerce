@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Item, OrderItem, Order, Payment, Coupon, Refund, Address, UserProfile, Category, SessionOrder
+from .models import Item, OrderItem, Order, Payment, Coupon, Refund, Address, UserProfile, Category, SessionOrder, MainSlider, ItemTag
 
 def make_refund_accepted(modeladmin, request, queryset):
     queryset.update(refund_requested=False, refund_granted=True)
@@ -7,7 +7,29 @@ def make_refund_accepted(modeladmin, request, queryset):
 
 make_refund_accepted.short_description = 'Update orders to refund granted'
 
+class MainSliderAdmin(admin.ModelAdmin):
+    fields = (
+        'slider_title',
+        'slider_text',
+        'button_text',
+        'image',
+        'slider_eng_title',
+        'slider_eng_text',
+        'button_eng_text',
+    )
+    list_display = [
+        'admin_photo',
+        'slider_title',
+        'short_description',
 
+    ]
+    list_display_links = [
+        'slider_title',
+        'short_description',
+    ]
+    readonly_fields = [
+        'admin_photo'
+    ]
 class OrderAdmin(admin.ModelAdmin):
     list_display = [
                     'ordered',
@@ -16,7 +38,7 @@ class OrderAdmin(admin.ModelAdmin):
                     'refund_requested',
                     'refund_granted',
                     'address',
-                    'coupon'
+                    'coupon',
                     ]
     list_display_links = [
         'address',
@@ -43,13 +65,16 @@ class AddressAdmin(admin.ModelAdmin):
 
 class ItemAdmin(admin.ModelAdmin):
     fields = (
-        'title', 
+        'title',
+        'title_eng',
         'price',
         'discount_price',
         'category',
         'slug',
         'description',
+        'english_description',
         'image',
+        'item_tag',
     )
     list_display = [
         'admin_photo',
@@ -75,7 +100,9 @@ admin.site.register(Payment)
 admin.site.register(Coupon)
 admin.site.register(Refund)
 admin.site.register(Address, AddressAdmin)
+admin.site.register(MainSlider, MainSliderAdmin)
 # admin.site.register(UserProfile)
 admin.site.register(SessionOrder)
+admin.site.register(ItemTag)
 
 
