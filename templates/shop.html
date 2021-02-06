@@ -1,4 +1,5 @@
-{% extends "main.html" %} {% block main_body %} {% load static %} {% load cart_template_tags %}
+{% extends "main.html" %} {% block main_body %} {% load static %} {% load
+cart_template_tags %}
 <!-- lodaer  -->
 {% include "loader.html" %}
 <!-- loader end  -->
@@ -12,8 +13,15 @@
     <!-- content  -->
     <div class="content">
       <!--  section  -->
-      <section class="parallax-section hero-section hidden-section" data-scrollax-parent="true">
-        <div class="bg par-elem" data-bg='{% static "images/bg/1.jpg" %}' data-scrollax="properties: { translateY: '30%' }"></div>
+      <section
+        class="parallax-section hero-section hidden-section"
+        data-scrollax-parent="true"
+      >
+        <div
+          class="bg par-elem"
+          data-bg='{% static "images/bg/1.jpg" %}'
+          data-scrollax="properties: { translateY: '30%' }"
+        ></div>
         <div class="overlay"></div>
         <div class="container">
           <div class="section-title">
@@ -44,16 +52,25 @@
               <div class="fl-wrap post-container">
                 <div class="shop-header fl-wrap"></div>
                 <!-- gallery start -->
-                <div class="gallery-items grid-big-pad lightgallery two-column fl-wrap">
+                <div
+                  class="gallery-items grid-big-pad lightgallery two-column fl-wrap"
+                >
                   <!-- gallery-item-->
-                  {% if items %} {% if request.session.lang == "uk" %} {% for item in items %}
+                  {% if items %} {% if request.session.lang == "uk" %} 
+                  {% for item in items %}
                   <div class="gallery-item {{ item.category.label }}">
                     <div class="grid-item-holder hov_zoom">
-                      <a href="{{ item.image.url }}" class="box-media-zoom popup-image"><i class="fal fa-search"></i></a>
+                      <a
+                        href="{{ item.image.url }}"
+                        class="box-media-zoom popup-image"
+                        ><i class="fal fa-search"></i
+                      ></a>
                       <img src="{{ item.image.url }}" alt="" />
                     </div>
                     <div class="grid-item-details">
-                      <a href="{{ item.get_absolute_url }}"><h3>{{ item.title }}</h3></a>
+                      <a href="{{ item.get_absolute_url }}"
+                        ><h3>{{ item.title }}</h3></a
+                      >
                       <p>{{ item.description }}</p>
                       <div class="grid-item_price">
                         {% if item.discount_price %}
@@ -61,18 +78,30 @@
                         {% else %}
                         <span>₴{{ item.price }}</span>
                         {% endif %}
-                        <a href="{{ item.get_add_to_cart_url }}" class="add_cart">Замовити</a>
+                        <a
+                          href="{{ item.get_add_to_cart_url }}"
+                          class="add_cart"
+                          >Замовити</a
+                        >
                       </div>
                     </div>
                   </div>
-                  {% endfor %} {% else %} {% for item in items %}
+                  {% endfor %} 
+                  {% else %} 
+                  {% for item in items %}
                   <div class="gallery-item {{ item.category.label }}">
                     <div class="grid-item-holder hov_zoom">
-                      <a href="{{ item.image.url }}" class="box-media-zoom popup-image"><i class="fal fa-search"></i></a>
+                      <a
+                        href="{{ item.image.url }}"
+                        class="box-media-zoom popup-image"
+                        ><i class="fal fa-search"></i
+                      ></a>
                       <img src="{{ item.image.url }}" alt="" />
                     </div>
                     <div class="grid-item-details">
-                      <a href="{{ item.get_absolute_url }}"><h3>{{ item.title_eng }}</h3></a>
+                      <a href="{{ item.get_absolute_url }}"
+                        ><h3>{{ item.title_eng }}</h3></a
+                      >
                       <p>{{ item.english_description }}</p>
                       <div class="grid-item_price">
                         {% if item.discount_price %}
@@ -80,14 +109,25 @@
                         {% else %}
                         <span>₴{{ item.price }}</span>
                         {% endif %}
-                        <a href="{{ item.get_add_to_cart_url }}" class="add_cart">Add to cart</a>
+                        <a
+                          href="{{ item.get_add_to_cart_url }}"
+                          class="add_cart"
+                          >Add to cart</a
+                        >
                       </div>
                     </div>
                   </div>
-                  {% endfor %} {% endif %} {% else %} {% for item in object_list %}
+                  {% endfor %} 
+                {% endif %} 
+              {% else %} 
+                  {% for item in object_list %}
                   <div class="gallery-item {{ item.get_label_display }}">
                     <div class="grid-item-holder hov_zoom">
-                      <a href="{{ item.image.url }}" class="box-media-zoom popup-image"><i class="fal fa-search"></i></a>
+                      <a
+                        href="{{ item.image.url }}"
+                        class="box-media-zoom popup-image"
+                        ><i class="fal fa-search"></i
+                      ></a>
                       <img src="{{ item.image.url }}" alt="" />
                     </div>
                     <div class="grid-item-details">
@@ -101,7 +141,13 @@
                         {% else %}
                         <span>₴{{ item.price }}</span>
                         {% endif %}
-                        <a href="{{ item.get_add_to_cart_url }}" class="add_cart">{% if request.session.lang == "uk" %} Замовити {% else %} Add to cart {% endif %}</a>
+                        <a
+                          href="{{ item.get_add_to_cart_url }}"
+                          class="add_cart"
+                          >{% if request.session.lang == "uk" %} 
+                          Замовити 
+                          {% else %} Add to cart {% endif %}</a
+                        >
                       </div>
                     </div>
                   </div>
@@ -113,13 +159,23 @@
                 {% if is_paginated %}
                 <div class="pagination fl-wrap" style="width: 20%">
                   {% if page_obj.has_previous %}
-                  <a href="?page={{ page_obj.previous_page_number }}" class="prevposts-link"><i class="fal fa-long-arrow-left"></i></a>
+                  <a
+                    href="?page={{ page_obj.previous_page_number }}"
+                    class="prevposts-link"
+                    ><i class="fal fa-long-arrow-left"></i
+                  ></a>
                   {% endif %}
 
-                  <a href="?page={{ page_obj.number }}" class="current-page">{{ page_obj.number }}</a>
+                  <a href="?page={{ page_obj.number }}" class="current-page"
+                    >{{ page_obj.number }}</a
+                  >
 
                   {% if page_obj.has_next %}
-                  <a href="?page={{ page_obj.next_page_number }}" class="nextposts-link"><i class="fal fa-long-arrow-right"></i></a>
+                  <a
+                    href="?page={{ page_obj.next_page_number }}"
+                    class="nextposts-link"
+                    ><i class="fal fa-long-arrow-right"></i
+                  ></a>
                   {% endif %}
                 </div>
                 {% endif %}
@@ -132,12 +188,21 @@
               <div class="main-sidebar fixed-bar fl-wrap">
                 <!-- main-sidebar-widget-->
                 <div class="main-sidebar-widget fl-wrap">
-                  <h3>{% if request.session.lang == "uk" %} Компоненти {% else %} Components {% endif %}</h3>
+                  <h3>
+                    {% if request.session.lang == "uk" %} Компоненти {% else %}
+                    Components {% endif %}
+                  </h3>
                   <div class="tags-widget">
                     <div class="tagcloud">
-                      {% for tag in request|product_tags %}
-                      <a href="{% url 'core:shop-product' tag.slug %}">{{ tag.item_tag_name }}</a>
-                      {% endfor %}
+                      {% if request.session.lang == "uk" %} 
+                        {% for tag in request|product_tags %}
+                          <a href="{% url 'core:shop-product' tag.slug %}">{{ tag.item_tag_name }}</a>
+                        {% endfor %} 
+                      {% else %} 
+                        {% for tag in request|product_tags%}
+                          <a href="{% url 'core:shop-product' tag.slug %}">{{ tag.item_tag_eng_name }}</a>
+                        {% endfor %} 
+                      {% endif %}
                     </div>
                   </div>
                 </div>
