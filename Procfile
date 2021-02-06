@@ -1,1 +1,1 @@
-web: gunicorn tokyo_rest.wsgi
+web: gunicorn tokyotest.wsgi
