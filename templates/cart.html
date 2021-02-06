@@ -1,266 +1,207 @@
-{% extends "main.html" %}
-{% load cart_template_tags %}
-{% block main_body %}
-{% load static %}
+{% extends "main.html" %} {% load cart_template_tags %} {% block main_body %} {% load static %}
 <!-- lodaer  -->
 {% include "loader.html" %}
 <!-- loader end  -->
 <!-- main start  -->
 <div id="main">
-    <!-- header  -->
-    {% include "header.html" %}
-    <!--header end -->
-    <!-- wrapper  -->
-    <div id="wrapper">
-        <!-- content  -->
-        <div class="content">
-            <!--  section  -->
-            <section class="parallax-section hero-section hidden-section" data-scrollax-parent="true">
-                <div class="bg par-elem " data-bg="images/bg/1.jpg" data-scrollax="properties: { translateY: '30%' }">
-                </div>
-                <div class="overlay"></div>
-                <div class="container">
-                    <div class="section-title">
-                        <h4>Замовляй їжу з нашим сервісом</h4>
-                        <h2>Ваш кошик</h2>
-                        <div class="dots-separator fl-wrap"><span></span></div>
-                    </div>
-                </div>
-                <div class="hero-section-scroll">
-                    <div class="mousey">
-                        <div class="scroller"></div>
-                    </div>
-                </div>
-                <div class="brush-dec"></div>
-            </section>
-            <!--  section  end-->
-            <!--  section  -->
-            <section class="hidden-section">
-                <div class="container">
-                    <!-- CHECKOUT TABLE -->
-                    <div class="row">
-                        <div class="col-md-8">
-                            {% if request.session.lang == "uk" %}
-                                <h4 class="cart-title">У вашому кошмику <span>{{ request|cart_item_count }} тип товарів</span></h4>
-                            {% else %}
-                                <h4 class="cart-title">In your cart <span>{{ request|cart_item_count }} type of items</span></h4>
-                            {% endif %}
-                            {% if request.session.lang == "uk" %}
-                                <table class="table table-border checkout-table">
-                                    <tbody>
-                                        <tr>
-                                            <th class="hidden-xs"></th>
-                                            <th>Товар</th>
-                                            <th class="hidden-xs">Ціна</th>
-                                            <th>Кількість</th>
-                                            <th>Усього</th>
-                                            <th></th>
-                                        </tr>
-                                        {% for item in object.items.all %}
+  <!-- header  -->
+  {% include "header.html" %}
+  <!--header end -->
+  <!-- wrapper  -->
+  <div id="wrapper">
+    <!-- content  -->
+    <div class="content">
+      <!--  section  -->
+      <section class="parallax-section hero-section hidden-section" data-scrollax-parent="true">
+        <div class="bg par-elem" data-bg="images/bg/1.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="section-title">
+            <h4>Замовляй їжу з нашим сервісом</h4>
+            <h2>Ваш кошик</h2>
+            <div class="dots-separator fl-wrap"><span></span></div>
+          </div>
+        </div>
+        <div class="hero-section-scroll">
+          <div class="mousey">
+            <div class="scroller"></div>
+          </div>
+        </div>
+        <div class="brush-dec"></div>
+      </section>
+      <!--  section  end-->
+      <!--  section  -->
+      <section class="hidden-section">
+        <div class="container">
+          <!-- CHECKOUT TABLE -->
+          <div class="row">
+            <div class="col-md-8">
+              {% if request.session.lang == "uk" %}
+              <h4 class="cart-title">
+                У вашому кошмику
+                <span>{{ request|cart_item_count }} тип товарів</span>
+              </h4>
+              {% else %}
+              <h4 class="cart-title">
+                In your cart
+                <span>{{ request|cart_item_count }} type of items</span>
+              </h4>
+              {% endif %} {% if request.session.lang == "uk" %}
+              <table class="table table-border checkout-table">
+                <tbody>
+                  <tr>
+                    <th class="hidden-xs"></th>
+                    <th>Товар</th>
+                    <th class="hidden-xs">Ціна</th>
+                    <th>Кількість</th>
+                    <th>Усього</th>
+                    <th></th>
+                  </tr>
+                  {% for item in object.items.all %}
 
-                                            <tr>
-                                                <td class="hidden-xs">
-                                                    <a href="#"><img src="{{ item.item.image.url }}" alt="" class="respimg"></a>
-                                                </td>
-                                                <td>
-                                                    <h5 class="product-name">{{ item.item.title }}</h5>
-                                                </td>
-                                                <td class="hidden-xs">
-                                                    <h5 class="order-money">
-                                                        {% if item.item.discount_price %}
-                                                            ₴{{ item.item.discount_price }}
-                                                        {% else %}
-                                                            ₴{{ item.item.price }}
-                                                        {% endif %}
-                                                    </h5>
-                                                </td>
-                                                <td>
-                                                    <h5 class="order-money">
-                                                        <a href="{% url 'core:remove-single-item-from-cart' item.item.slug %}"><i class="fas fa-minus mr-2"></i></a>
-                                                        {{ item.quantity }}
-                                                        <a href="{% url 'core:add-to-cart' item.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
-                                                    </h5>
-                                                </td>
-                                                <td>
-                                                    <h5 class="order-money">
-                                                        {% if item.item.discount_price %}
-                                                            ₴{{ item.get_total_discount_item_price }}
-                                                        {% else %}
-                                                            ₴{{ item.get_total_item_price }}
-                                                        {% endif %}
-                                                    </h5>
-                                                </td>
-                                                <td class="pr-remove">
-                                                    <a href="{{ item.item.get_remove_from_cart_url }}" title="Remove"><i
-                                                            class="fal fa-times"></i></a>
-                                                </td>
-                                            </tr>
-                                        {% empty %}
-                                            <tr>
-                                                <td>Ваш кошик порожний</td>
-                                                <td>
-                                                    <a href="/">Продовжити покупки</a>
-                                                </td>
-                                            </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            {% else %}
-                            <table class="table table-border checkout-table">
-                                <tbody>
-                                    <tr>
-                                        <th class="hidden-xs">Item</th>
-                                        <th>Name</th>
-                                        <th class="hidden-xs">Price</th>
-                                        <th>Amount</th>
-                                        <th>Total</th>
-                                        <th></th>
-                                    </tr>
-                                    {% for item in object.items.all %}
+                  <tr>
+                    <td class="hidden-xs">
+                      <a href="#"><img src="{{ item.item.image.url }}" alt="" class="respimg" /></a>
+                    </td>
+                    <td>
+                      <h5 class="product-name">{{ item.item.title }}</h5>
+                    </td>
+                    <td class="hidden-xs">
+                      <h5 class="order-money">{% if item.item.discount_price %} ₴{{ item.item.discount_price }} {% else %} ₴{{ item.item.price }} {% endif %}</h5>
+                    </td>
+                    <td>
+                      <h5 class="order-money">
+                        <a href="{% url 'core:remove-single-item-from-cart' item.item.slug %}"><i class="fas fa-minus mr-2"></i></a>
+                        {{ item.quantity }}
+                        <a href="{% url 'core:add-to-cart' item.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
+                      </h5>
+                    </td>
+                    <td>
+                      <h5 class="order-money">{% if item.item.discount_price %} ₴{{ item.get_total_discount_item_price }} {% else %} ₴{{ item.get_total_item_price }} {% endif %}</h5>
+                    </td>
+                    <td class="pr-remove">
+                      <a href="{{ item.item.get_remove_from_cart_url }}" title="Remove"><i class="fal fa-times"></i></a>
+                    </td>
+                  </tr>
+                  {% empty %}
+                  <tr>
+                    <td>Ваш кошик порожний</td>
+                    <td>
+                      <a href="/">Продовжити покупки</a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              {% else %}
+              <table class="table table-border checkout-table">
+                <tbody>
+                  <tr>
+                    <th class="hidden-xs">Item</th>
+                    <th>Name</th>
+                    <th class="hidden-xs">Price</th>
+                    <th>Amount</th>
+                    <th>Total</th>
+                    <th></th>
+                  </tr>
+                  {% for item in object.items.all %}
 
-                                        <tr>
-                                            <td class="hidden-xs">
-                                                <a href="#"><img src="{{ item.item.image.url }}" alt="" class="respimg"></a>
-                                            </td>
-                                            <td>
-                                                <h5 class="product-name">{{ item.item.title_eng }}</h5>
-                                            </td>
-                                            <td class="hidden-xs">
-                                                <h5 class="order-money">
-                                                    {% if item.item.discount_price %}
-                                                        ₴{{ item.item.discount_price }}
-                                                    {% else %}
-                                                        ₴{{ item.item.price }}
-                                                    {% endif %}
-                                                </h5>
-                                            </td>
-                                            <td>
-                                                <h5 class="order-money">
-                                                    <a href="{% url 'core:remove-single-item-from-cart' item.item.slug %}"><i class="fas fa-minus mr-2"></i></a>
-                                                    {{ item.quantity }}
-                                                    <a href="{% url 'core:add-to-cart' item.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
-                                                </h5>
-                                            </td>
-                                            <td>
-                                                <h5 class="order-money">
-                                                    {% if item.item.discount_price %}
-                                                        ₴{{ item.get_total_discount_item_price }}
-                                                    {% else %}
-                                                        ₴{{ item.get_total_item_price }}
-                                                    {% endif %}
-                                                </h5>
-                                            </td>
-                                            <td class="pr-remove">
-                                                <a href="{{ item.item.get_remove_from_cart_url }}" title="Remove"><i
-                                                        class="fal fa-times"></i></a>
-                                            </td>
-                                        </tr>
-                                    {% empty %}
-                                        <tr>
-                                            <td>Your cart is empty</td>
-                                            <td>
-                                                <a href="/">Continue shopping</a>
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                            {% endif %}
-                            <!-- COUPON -->
-                            <div class="coupon-holder">
-                                <input type="text" name="cartcoupon" placeholder="Coupon code">
-                                <button type="submit" class="btn-a">
-                                    {% if request.session.lang == "uk" %}
-                                        Додати купон
-                                    {% else %}
-                                        Add a coupon 
-                                    {% endif %}
-                                </button>
-                                <button type="submit" class="pull-right btn-uc">
-                                    {% if request.session.lang == "uk" %}
-                                        Оновити кошик
-                                    {% else %}
-                                        Update cart 
-                                    {% endif %}
-                                </button>
-                            </div>
-                            <!-- /COUPON -->
-                        </div>
-                        <div class="col-md-4">
-                            <!-- CART TOTALS  -->
-                            {% if object.get_total %}
-                            <div class="cart-totals dark-bg fl-wrap">
-                                <h3>
-                                    {% if request.session.lang == "uk" %}
-                                        Підсумок картки
-                                    {% else %}
-                                        Cart totals
-                                    {% endif %}
-                                </h3>
-                                <table class="total-table">
-                                    <tbody>
-                                        <tr>
-                                            <th>
-                                                {% if request.session.lang == "uk" %}
-                                                    Перед підсумок:
-                                                {% else %}
-                                                    Before the result: 
-                                                {% endif %}
-                                                </th>
-                                            <td>
-                                                ₴{{ request|total_order }}
-                                            </td>
-                                        </tr>
-                                        <!-- <tr>
+                  <tr>
+                    <td class="hidden-xs">
+                      <a href="#"><img src="{{ item.item.image.url }}" alt="" class="respimg" /></a>
+                    </td>
+                    <td>
+                      <h5 class="product-name">{{ item.item.title_eng }}</h5>
+                    </td>
+                    <td class="hidden-xs">
+                      <h5 class="order-money">{% if item.item.discount_price %} ₴{{ item.item.discount_price }} {% else %} ₴{{ item.item.price }} {% endif %}</h5>
+                    </td>
+                    <td>
+                      <h5 class="order-money">
+                        <a href="{% url 'core:remove-single-item-from-cart' item.item.slug %}"><i class="fas fa-minus mr-2"></i></a>
+                        {{ item.quantity }}
+                        <a href="{% url 'core:add-to-cart' item.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
+                      </h5>
+                    </td>
+                    <td>
+                      <h5 class="order-money">{% if item.item.discount_price %} ₴{{ item.get_total_discount_item_price }} {% else %} ₴{{ item.get_total_item_price }} {% endif %}</h5>
+                    </td>
+                    <td class="pr-remove">
+                      <a href="{{ item.item.get_remove_from_cart_url }}" title="Remove"><i class="fal fa-times"></i></a>
+                    </td>
+                  </tr>
+                  {% empty %}
+                  <tr>
+                    <td>Your cart is empty</td>
+                    <td>
+                      <a href="/">Continue shopping</a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              {% endif %}
+              <!-- COUPON -->
+              <div class="coupon-holder">
+                <form>
+                  {% csrf_token %} <input type="text" id="coupon" name="cartcoupon" placeholder="{% if request.session.lang == "uk" %} Код купону {% else %} Coupon code {% endif %}" />
+                  <button onclick="add_coupon()" class="btn-a">{% if request.session.lang == "uk" %} Додати купон {% else %} Add a coupon {% endif %}</button>
+                </form>
+                {% comment %} <button type="submit" class="pull-right btn-uc">{% if request.session.lang == "uk" %} Оновити кошик {% else %} Update cart {% endif %}</button> {% endcomment %}
+              </div>
+              <!-- /COUPON -->
+            </div>
+            <div class="col-md-4">
+              <!-- CART TOTALS  -->
+              {% if object.get_total %}
+              <div class="cart-totals dark-bg fl-wrap">
+                <h3>{% if request.session.lang == "uk" %} Підсумок картки {% else %} Cart totals {% endif %}</h3>
+                <table class="total-table">
+                  <tbody>
+                    <tr>
+                      <th>{% if request.session.lang == "uk" %} Перед підсумокx {% else %} Before the result: {% endif %}</th>
+                      <td>₴{{ request|total_order }}</td>
+                    </tr>
+                    <!-- <tr>
                                                 <th>Shipping Total:</th>
                                                 <td>₴12.00</td>
                                             </tr> -->
-                                        <tr>
-                                            <th>
-                                                {% if request.session.lang == "uk" %}
-                                                    Усього:
-                                                {% else %}
-                                                    Total:
-                                                {% endif %}
-                                            </th>
-                                            <td>
-                                                ₴{{ object.get_total }}
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <button type="submit" class="cart-totals_btn color-bg"><a href='/checkout/'>{% if request.session.lang == "uk" %}
-                                    Перейти до сплати
-                                {% else %}
-                                    Proceed to checkout
-                                {% endif %}</a></button>
-                            </div>
-                            {% endif %}
-                            <!-- /CART TOTALS  -->
-                        </div>
-                    </div>
-                    <!-- /CHECKOUT TABLE -->
-                </div>
-                <div class="section-bg">
-                    <div class="bg" data-bg="images/bg/dec/section-bg.png"></div>
-                </div>
-            </section>
-            <!--  section end  -->
-            <div class="brush-dec2 brush-dec_bottom"></div>
+                    <tr>
+                      <th>{% if request.session.lang == "uk" %} Усього: {% else %} Total: {% endif %}</th>
+                      <td>₴{{ object.get_total }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <button type="submit" class="cart-totals_btn color-bg">
+                  <a href="/checkout/"> {% if request.session.lang == "uk" %} Перейти до сплати {% else %} Proceed to checkout {% endif %}</a>
+                </button>
+              </div>
+              {% endif %}
+              <!-- /CART TOTALS  -->
+            </div>
+          </div>
+          <!-- /CHECKOUT TABLE -->
         </div>
-        <!-- content end  -->
-        <!-- footer -->
-        <div class="height-emulator fl-wrap"></div>
-        {% include "footer.html" %}
-        <!-- footer end-->
+        <div class="section-bg">
+          <div class="bg" data-bg="images/bg/dec/section-bg.png"></div>
+        </div>
+      </section>
+      <!--  section end  -->
+      <div class="brush-dec2 brush-dec_bottom"></div>
     </div>
-    <!-- wrapper end -->
-    {% include "reservation.html" %}
-    <!-- cursor-->
-    <div class="element">
-        <div class="element-item"></div>
-    </div>
-    <!-- cursor end-->
+    <!-- content end  -->
+    <!-- footer -->
+    <div class="height-emulator fl-wrap"></div>
+    {% include "footer.html" %}
+    <!-- footer end-->
+  </div>
+  <!-- wrapper end -->
+  {% include "reservation.html" %}
+  <!-- cursor-->
+  <div class="element">
+    <div class="element-item"></div>
+  </div>
+  <!-- cursor end-->
 </div>
 <!-- Main end -->
 {% endblock main_body %}

@@ -1,49 +1,36 @@
-{% load cart_template_tags %}
-{% load static %}
+{% load cart_template_tags %} {% load static %}
 <header class="main-header">
-    <!-- header-top  -->
-    <div class="header-top">
-        <div class="container">
-            <!-- <div class="lang-wrap"><a href="#" class="act-lang">En</a><span>/</span><a href="#">Fr</a></div> -->
-            <div class="header-top_contacts"><a href="tel:+380941675843"><span>{% if request.session.lang == "uk" %}
-                Подзвонити
-                {% else %}
-                Call
-                {% endif %}:</span> +489756412322</a><a href="mailto:tokyo.od.ua@gmail.com"><span>{% if request.session.lang == "uk" %}
-                    Написати
-                    {% else %}
-                    Write
-                    {% endif %}
-                        :</span> tokyo.od.ua@gmail.com</a></div>
-        </div>
+  <!-- header-top  -->
+  <div class="header-top">
+    <div class="container">
+      <!-- <div class="lang-wrap"><a href="#" class="act-lang">En</a><span>/</span><a href="#">Fr</a></div> -->
+      <div class="header-top_contacts">
+        <a href="tel:+380941675843"><span>{% if request.session.lang == "uk" %} Подзвонити {% else %} Call {% endif %}:</span> +489756412322</a><a href="mailto:tokyo.od.ua@gmail.com"><span>{% if request.session.lang == "uk" %} Написати {% else %} Write {% endif %} :</span> tokyo.od.ua@gmail.com</a>
+      </div>
     </div>
-    <!--header-top end -->
-    <div class="header-inner  fl-wrap">
-        <div class="container">
-            <div class="header-container fl-wrap">
-                <a href="{% url  'core:menu' %}" class="logo-holder ajax"><img src='{% static "images/logo.png" %}' alt=""></a>
-                <!-- <div class="show-reserv_button show-rb"><span>Reservation</span> <i class="fal fa-bookmark"></i></div> -->
-                <!-- <div class="show-share-btn showshare htact"><i class="fal fa-bullhorn"></i> <span
-                        class="header-tooltip">Share</span></div> -->
-                <div class="show-cart sc_btn htact"><i class="fal fa-shopping-bag"></i><span
-                    class="show-cart_count">{{ request|cart_item_count }}</span><span class="header-tooltip">{% if request.session.lang == "uk" %}
-                        Ваш кошик
-                        {% else %}
-                        Your cart
-                        {% endif %}</span></div>
-                <!-- nav-button-wrap-->
-                <div class="nav-button-wrap">   
-                    <div class="nav-button">
-                        <span></span><span></span><span></span>
-                    </div>
-                </div>
-                <!-- nav-button-wrap end-->
-                <!--  navigation -->
-                <div class="nav-holder main-menu">
-                    <nav>
-                        <ul>
-                            <li>
-                                <!-- <a href="#">Home <i class="fas fa-caret-down"></i></a>
+  </div>
+  <!--header-top end -->
+  <div class="header-inner fl-wrap">
+    <div class="container">
+      <div class="header-container fl-wrap">
+        <a href="{% url  'core:menu' %}" class="logo-holder ajax"><img src='{% static "images/logo.png" %}' alt="" /></a>
+        {% comment %}
+        <div class="show-reserv_button show-rb"><span>Reservation</span> <i class="fal fa-bookmark"></i></div>
+        {% endcomment %}
+        <div class="show-share-btn showshare htact"><i class="fal fa-bullhorn"></i> <span class="header-tooltip">Share</span></div>
+        <div class="show-share-btn showshare htact"><i class="fal fa-bullhorn"></i> <span class="header-tooltip">Share</span></div>
+        <div class="show-cart sc_btn htact"><i class="fal fa-shopping-bag"></i><span class="show-cart_count">{{ request|cart_item_count }}</span><span class="header-tooltip">{% if request.session.lang == "uk" %} Ваш кошик {% else %} Your cart {% endif %}</span></div>
+        <!-- nav-button-wrap-->
+        <div class="nav-button-wrap">
+          <div class="nav-button"><span></span><span></span><span></span></div>
+        </div>
+        <!-- nav-button-wrap end-->
+        <!--  navigation -->
+        <div class="nav-holder main-menu">
+          <nav>
+            <ul>
+              <li>
+                <!-- <a href="#">Home <i class="fas fa-caret-down"></i></a>
                                 second level 
                                 <ul>
                                     <li><a href="index.html">Parallax Image</a></li>
@@ -53,28 +40,20 @@
                                     <li><a href="index5.html">Video</a></li>
                                     <li><a href="onepage.html">One Page</a></li>
                                 </ul> -->
-                                {% comment %}
+                {% comment %}
 
-                                <a id='menu' href="{% url  'core:home-view' %}">{% if request.session.lang == "uk" %}
-                                    Меню
-                                {% else %}
-                                Menu
-                                {% endif %}</a>
-                                {% endcomment %}
-                                <!--second level end-->
-                            </li>
-                            <li>
-                                <a id='menu' href="{% url  'core:menu' %}">{% if request.session.lang == "uk" %}
-                                        Меню
-                                    {% else %}
-                                        Menu
-                                    {% endif %}
-                                    {% comment %}
-                                        <i class="fas fa-caret-down"></i>
-                                    {% endcomment %}
-                                </a>
-                                
-                                <!-- <ul>
+                <a id="menu" href="{% url  'core:home-view' %}">{% if request.session.lang == "uk" %} Меню {% else %} Menu {% endif %}</a>
+                {% endcomment %}
+                <!--second level end-->
+              </li>
+              <li>
+                <a id="menu" href="{% url  'core:menu' %}"
+                  >{% if request.session.lang == "uk" %} Меню {% else %} Menu {% endif %} {% comment %}
+                  <i class="fas fa-caret-down"></i>
+                  {% endcomment %}
+                </a>
+
+                <!-- <ul>
                                     <li><a href="menu3.html">Menu 3</a></li>
                                     <li><a href="menu3.html">Menu 3</a></li>
                                     <li><a href="menu3.html">Menu 3</a></li>
@@ -82,107 +61,72 @@
                                     <li><a href="menu3.html">Menu 3</a></li>
                                     <li><a href="menu3.html">Menu 3</a></li>
                                 </ul> -->
-                                <!-- <!--second level end -->
-                                <!-- <a href="{% url  'core:menu' %}">Меню</a> -->
-                            </li>
-                            <li><a id='propositions' href="{% url  'proposition:all_prospositions' %}" class="act-link">{% if request.session.lang == "uk" %}
-                                Акції
-                                {% else %}
-                                Promotions
-                                {% endif %}</a></li>
-                            <li><a id='shop' href="{% url  'core:shop' %}">{% if request.session.lang == "uk" %}
-                                Пошук по компонентам
-                            {% else %}
-                            Search by components
-                            {% endif %}</a></li>
-                            {% comment %}
-                                <li>
-                                    <a href="#">Pages<i class="fas fa-caret-down"></i></a>
-                                    <!--second level -->
-                                    <ul>
-                                        <li><a href="{% url  'core:shop' %}">Shop</a></li>
-                                        <li><a href="product-single.html">Product Single</a></li>
-                                        <li><a href="cart.html">Cart</a></li>
-                                        <li><a href="gallery.html">Gallery</a></li>
-                                        <li><a href="blog-single.html">Blog single</a></li>
-                                        <li><a href="404.html">404</a></li>
-                                        <li><a href="coming-soon.html">Coming Soon</a></li>
-                                    </ul>
-                                    <!--second level end-->
-                                </li>
-                            {% endcomment %}
-                        </ul>
-                    </nav>
-                </div>
-                <!-- navigation  end -->
-                <!-- header-cart_wrap  -->
-                <div class="header-cart_wrap novis_cart">
-                    <div class="header-cart_title">{% if request.session.lang == "uk" %}
-                        Ваш кошик
-                    {% else %}
-                        Your cart
-                        {% endif %} <span>{{ request|cart_item_count }} {% if request.session.lang == "uk" %}
-                            товарів
-                        {% else %}
-                            products
-                        {% endif %}</span></div>
-                    <div class="header-cart_wrap_container fl-wrap">
-                        <div class="box-widget-content">
-                            <div class="widget-posts fl-wrap">
-                                <ol>
-                                    {% if  request|cart_items %}
-                                      
-                                    {% for item in request|cart_items %}
-                                    
-                                    <li class="clearfix">
-                                        <a href="#" class="widget-posts-img"><img src="{{ item.item.image.url }}"
-                                            class="respimg" alt=""></a>
-                                            <div class="widget-posts-descr">
-                                                <a href="{{ item.item.get_absolute_url }}" title="">{{ item.item.title }}</a>
-                                                <div class="widget-posts-descr_calc clearfix">{{ item.quantity }} <span>x</span> 
-                                                    {% if item.item.discount_price %}
-                                                        ₴{{ item.item.discount_price }}
-                                                    {% else %}
-                                                        ₴{{ item.item.price }}
-                                                    {% endif %}
-                                                </div>
-                                            </div>
-                                            <a href="{{ item.item.get_remove_from_cart_url }}" class="clear-cart_button"><i class="fal fa-times"></i></a>
-                                        </li>
-                                        {% endfor %}
-                                    {% endif %}
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="header-cart_wrap_total fl-wrap">
-                        <div class="header-cart_wrap_total_item">{% if request.session.lang == "uk" %}
-                            Підсумок
-                        {% else %}
-                            Total
-                        {% endif %} : <span>₴{{ request|total_order }}</span></div>
-                    </div>
-                    <div class="header-cart_wrap_footer fl-wrap">
-                        <a href="{% url  'core:order-summary' %}">{% if request.session.lang == "uk" %}
-                            Переглянути кошик
-                        {% else %}
-                            View cart
-                        {% endif %}</a>
-                        <a href="{% url  'core:checkout' %}">{% if request.session.lang == "uk" %}
-                            Розрахунок
-                        {% else %}
-                            Checkout
-                        {% endif %}</a>
-                    </div>
-                </div>
-                <!-- header-cart_wrap end  -->
-                <!-- share-wrapper -->
-                <div class="share-wrapper isShare">
-                    <div class="share-container fl-wrap"></div>
-                </div>
-                <!-- share-wrapper-end -->
-            </div>
+                <!-- <!--second level end -->
+                <!-- <a href="{% url  'core:menu' %}">Меню</a> -->
+              </li>
+              <li><a id="propositions" href="{% url  'proposition:all_prospositions' %}" class="act-link">{% if request.session.lang == "uk" %} Акції {% else %} Promotions {% endif %}</a></li>
+              <li><a id="shop" href="{% url  'core:shop' %}">{% if request.session.lang == "uk" %} Пошук по компонентам {% else %} Search by components {% endif %}</a></li>
+              {% comment %}
+              <li>
+                <a href="#">Pages<i class="fas fa-caret-down"></i></a>
+                <!--second level -->
+                <ul>
+                  <li><a href="{% url  'core:shop' %}">Shop</a></li>
+                  <li><a href="product-single.html">Product Single</a></li>
+                  <li><a href="cart.html">Cart</a></li>
+                  <li><a href="gallery.html">Gallery</a></li>
+                  <li><a href="blog-single.html">Blog single</a></li>
+                  <li><a href="404.html">404</a></li>
+                  <li><a href="coming-soon.html">Coming Soon</a></li>
+                </ul>
+                <!--second level end-->
+              </li>
+              {% endcomment %}
+            </ul>
+          </nav>
         </div>
+        <!-- navigation  end -->
+        <!-- header-cart_wrap  -->
+        <div class="header-cart_wrap novis_cart">
+          <div class="header-cart_title">{% if request.session.lang == "uk" %} Ваш кошик {% else %} Your cart {% endif %} <span>{{ request|cart_item_count }} {% if request.session.lang == "uk" %} товарів {% else %} products {% endif %}</span></div>
+          <div class="header-cart_wrap_container fl-wrap">
+            <div class="box-widget-content">
+              <div class="widget-posts fl-wrap">
+                <ol>
+                  {% if request|cart_items %} {% for item in request|cart_items %}
+
+                  <li class="clearfix">
+                    <a href="#" class="widget-posts-img"><img src="{{ item.item.image.url }}" class="respimg" alt="" /></a>
+                    <div class="widget-posts-descr">
+                      <a href="{{ item.item.get_absolute_url }}" title="">{{ item.item.title }}</a>
+                      <div class="widget-posts-descr_calc clearfix">
+                        {{ item.quantity }} <span>x</span>
+                        {% if item.item.discount_price %} ₴{{ item.item.discount_price }} {% else %} ₴{{ item.item.price }} {% endif %}
+                      </div>
+                    </div>
+                    <a href="{{ item.item.get_remove_from_cart_url }}" class="clear-cart_button"><i class="fal fa-times"></i></a>
+                  </li>
+                  {% endfor %} {% endif %}
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="header-cart_wrap_total fl-wrap">
+            <div class="header-cart_wrap_total_item">{% if request.session.lang == "uk" %} Підсумок {% else %} Total {% endif %} : <span>₴{{ request|total_order }}</span></div>
+          </div>
+          <div class="header-cart_wrap_footer fl-wrap">
+            <a href="{% url  'core:order-summary' %}">{% if request.session.lang == "uk" %} Переглянути кошик {% else %} View cart {% endif %}</a>
+            <a href="{% url  'core:checkout' %}">{% if request.session.lang == "uk" %} Розрахунок {% else %} Checkout {% endif %}</a>
+          </div>
+        </div>
+        <!-- header-cart_wrap end  -->
+        <!-- share-wrapper -->
+        <div class="share-wrapper isShare">
+          <div class="share-container fl-wrap"></div>
+        </div>
+        <!-- share-wrapper-end -->
+      </div>
     </div>
-    <!-- header-inner end  -->
+  </div>
+  <!-- header-inner end  -->
 </header>

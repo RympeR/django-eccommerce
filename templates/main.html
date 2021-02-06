@@ -1,103 +1,98 @@
 {% load static %}
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!--=============== basic  ===============-->
-    <meta charset="UTF-8">
-    <title>
-        {% if request.session.lang == "uk" %}
-            Токіо ресторан
-        {% else %}
-            Tokyo restourant
-        {% endif %}
-    </title>
+    <meta charset="UTF-8" />
+    <title>{% if request.session.lang == "uk" %} Токіо ресторан {% else %} Tokyo restourant {% endif %}</title>
     <!-- <title>Restabook - Responsive Restaurant / Cafe / Pub Template</title> -->
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="robots" content="index, follow" />
     <meta name="keywords" content="" />
     <meta name="description" content="" />
-    
+
     <!--=============== css  ===============-->
-    <link type="text/css" rel="stylesheet" href="{% static 'css/reset.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'css/plugins.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'css/color.css' %}">
-    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
-</head>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/reset.css' %}" />
+    <link type="text/css" rel="stylesheet" href="{% static 'css/plugins.css' %}" />
+    <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link type="text/css" rel="stylesheet" href="{% static 'css/color.css' %}" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+  </head>
 
-<body>
-
-    {% block main_body %}
-    {% block content %}
-      {% endblock content %}
-    {% endblock main_body %}
-    {% block scripts %}
-    {% endblock scripts %}
+  <body>
+    {% block main_body %} {% block content %} {% endblock content %} {% endblock main_body %} {% block scripts %} {% endblock scripts %}
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/plugins.js' %}"></script>
     <script src="{% static 'js/scripts.js' %}"></script>
     <script src="{% static 'js/map.js' %}"></script>
+  </body>
+  <script>
+    function add_coupon() {
+      $.ajax({
+        url: '{% url "core:add_coupon" %}',
+        type: "post",
+        data: {
+          coupon: $("#coupon").val(),
+          csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
+        },
 
-</body>
-<script>
-    $(document).ready(function(){
-        if ( window.location.href.includes('shop')){
-            $( '#shop').addClass('act-link');
-            $( '#propositions').removeClass('act-link');
-            $( '#menu').removeClass('act-link');
-        }
-        else if ( window.location.href.includes('proposition')){
-            $( '#propositions').addClass('act-link');
-            $( '#shop').removeClass('act-link');
-            $( '#menu').removeClass('act-link');
-        }
-        else{
-            $( '#menu').addClass('act-link');
-            $( '#propositions').removeClass('act-link');
-            $( '#shop').removeClass('act-link');
-        }
-        if(sessionStorage.lang == 'uk'){
-            $('.en-lang').removeClass('act-lang');
-            $('.uk-lang').addClass('act-lang');
-        } else if(sessionStorage.lang == 'en'){
-            $('.uk-lang').removeClass('act-lang');
-            $('.en-lang').addClass('act-lang');
-        } else{
+        success: function (result) {
+          location.reload();
+        },
+        error: function (result) {
+          console.log(result, "location is bad");
+        },
+      });
+    }
+    $(document).ready(function () {
+      if (window.location.href.includes("shop")) {
+        $("#shop").addClass("act-link");
+        $("#propositions").removeClass("act-link");
+        $("#menu").removeClass("act-link");
+      } else if (window.location.href.includes("proposition")) {
+        $("#propositions").addClass("act-link");
+        $("#shop").removeClass("act-link");
+        $("#menu").removeClass("act-link");
+      } else {
+        $("#menu").addClass("act-link");
+        $("#propositions").removeClass("act-link");
+        $("#shop").removeClass("act-link");
+      }
+      if (sessionStorage.lang == "uk") {
+        $(".en-lang").removeClass("act-lang");
+        $(".uk-lang").addClass("act-lang");
+      } else if (sessionStorage.lang == "en") {
+        $(".uk-lang").removeClass("act-lang");
+        $(".en-lang").addClass("act-lang");
+      } else {
+      }
+    });
 
-        }
-    })
-
-    $('.uk-lang').click(function(){
-        $.ajax
-        ({ 
-            url: '{% url "core:uk" %}',
-            type: 'get',
-            success: function(result)
-            {
-                sessionStorage.lang = 'uk';
-                location.reload();
-            },
-            error: function(result) {
-                console.log(result, 'location is bad')
-            }
-        });
-    })
-    $('.en-lang').click(function(){
-        $.ajax
-        ({ 
-            url: '{% url "core:en" %}',
-            type: 'get',
-            success: function(result)
-            {
-                sessionStorage.lang = 'en';
-                location.reload();               
-            },
-            error: function(result) {
-                console.log(result, 'location is bad')
-            }
-        });
-    })
-</script>
+    $(".uk-lang").click(function () {
+      $.ajax({
+        url: '{% url "core:uk" %}',
+        type: "get",
+        success: function (result) {
+          sessionStorage.lang = "uk";
+          location.reload();
+        },
+        error: function (result) {
+          console.log(result, "location is bad");
+        },
+      });
+    });
+    $(".en-lang").click(function () {
+      $.ajax({
+        url: '{% url "core:en" %}',
+        type: "get",
+        success: function (result) {
+          sessionStorage.lang = "en";
+          location.reload();
+        },
+        error: function (result) {
+          console.log(result, "location is bad");
+        },
+      });
+    });
+  </script>
 </html>

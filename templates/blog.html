@@ -137,7 +137,7 @@
                                         </div>
                                     {% endfor %}
                                 {% endif %}
-                                
+
                                 {% if is_paginated %}
                                 <div class="pagination fl-wrap" style="width:20%;">
                                     {% if page_obj.has_previous %}
@@ -161,14 +161,14 @@
                     </div>
                     <!--  sidebar end-->
                 </div>
-                <div class="fl-wrap limit-box"></div>
         </div>
         <div class="section-bg">
             <div class="bg" data-bg="{% static 'images/bg/dec/section-bg.png' %}"></div>
         </div>
         </section>
+                <div class="fl-wrap limit-box"></div>
         <!--  section end  -->
-        <div class="brush-dec2 brush-dec_bottom"></div>
+        {% comment %} <div class="brush-dec2 brush-dec_bottom"></div> {% endcomment %}
     </div>
     <!-- content end  -->
     <!-- footer -->

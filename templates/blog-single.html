@@ -1,116 +1,141 @@
-{% extends "main.html" %}
-{% block main_body %}
-{% load static %}
-        <!-- lodaer  -->
-        {% include "loader.html" %}
-        <!-- loader end  -->
-        <!-- main start  -->
-        <div id="main">
-            <!-- header  -->
-            {% include "header.html" %}
-            <!-- header  -->
-            <!--header end -->		
-            <!-- wrapper  -->	
-            <div id="wrapper">
-                <!-- content  -->	
-                <div class="content">
-                    <!--  section  -->  
-                    <section class="parallax-section hero-section hidden-section" data-scrollax-parent="true">
-                        <div class="bg par-elem "  data-bg="images/bg/1.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
-                        <div class="overlay"></div>
-                        <div class="container">
-                            <div class="section-title">
-                                <h2>
-                                    {% if request.session.lang == "uk" %}
-                                        Акції
-                                    {% else %}
-                                        Promotions
-                                    {% endif %}
-                                </h2>
-                                <!-- <h2>Our Journal</h2> -->
-                                <div class="dots-separator fl-wrap"><span></span></div>
-                            </div>
-                        </div>
-                        <div class="hero-section-scroll">
-                            <div class="mousey">
-                                <div class="scroller"></div>
-                            </div>
-                        </div>
-                        <div class="brush-dec"></div>
-                    </section>
-                    <!--  section  end-->  
-                    <!--  section  -->   
-                    <section class="hidden-section">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="fl-wrap post-container">
-                                        <!-- post -->
-                                        <div class="post fl-wrap fw-post">
-                                            <h2><a href="{{ post.get_absolute_url }}">{{ object.title }}</a></h2>
-                                            <ul class="blog-title-opt">
-                                                <li><a href="#">{{ object.date_added }}</a></li>
-                                            </ul>
-                                            <!-- blog media -->
-                                            <div class="blog-media fl-wrap">
-                                                <div class="single-slider-wrap">
-                                                    <div class="single-slider fl-wrap">
-                                                        <div class="swiper-container">
-                                                            <div class="swiper-wrapper lightgallery">
-                                                                <div class="swiper-slide hov_zoom"><img src="{{ object.proposition_photo.url }}" alt=""><a href="{{ object.proposition_photo.url }}" class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- blog media end -->
-                                            <div class="blog-text fl-wrap">
-                                                <div class="pr-tags fl-wrap">
-                                                    <span>{% if request.session.lang == "uk" %}
-                                                        Теги
-                                                    {% else %}
-                                                        Tags
-                                                    {% endif %} : </span>
-                                                    <ul>
-                                                        {% for category in object.tag.all %}
-                                                            <li><a href="#"> {{ category.tag_name }} </a></li>
-                                                        {% endfor %}
-                                                    </ul>
-                                                </div>
-                                                {{ object.description }}
-                                            </div>
-                                        </div>
-                                        <!-- post end-->
-                                                                             
-                                    </div>
-                                </div>
-                                <!--  sidebar  -->  
-                                
-                                <!--  sidebar end-->    
-                            </div>
-                            <div class="fl-wrap limit-box"></div>
-                        </div>
-                        <div class="section-bg">
-                            <div class="bg"  data-bg="{% static 'images/bg/dec/section-bg.png' %}"></div>
-                        </div>
-                    </section>
-                    <!--  section end  -->  
-                    <div class="brush-dec2 brush-dec_bottom"></div>
-                </div>
-                <!-- content end  -->
-                <!-- footer -->
-                <div class="height-emulator fl-wrap"></div>
-                {% include "footer.html" %}
-                <!-- footer end-->                             
-            </div>
-            <!-- wrapper end -->
-            {% include "reservation.html" %}   
-            <!-- cursor-->
-            <div class="element">
-                <div class="element-item"></div>
-            </div>
-            <!-- cursor end-->                                                    
+{% extends "main.html" %} {% block main_body %} {% load static %}
+<!-- lodaer  -->
+{% include "loader.html" %} {% load l10n %}
+<!-- loader end  -->
+<!-- main start  -->
+<div id="main">
+  <!-- header  -->
+  {% include "header.html" %}
+  <!-- header  -->
+  <!--header end -->
+  <!-- wrapper  -->
+  <div id="wrapper">
+    <!-- content  -->
+    <div class="content">
+      <!--  section  -->
+      <section class="parallax-section hero-section hidden-section" data-scrollax-parent="true">
+        <div class="bg par-elem" data-bg="images/bg/1.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="section-title">
+            <h2>{% if request.session.lang == "uk" %} Акції {% else %} Promotions {% endif %}</h2>
+            <!-- <h2>Our Journal</h2> -->
+            <div class="dots-separator fl-wrap"><span></span></div>
+          </div>
         </div>
-        <!-- Main end -->
-        <!--=============== scripts  ===============-->
-        {% endblock main_body %}
+        <div class="hero-section-scroll">
+          <div class="mousey">
+            <div class="scroller"></div>
+          </div>
+        </div>
+        <div class="brush-dec"></div>
+      </section>
+      <!--  section  end-->
+      <!--  section  -->
+      <section class="hidden-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="fl-wrap post-container">
+                <!-- post -->
+                {% if request.session.lang == "uk" %}
+                <div class="post fl-wrap fw-post">
+                  <h2><a href="{{ post.get_absolute_url }}">{{ object.title }}</a></h2>
+                  <ul class="blog-title-opt">
+                    <li><a href="#">{{ object.date_added|date:"SHORT_DATE_FORMAT" }}</a></li>
+                  </ul>
+                  <!-- blog media -->
+                  <div class="blog-media fl-wrap">
+                    <div class="single-slider-wrap">
+                      <div class="single-slider fl-wrap">
+                        <div class="swiper-container">
+                          <div class="swiper-wrapper lightgallery">
+                            <div class="swiper-slide hov_zoom">
+                              <img src="{{ object.proposition_photo.url }}" alt="" /><a href="{{ object.proposition_photo.url }}" class="box-media-zoom popup-image"><i class="fal fa-search"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- blog media end -->
+                  <div class="blog-text fl-wrap">
+                    <div class="pr-tags fl-wrap">
+                      <span>Теги : </span>
+                      <ul>
+                        {% for category in object.tag.all %}
+                        <li><a href="#"> {{ category.tag_name }} </a></li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                    {{ object.description|safe }}
+                  </div>
+                </div>
+                {% else %}
+                <div class="post fl-wrap fw-post">
+                  <h2><a href="{{ post.get_absolute_url }}">{{ object.title_eng }}</a></h2>
+                  <ul class="blog-title-opt">
+                    <li><a href="#">{{ object.date_added|date:"SHORT_DATE_FORMAT" }}</a></li>
+                  </ul>
+                  <!-- blog media -->
+                  <div class="blog-media fl-wrap">
+                    <div class="single-slider-wrap">
+                      <div class="single-slider fl-wrap">
+                        <div class="swiper-container">
+                          <div class="swiper-wrapper lightgallery">
+                            <div class="swiper-slide hov_zoom">
+                              <img src="{{ object.proposition_photo.url }}" alt="" /><a href="{{ object.proposition_photo.url }}" class="box-media-zoom popup-image"><i class="fal fa-search"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- blog media end -->
+                  <div class="blog-text fl-wrap">
+                    <div class="pr-tags fl-wrap">
+                      <span>Tags : </span>
+                      <ul>
+                        {% for category in object.tag.all %}
+                        <li><a href="#"> {{ category.tag_eng_name }} </a></li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                    {{ object.description_eng|safe }}
+                  </div>
+                </div>
+                {% endif %}
+
+                <!-- post end-->
+              </div>
+            </div>
+            <!--  sidebar  -->
+
+            <!--  sidebar end-->
+          </div>
+          <div class="fl-wrap limit-box"></div>
+        </div>
+        <div class="section-bg">
+          <div class="bg" data-bg="{% static 'images/bg/dec/section-bg.png' %}"></div>
+        </div>
+      </section>
+      <!--  section end  -->
+      <div class="brush-dec2 brush-dec_bottom"></div>
+    </div>
+    <!-- content end  -->
+    <!-- footer -->
+    <div class="height-emulator fl-wrap"></div>
+    {% include "footer.html" %}
+    <!-- footer end-->
+  </div>
+  <!-- wrapper end -->
+  {% include "reservation.html" %}
+  <!-- cursor-->
+  <div class="element">
+    <div class="element-item"></div>
+  </div>
+  <!-- cursor end-->
+</div>
+<!-- Main end -->
+<!--=============== scripts  ===============-->
+{% endblock main_body %}

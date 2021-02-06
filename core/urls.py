@@ -19,8 +19,8 @@ app_name = 'core'
 
 urlpatterns = [
     # path('', home_view, name='home-view'),
-    path('uk/',switch_to_Ukraiunian_link,name='uk' ),
-    path('en/',switch_to_English_link,name='en' ),
+    path('uk/', switch_to_Ukraiunian_link, name='uk'),
+    path('en/', switch_to_English_link, name='en'),
     path('', itemview, name='menu'),
     path('shop/', ShopView.as_view(), name='shop'),
     path('shop/<str:slug>', shop_product, name='shop-product'),
@@ -33,5 +33,5 @@ urlpatterns = [
     path('order-summary/', OrderSummaryView, name='order-summary'),
     path('remove-item-from-cart/<slug>/', remove_single_item_from_cart,
          name='remove-single-item-from-cart'),
-    path('add-coupon/', AddCouponView.as_view(), name='add-coupon'),
+    path('add-coupon/', AddCouponView.as_view(), name='add_coupon'),
 ]

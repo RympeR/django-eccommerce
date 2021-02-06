@@ -18,9 +18,11 @@ LABEL_CHOICES = (
     ('Сети', 'spice'),
 )
 
+
 class Category(models.Model):
     category_name = models.CharField('Категория', max_length=200)
-    category_eng_name = models.CharField('Категория Eng', max_length=200, null=True, blank=True)
+    category_eng_name = models.CharField(
+        'Категория Eng', max_length=200, null=True, blank=True)
     label = models.CharField(max_length=20, blank=True, null=True)
 
     class Meta:
@@ -33,11 +35,15 @@ class Category(models.Model):
 
     def __str__(self) -> str:
         return self.category_name
+
+
 class ItemTag(models.Model):
     item_tag_name = models.CharField('Тэг', max_length=20)
-    item_tag_eng_name = models.CharField('Тэг Eng', max_length=20,null=True, blank=True)
+    item_tag_eng_name = models.CharField(
+        'Тэг Eng', max_length=20, null=True, blank=True)
     display_on_main = models.BooleanField('Отображается на главной')
     slug = models.SlugField(null=True, blank=True)
+
     class Meta:
         verbose_name = 'Тэг'
         verbose_name_plural = 'Тэги'
@@ -49,18 +55,19 @@ class ItemTag(models.Model):
         return reverse("core:shop-product", kwargs={
             'slug': self.slug
         })
-    
+
+
 class Item(models.Model):
     title = models.CharField(max_length=100)
     title_eng = models.CharField(max_length=100, null=True, blank=True)
     price = models.FloatField()
     discount_price = models.FloatField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    
+
     slug = models.SlugField()
     description = models.TextField()
-    english_description =  models.TextField(null=True, blank=True)
-    image = models.ImageField(upload_to='photos',blank=True, null=True)
+    english_description = models.TextField(null=True, blank=True)
+    image = models.ImageField(upload_to='photos', blank=True, null=True)
     item_tag = models.ManyToManyField(ItemTag, verbose_name='Тэги товара')
 
     @property
@@ -69,13 +76,14 @@ class Item(models.Model):
 
     def admin_photo(self):
         return mark_safe('<img src="{}" width="100" /'.format(self.image.url))
-    
+
     admin_photo.short_description = 'Превью'
     admin_photo.allow_tags = True
 
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
+
     def __str__(self):
         return self.title
 
@@ -94,33 +102,42 @@ class Item(models.Model):
             'slug': self.slug
         })
 
+
 class UserProfile(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, null=True)
     phone = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=200, null=True)
-    profile_pc = models.ImageField(upload_to='photos',default='1.jpg', null=True, blank=True)
+    profile_pc = models.ImageField(
+        upload_to='photos', default='1.jpg', null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     stripe_customer_id = models.CharField(max_length=50, blank=True, null=True)
     one_click_purchasing = models.BooleanField(default=False)
+
     class Meta:
         verbose_name = 'Профиль пользователя'
         verbose_name_plural = 'Профили пользователя'
+
     def __str__(self):
         return self.user.username
+
 
 class SessionOrder(models.Model):
     id = models.AutoField(primary_key=True)
     approved = models.BooleanField(null=True, default=False)
+
     class Meta:
         verbose_name = 'Номер заказа в сессии'
         verbose_name_plural = 'Номера заказов в сессии'
+
     def __str__(self):
         return f"{self.pk}"
 
+
 class OrderItem(models.Model):
-    sessionOrder = models.ForeignKey(SessionOrder, null=True, blank=True, on_delete=models.CASCADE)
+    sessionOrder = models.ForeignKey(
+        SessionOrder, null=True, blank=True, on_delete=models.CASCADE)
     ordered = models.BooleanField(default=False)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
@@ -148,7 +165,8 @@ class OrderItem(models.Model):
 
 
 class Order(models.Model):
-    sessionOrder = models.ForeignKey(SessionOrder, null=True, blank=True, on_delete=models.CASCADE)
+    sessionOrder = models.ForeignKey(
+        SessionOrder, null=True, blank=True, on_delete=models.CASCADE)
     ref_code = models.CharField(max_length=20, blank=True, null=True)
     items = models.ManyToManyField(OrderItem)
     name = models.CharField(max_length=50, blank=False, null=True)
@@ -180,6 +198,7 @@ class Order(models.Model):
     class Meta:
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
+
     def __str__(self):
         return str(self.sessionOrder)
 
@@ -188,28 +207,35 @@ class Order(models.Model):
         for order_item in self.items.all():
             total += order_item.get_final_price()
         if self.coupon:
-            total -= self.coupon.amount
+            total -= total*(self.coupon.discount_percent / 100)
         return total
 
+
 class Address(models.Model):
-    sessionOrder = models.ForeignKey(SessionOrder, null=True, blank=True, on_delete=models.CASCADE)
+    sessionOrder = models.ForeignKey(
+        SessionOrder, null=True, blank=True, on_delete=models.CASCADE)
     street_address = models.CharField(max_length=100)
     apartment_address = models.CharField(max_length=100)
+
     class Meta:
         verbose_name = 'Адрес'
         verbose_name_plural = 'Адреса'
+
     def __str__(self):
         return str(self.sessionOrder)
 
 
 class Payment(models.Model):
     stripe_charge_id = models.CharField(max_length=50)
-    sessionOrder = models.ForeignKey(SessionOrder, null=True, blank=True, on_delete=models.CASCADE)
+    sessionOrder = models.ForeignKey(
+        SessionOrder, null=True, blank=True, on_delete=models.CASCADE)
     amount = models.FloatField()
     timestamp = models.DateTimeField(auto_now_add=True)
+
     class Meta:
         verbose_name = 'Оплата'
         verbose_name_plural = 'Оплаты'
+
     def __str__(self):
         return str(self.sessionOrder)
 
@@ -217,10 +243,12 @@ class Payment(models.Model):
 class Coupon(models.Model):
     code = models.CharField(max_length=15)
     discount_percent = models.IntegerField()
-    amount = models.FloatField()
+    amount = models.IntegerField()
+
     class Meta:
         verbose_name = 'Купон'
         verbose_name_plural = 'Купоны'
+
     def __str__(self):
         return self.code
 
@@ -230,20 +258,28 @@ class Refund(models.Model):
     reason = models.TextField()
     accepted = models.BooleanField(default=False)
     email = models.EmailField()
+
     class Meta:
         verbose_name = 'Возврат'
         verbose_name_plural = 'Возвраты'
+
     def __str__(self):
         return f"{self.pk}"
 
+
 class MainSlider(models.Model):
-    slider_title = models.CharField('Заголовок слайда', max_length=35, default='Изучите наше меню')
-    slider_eng_title = models.CharField('Заголовок слайда eng', max_length=35, default='Изучите наше меню', null=True, blank=True)
+    slider_title = models.CharField(
+        'Заголовок слайда', max_length=35, default='Изучите наше меню')
+    slider_eng_title = models.CharField(
+        'Заголовок слайда eng', max_length=35, default='Изучите наше меню', null=True, blank=True)
     slider_text = models.CharField('Текст слайда', max_length=50)
-    slider_eng_text = models.CharField('Текст слайда eng', max_length=50, null=True, blank=True)
-    image = models.ImageField(upload_to='photos',blank=True, null=True)
-    button_text = models.CharField('Текст кнопки',blank=True, null=True,max_length=20 )
-    button_eng_text = models.CharField('Текст кнопки',blank=True, null=True,max_length=20)
+    slider_eng_text = models.CharField(
+        'Текст слайда eng', max_length=50, null=True, blank=True)
+    image = models.ImageField(upload_to='photos', blank=True, null=True)
+    button_text = models.CharField(
+        'Текст кнопки', blank=True, null=True, max_length=20)
+    button_eng_text = models.CharField(
+        'Текст кнопки', blank=True, null=True, max_length=20)
 
     @property
     def short_description(self):
@@ -251,7 +287,7 @@ class MainSlider(models.Model):
 
     def admin_photo(self):
         return mark_safe('<img src="{}" width="100" /'.format(self.image.url))
-    
+
     admin_photo.short_description = 'Превью'
     admin_photo.allow_tags = True
 
@@ -261,5 +297,3 @@ class MainSlider(models.Model):
 
     def __str__(self):
         return self.slider_text
-
-

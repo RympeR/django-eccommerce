@@ -17,17 +17,19 @@ from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, Se
 # stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
-
 def create_ref_code():
     return ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
+
 
 def switch_to_English_link(request):
     request.session['lang'] = 'en'
     return HttpResponse('switched to english')
 
+
 def switch_to_Ukraiunian_link(request):
     request.session['lang'] = 'uk'
     return HttpResponse('switched to ukrainian ')
+
 
 def view_404(request):
     return render(request, '404.html')
@@ -36,7 +38,12 @@ def view_404(request):
 def get_coupon(request, code):
     try:
         coupon = Coupon.objects.get(code=code)
-        return coupon
+        if coupon.amount > 0:
+            coupon.amount -= 1
+            coupon.save()
+            return coupon
+        else:
+            return 0
     except ObjectDoesNotExist:
         messages.info(request, "This coupon does not exist")
         return redirect("core:checkout")
@@ -81,12 +88,12 @@ def OrderSummaryView(request):
         except ObjectDoesNotExist:
             messages.warning(request, "You do not have an active order")
             return redirect("/")
-    
+
 
 def itemview(request):
     items = Item.objects.all()
-    if request.session.get('lang') is  None:
-        request.session['lang'] = 'uk' 
+    if request.session.get('lang') is None:
+        request.session['lang'] = 'uk'
     return render(request, "menu3.html", context={
         'items': items,
     })
@@ -100,7 +107,7 @@ class ItemDetailView(DetailView):
 def shop_product(request, slug):
     qs = Item.objects.filter(item_tag__slug=slug)
     context = {
-        'items':qs,
+        'items': qs,
     }
     return render(request, 'shop.html', context)
 
@@ -209,33 +216,28 @@ def remove_single_item_from_cart(request, slug):
         return redirect("core:product", slug=slug)
 
 
-def get_coupon(request, code):
-    try:
-        coupon = Coupon.objects.get(code=code)
-        return coupon
-    except ObjectDoesNotExist:
-        messages.info(request, "This coupon does not exist")
-        return redirect("core:checkout")
-
-
 class AddCouponView(View):
     def post(self, *args, **kwargs):
         self.session_order = SessionOrder.objects.get(
-            pk=self.request.session.get('session_id').pk
+            pk=self.request.session.get('session_id')
         )
-        form = CouponForm(self.request.POST or None)
-        if form.is_valid():
+        self.coupon_code = self.request.POST['coupon']
+        print(self.coupon_code)
+        try:
+            order = Order.objects.get(
+                sessionOrder=self.session_order, ordered=False)
             try:
-                code = form.cleaned_data.get('code')
-                order = Order.objects.get(
-                    sessionOrder=self.session_order, ordered=False)
-                order.coupon = get_coupon(self.request, code)
-                order.save()
-                messages.success(self.request, "Successfully added coupon")
-                return redirect("core:checkout")
-            except ObjectDoesNotExist:
-                messages.info(self.request, "You do not have an active order")
-                return redirect("core:checkout")
+                order.coupon = get_coupon(self.request, self.coupon_code)
+            except ValueError:
+                print('non existing')
+            order.save()
+            print('\nadded\n')
+            messages.success(self.request, "Successfully added coupon")
+            return redirect("core:checkout")
+        except ObjectDoesNotExist:
+            print('\n non existing \n')
+            messages.info(self.request, "You do not have an active order")
+            return redirect("core:checkout")
 
 
 class CheckoutView(View):
