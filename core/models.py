@@ -17,6 +17,10 @@ LABEL_CHOICES = (
     ('Спайсі суші', 'sets'),
     ('Сети', 'spice'),
 )
+PAYMENT_CHOICES = (
+    ('W','WayForPay'),
+    ('H','При доставке'),
+)
 
 
 class Category(models.Model):
@@ -226,12 +230,11 @@ class Address(models.Model):
 
 
 class Payment(models.Model):
-    stripe_charge_id = models.CharField(max_length=50)
     sessionOrder = models.ForeignKey(
         SessionOrder, null=True, blank=True, on_delete=models.CASCADE)
     amount = models.FloatField()
+    paytype = models.CharField(choices=PAYMENT_CHOICES, max_length=20)
     timestamp = models.DateTimeField(auto_now_add=True)
-
     class Meta:
         verbose_name = 'Оплата'
         verbose_name_plural = 'Оплаты'

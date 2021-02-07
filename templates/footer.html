@@ -6,11 +6,13 @@
             <a href="{% url 'core:menu' %}" class="footer-logo"><img src='{% static "images/logo.png" %}' alt=""></a>
             <div class="lang-wrap"><a href="#" class='uk-lang act-lang'>Uk</a><span>/</span><a class='en-lang' href="#">En</a></div>
             <div class="footer-social">
-                <span class="footer-social-title">{% if request.session.lang == "uk" %}
-                    Спостережити :
-                {% else %}
-                Follow :
-                {% endif %}</span>
+                <span class="footer-social-title">
+                    {% if request.session.lang == "uk" %}
+                        Спостережити :
+                    {% else %}
+                        Follow :
+                    {% endif %}
+                </span>
                 <ul>
                     <li><a href="https://www.facebook.com/tokyo.od.ua/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="https://instagram.com/tokyo.od.ua?igshid=o5y4xnlsjtwo" target="_blank"><i class="fab fa-instagram"></i></a></li>
@@ -23,29 +25,38 @@
                 <!-- footer-widget -->
                 <div class="col-md-4">
                     <div class="footer-widget">
-                        <div class="footer-widget-title">{% if request.session.lang == "uk" %}
-                            Розділи :
-                        {% else %}
-                        Sections :
-                        {% endif %}</div>
+                        <div class="footer-widget-title">
+                            {% if request.session.lang == "uk" %}
+                                Розділи :
+                            {% else %}
+                                Sections :
+                            {% endif %}
+                        </div>
                         <div class="footer-widget-content">
                             <div class="footer-contacts footer-box fl-wrap">
                                 <ul>
-                                    <li><a class="footer-widget-title" href="{% url  'core:menu' %}">{% if request.session.lang == "uk" %}
-                                        Меню
-                                    {% else %}
-                                    Menu
-                                    {% endif %}</a></li>
-                                    <li><a class="footer-widget-title" href="{% url  'proposition:all_prospositions' %}">{% if request.session.lang == "uk" %}
-                                        Акції
-                                    {% else %}
-                                        Promotions
-                                    {% endif %}</a></li>
-                                    <li><a class="footer-widget-title" href="{% url  'core:shop' %}">{% if request.session.lang == "uk" %}
-                                        Пошук по компонентам
-                                    {% else %}
-                                    Search by components
-                                    {% endif %}</a></li>
+                                    <li><a class="footer-widget-title" href="{% url  'core:menu' %}">
+                                            {% if request.session.lang == "uk" %}
+                                                Меню
+                                            {% else %}
+                                                Menu
+                                            {% endif %}
+                                        </a>
+                                    </li>
+                                    <li><a class="footer-widget-title" href="{% url  'proposition:all_prospositions' %}">
+                                        {% if request.session.lang == "uk" %}
+                                            Акції
+                                        {% else %}
+                                            Promotions
+                                        {% endif %}</a>
+                                    </li>
+                                    <li><a class="footer-widget-title" href="{% url  'core:shop' %}">
+                                        {% if request.session.lang == "uk" %}
+                                            Пошук по компонентам
+                                        {% else %}
+                                            Search by components
+                                        {% endif %}</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -55,24 +66,36 @@
                 <!-- footer-widget -->
                 <div class="col-md-4">
                     <div class="footer-widget">
-                        <div class="footer-widget-title">{% if request.session.lang == "uk" %}
-                            Графік роботи:
-                        {% else %}
-                            Work schedule: 
-                        {% endif %}</div>
+                        <div class="footer-widget-title">
+                            {% if request.session.lang == "uk" %}
+                                Графік роботи:
+                            {% else %}
+                                Work schedule: 
+                            {% endif %}
+                        </div>
                         <div class="footer-widget-content">
                             <div class="footer-contacts footer-box fl-wrap">
                                 <ul>
-                                    <li><span>{% if request.session.lang == "uk" %}
-                                        Пн-Пт з
-                                    {% else %}
-                                        Mon-Fri from
-                                    {% endif %}</span><a href="#">10:00 - 22:30</a></li>
-                                    <li><span>{% if request.session.lang == "uk" %}
-                                        Сб-Нд з
-                                    {% else %}
-                                        Sat-Sun from
-                                    {% endif %}</span><a href="#">10:00 - 22:30</a></li>
+                                    <li>
+                                        <span>
+                                            {% if request.session.lang == "uk" %}
+                                                Пн-Пт :
+                                            {% else %}
+                                                Mon-Fri from
+                                            {% endif %}
+                                        </span>
+                                        <a href="#">10:00 - 22:30</a>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            {% if request.session.lang == "uk" %}
+                                                Сб-Нд :
+                                            {% else %}
+                                                Sat-Sun from
+                                            {% endif %}
+                                        </span>
+                                        <a href="#">10:00 - 22:30</a>
+                                    </li>
                                 </ul>
                             </div>                            	
                         </div>

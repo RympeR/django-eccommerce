@@ -1,7 +1,8 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <!--=============== basic  ===============-->
     <meta charset="UTF-8" />
     <title>{% if request.session.lang == "uk" %} Токіо ресторан {% else %} Tokyo restourant {% endif %}</title>
@@ -10,89 +11,133 @@
     <meta name="robots" content="index, follow" />
     <meta name="keywords" content="" />
     <meta name="description" content="" />
-
     <!--=============== css  ===============-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="{% static 'css/reset.css' %}" />
     <link type="text/css" rel="stylesheet" href="{% static 'css/plugins.css' %}" />
     <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link type="text/css" rel="stylesheet" href="{% static 'css/color.css' %}" />
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
-  </head>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
 
-  <body>
+<body>
     {% block main_body %} {% block content %} {% endblock content %} {% endblock main_body %} {% block scripts %} {% endblock scripts %}
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/plugins.js' %}"></script>
     <script src="{% static 'js/scripts.js' %}"></script>
     <script src="{% static 'js/map.js' %}"></script>
-  </body>
-  <script>
-    function add_coupon() {
-      $.ajax({
+</body>
+<script>
+$('#payment_option').change(function() {
+    if ((this).val() == 'H') {
+        $('#wayforpay').css('display', 'none');
+    } else {
+        $('#wayforpay').css('display', 'block');
+    }
+});
+
+function send_order_data() {
+
+    $.ajax({
+        url: '{% url "core:checkout" %}',
+        type: 'post',
+        data: {
+            name: $('#name').val(),
+            phone_order_number: $('#phone').val(),
+            person_amount: $('#person_amount').val(),
+            need_learning_branch: $('#need_learning_branch').attr("checked") ? 1 : 0,
+            dont_recall: $('#dont_recall').attr("checked") ? 1 : 0,
+            street_address: $('#street_address').val(),
+            apartment_address: $('#apartment_address').val(),
+            payment_option: $('#payment_option').val(),
+            csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
+        },
+        success: function(result) {
+            window.location.href = '{% url "core:shop" %}'
+        },
+        error: function(result) {
+            console.log(result, "location is bad");
+        },
+    })
+}
+
+function add_coupon() {
+    $.ajax({
         url: '{% url "core:add_coupon" %}',
         type: "post",
         data: {
-          coupon: $("#coupon").val(),
-          csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
+            coupon: $("#coupon").val(),
+            csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
         },
 
-        success: function (result) {
-          location.reload();
+        success: function(result) {
+            location.reload();
         },
-        error: function (result) {
-          console.log(result, "location is bad");
+        error: function(result) {
+            console.log(result, "location is bad");
         },
-      });
-    }
-    $(document).ready(function () {
-      if (window.location.href.includes("shop")) {
+    });
+}
+
+$(document).ready(function() {
+    if (window.location.href.includes("shop")) {
         $("#shop").addClass("act-link");
         $("#propositions").removeClass("act-link");
         $("#menu").removeClass("act-link");
-      } else if (window.location.href.includes("proposition")) {
+        $("#delivery").removeClass("act-link");
+    } else if (window.location.href.includes("proposition")) {
         $("#propositions").addClass("act-link");
         $("#shop").removeClass("act-link");
+        $("#delivery").removeClass("act-link");
         $("#menu").removeClass("act-link");
-      } else {
+    } else if (window.location.href.includes("delivery")) {
+        $("#delivery").addClass("act-link");
+        $("#shop").removeClass("act-link");
+        $("#propositions").removeClass("act-link");
+        $("#menu").removeClass("act-link");
+    } else {
         $("#menu").addClass("act-link");
         $("#propositions").removeClass("act-link");
         $("#shop").removeClass("act-link");
-      }
-      if (sessionStorage.lang == "uk") {
+        $("#delivery").removeClass("act-link");
+    }
+    if (sessionStorage.lang == "uk") {
         $(".en-lang").removeClass("act-lang");
         $(".uk-lang").addClass("act-lang");
-      } else if (sessionStorage.lang == "en") {
+    } else if (sessionStorage.lang == "en") {
         $(".uk-lang").removeClass("act-lang");
         $(".en-lang").addClass("act-lang");
-      } else {
-      }
-    });
+    } else {}
+});
 
-    $(".uk-lang").click(function () {
-      $.ajax({
+$(".uk-lang").click(function() {
+    $.ajax({
         url: '{% url "core:uk" %}',
         type: "get",
-        success: function (result) {
-          sessionStorage.lang = "uk";
-          location.reload();
+        success: function(result) {
+            sessionStorage.lang = "uk";
+            location.reload();
         },
-        error: function (result) {
-          console.log(result, "location is bad");
+        error: function(result) {
+            console.log(result, "location is bad");
         },
-      });
     });
-    $(".en-lang").click(function () {
-      $.ajax({
+});
+$(".en-lang").click(function() {
+    $.ajax({
         url: '{% url "core:en" %}',
         type: "get",
-        success: function (result) {
-          sessionStorage.lang = "en";
-          location.reload();
+        success: function(result) {
+            sessionStorage.lang = "en";
+            location.reload();
         },
-        error: function (result) {
-          console.log(result, "location is bad");
+        error: function(result) {
+            console.log(result, "location is bad");
         },
-      });
     });
-  </script>
+});
+</script>
+
 </html>

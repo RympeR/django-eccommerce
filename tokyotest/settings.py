@@ -136,4 +136,13 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 STATIC_URL = '/static/'
 MEDIA_URL = '/photos/'
+# MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'photos')
 django_heroku.settings(locals())
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'georg.rashkov@gmail.com'
+EMAIL_HOST_PASSWORD = 'b0123210b'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'georg.rashkov@gmail.com'

@@ -1,0 +1,125 @@
+{% extends "main.html" %} {% load cart_template_tags %} {% block main_body %} {% load static %}
+<!-- lodaer  -->
+{% include "loader.html" %}
+<div id="main">
+    <!-- header  -->
+    {% include "header.html" %}
+    <!--header end -->
+    <!-- wrapper  -->
+    <div id="wrapper">
+        <!-- content  -->
+        <div class="content">
+            <!--  section  -->
+            <section class="parallax-section hero-section hidden-section" data-scrollax-parent="true">
+                <div class="bg par-elem" data-bg="images/bg/1.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="section-title">
+                        <!-- <h4>{% if request.session.lang == "uk" %}Доставка та оплата{% else %}{% endif %}</h4> -->
+                        <h2>{% if request.session.lang == "uk" %}Доставка та оплата{% else %}Order and payment{% endif %}</h2>
+                        <div class="dots-separator fl-wrap"><span></span></div>
+                    </div>
+                </div>
+                <div class="hero-section-scroll">
+                    <div class="mousey">
+                        <div class="scroller"></div>
+                    </div>
+                </div>
+                <div class="brush-dec"></div>
+            </section>
+            <!--  section  end-->
+            <!--  section  -->
+            <section class="hidden-section">
+                <div class="container">
+                    <!-- CHECKOUT TABLE -->
+                    <div class="row">
+                        <div class="d-flex justify-content-center">
+                            <h3><strong>ЯК ЗРОБИТИ ЗАМОВЛЕННЯ</strong></h3>
+                            <div class="col-12 col-md-6">
+                                <div class="d-flex justify-content-center">
+                                    <p style="text-align: center;"><span style="color: #000000;"><img loading="lazy" class="wp-image-15055 size-full aligncenter" src="https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icons8-windows-client-80.png" alt="" width="80" height="80">&nbsp; &nbsp;
+                                            <strong>Сайт</strong>&nbsp;– через мобільний або ПК.</span></p>
+                                    <p style="text-align: center;"><span style="color: #000000;">Обирайте страви з основного меню, крафтові делікатеси та готові обіди з вітрини гастроному чи пляшки вина з винної карти.</span></p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="d-flex justify-content-center">
+                                    <p style="text-align: center;"><span style="color: #000000;"><a style="color: #000000;" href="tel:+38(096)-096-80-08"><img loading="lazy" class="wp-image-15056 size-full aligncenter" src="https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icons8-mobile-96.png" alt="" width="96" height="96" srcset="https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icons8-mobile-96.png 96w, https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icons8-mobile-96-80x80.png 80w" sizes="(max-width: 96px) 100vw, 96px"> &nbsp; </a><strong>Телефон</strong> – за номером.</span></p>
+                                    <p style="text-align: center;"><span style="color: #000000;">Телефонуйте за номером, якщо виникнуть питання чи ви матимете бажання зробити замовлення по телефону.</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="d-flex justify-content-center">
+                            <h3><strong>ОПЛАТА</strong></h3>
+                            <div class="col-12 col-md-6">
+                                <div class="d-flex justify-content-center">
+                                    <p style="text-align: center;"><span style="color: #000000;"><img loading="lazy" class="wp-image-15057 size-full aligncenter" src="https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icons8-card-payment-96.png" alt="" width="96" height="96" srcset="https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icons8-card-payment-96.png 96w, https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icons8-card-payment-96-80x80.png 80w" sizes="(max-width: 96px) 100vw, 96px">&nbsp; &nbsp;<strong>Безконтактно</strong>&nbsp;– карткой</span></p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="d-flex justify-content-center">
+                                    <p style="text-align: center;"><span style="color: #000000;"><img loading="lazy" class="wp-image-15058 size-full aligncenter" src="https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icons8-cash-in-hand-96.png" alt="" width="96" height="96" srcset="https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icons8-cash-in-hand-96.png 96w, https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icons8-cash-in-hand-96-80x80.png 80w" sizes="(max-width: 96px) 100vw, 96px">&nbsp; &nbsp;<strong>Кеш</strong>&nbsp;– готівка кур’єру</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="d-flex justify-content-center">
+                            <h3><strong>ЯК ОТРИМАТИ ЗАМОВЛЕННЯ</strong></h3>
+                            <div class="col-12 col-md-6">
+                                <div class="d-flex justify-content-center">
+                                    <p><img loading="lazy" class="wp-image-15063 alignleft" src="https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icon1-currier-e1607274054854.png" alt="" width="118" height="72"><span style="color: #000000;"><strong>БЕЗКОШТОВНА доставка</strong>&nbsp; &nbsp; –&nbsp; доставляємо замовлення безкоштовно в радіусі 500 м.</span></p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="d-flex justify-content-center">
+                                    <p><img loading="lazy" class="alignleft wp-image-15062" src="https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icon1-auto-e1607274117874.png" alt="" width="118" height="47"></p>
+                                    <p><span style="color: #000000;"><strong>ТАКСІ</strong>&nbsp; &nbsp; –&nbsp; на таксі по місту, згідно тарифу в момент здійснення замовлення.</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="d-flex justify-content-center">
+                        	<div class="col-12 col-md-6">
+                        		<p><img loading="lazy" class="alignleft wp-image-15061" src="https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icon1-time-300x292.png" alt="" width="62" height="60" srcset="https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icon1-time-300x292.png 300w, https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icon1-time.png 546w" sizes="(max-width: 62px) 100vw, 62px"><span style="color: #000000;"><strong>ПЕРЕДЗАМОВЛЕННЯ</strong>&nbsp; &nbsp; –&nbsp; можна замовити будь-що з меню на конкретну дату та час, та прийти на готове замовлення в заклад.</span></p>
+                        	</div>
+                        	<div class="col-12 col-md-6">
+                        		<p><img loading="lazy" class="wp-image-15060 size-full alignleft" src="https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icon1-restaurant.png" alt="" width="72" height="72"><span style="color: #000000;"><strong>САМОВИНІС</strong> &nbsp; –&nbsp; ви можете замовити будь-що з меню, вказати час, коли зможете забрати своє замовлення та зайти за ним до нас.</span></p>
+                        	</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                    	<div class="d-flex justify-content-center">
+                    		<div class="col-12">
+		                    	<iframe src="https://www.google.com/maps/d/embed?mid=1ICkeUFQ5zDYXRNKutMRrVcjFKeEepi2v" width="640" height="480"></iframe>            			
+                    		</div>
+                    	</div>
+                    </div>
+                    <!-- /CHECKOUT TABLE -->
+                </div>
+                <div class="section-bg">
+                    <div class="bg" data-bg="images/bg/dec/section-bg.png"></div>
+                </div>
+            </section>
+            <!--  section end  -->
+            <div class="brush-dec2 brush-dec_bottom"></div>
+        </div>
+        <!-- content end  -->
+        <!-- footer -->
+        <div class="height-emulator fl-wrap"></div>
+        {% include "footer.html" %}
+        <!-- footer end-->
+    </div>
+    <!-- wrapper end -->
+    {% include "reservation.html" %}
+    <!-- cursor-->
+    <div class="element">
+        <div class="element-item"></div>
+    </div>
+    <!-- cursor end-->
+</div>
+<!-- Main end -->
+{% endblock main_body %}

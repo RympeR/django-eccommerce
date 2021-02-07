@@ -17,8 +17,8 @@
         {% comment %}
         <div class="show-reserv_button show-rb"><span>Reservation</span> <i class="fal fa-bookmark"></i></div>
         {% endcomment %}
-        <div class="show-share-btn showshare htact"><i class="fal fa-bullhorn"></i> <span class="header-tooltip">Share</span></div>
-        <div class="show-share-btn showshare htact"><i class="fal fa-bullhorn"></i> <span class="header-tooltip">Share</span></div>
+        <div class="show-share-btn htact"><a href="https://instagram.com/tokyo.od.ua?igshid=o5y4xnlsjtwo" target="_blank"><i class="fab fa-instagram"></i></a></div>        
+        <div class="show-share-btn htact"><a href="https://www.facebook.com/tokyo.od.ua/" target="_blank"><i class="fab fa-facebook"></i></a></div>
         <div class="show-cart sc_btn htact"><i class="fal fa-shopping-bag"></i><span class="show-cart_count">{{ request|cart_item_count }}</span><span class="header-tooltip">{% if request.session.lang == "uk" %} Ваш кошик {% else %} Your cart {% endif %}</span></div>
         <!-- nav-button-wrap-->
         <div class="nav-button-wrap">
@@ -61,10 +61,11 @@
                                     <li><a href="menu3.html">Menu 3</a></li>
                                     <li><a href="menu3.html">Menu 3</a></li>
                                 </ul> -->
-                <!-- <!--second level end -->
+                <!-- second level end -->
                 <!-- <a href="{% url  'core:menu' %}">Меню</a> -->
               </li>
               <li><a id="propositions" href="{% url  'proposition:all_prospositions' %}" class="act-link">{% if request.session.lang == "uk" %} Акції {% else %} Promotions {% endif %}</a></li>
+              <li><a id="delivery" href="{% url  'core:delivery' %}" class="act-link">{% if request.session.lang == "uk" %} Доставка та оплата {% else %} Order and Payment {% endif %}</a></li>
               <li><a id="shop" href="{% url  'core:shop' %}">{% if request.session.lang == "uk" %} Пошук по компонентам {% else %} Search by components {% endif %}</a></li>
               {% comment %}
               <li>

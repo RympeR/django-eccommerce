@@ -43,20 +43,42 @@
           <div class="row">
             <div class="col-md-8">
               <div class="check-out_wrap fl-wrap">
-                <h4 class="cart-title">{% if request.session.lang == "uk" %} Ваша інформація {% else %} Your Information {% endif %}</h4>
+                <h4 class="cart-title">
+                {% if request.session.lang == "uk" %} Ваша інформація {% else %} Your Information {% endif %}</h4>
                 <form class="custom-form" name="custom_form">
                   <fieldset>
+                    {% csrf_token %}
                     <div class="row">
-                      <div class="col-sm-6"><input type="text" required id="name" name="name" placeholder="{% if request.session.lang == "uk" %} Ваше ім'я {% else %} Your Name {% endif %}*" value="" /></div>
-                      <div class="col-sm-6"><input type="text" required id="phone" name="phone" placeholder="{% if request.session.lang == "uk" %} Телефон {% else %} Phone {% endif %}*" value="" /></div>
-                      <div class="col-sm-6"><input type="number" required id="person_amount" name="person_amount" placeholder="{% if request.session.lang == "uk" %} Кількість персон {% else %} Person amount {% endif %}*" value="" /></div>
-                      <div class="col-sm-6"><input type="text" required id="street_address" name="street_address" placeholder="{% if request.session.lang == "uk" %} Вулиця {% else %} Street address {% endif %}*" value="" /></div>
-                      <div class="col-sm-6"><input type="text" required id="apartment_address" name="apartment_address" placeholder="{% if request.session.lang == "uk" %} Адреса квартири {% else %} Apartment address {% endif %}*" value="" /></div>
-                      <div class="col-sm-6"><input type="checkbox" id="need_learning_branch" name="need_learning_branch" placeholder="{% if request.session.lang == "uk" %} Потрібні навчальні палички {% else %} Need_learning_branch {% endif %}*" value="" /></div>
                       <div class="col-sm-6">
-                        <input type="checkbox" id="dont_recall" name="dont_recall" placeholder="dont_recall  *" value="" />
+                        <input type="text" required id="name" name="name" placeholder="{% if request.session.lang == "uk" %} Ваше ім'я {% else %} Your Name {% endif %}*" value="" />
                       </div>
-                      <div class="col-sm-12">
+                      <div class="col-sm-6">
+                        <input type="text" required id="phone" name="phone" placeholder="{% if request.session.lang == "uk" %} Телефон {% else %} Phone {% endif %}*" value="" />
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="number" required id="person_amount" name="person_amount" placeholder="{% if request.session.lang == "uk" %} Кількість персон {% else %} Person amount {% endif %}*" value="" />
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="text" required id="street_address" name="street_address" placeholder="{% if request.session.lang == "uk" %} Вулиця {% else %} Street address {% endif %}*" value="" />
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="text" required id="apartment_address" name="apartment_address" placeholder="{% if request.session.lang == "uk" %} Адреса квартири {% else %} Apartment address {% endif %}*" value="" />
+                      </div>
+                      <div class="col-sm-6">
+                          <select name="payment_option" class='nice-select chosen-select no-search-select' id="payment_option">
+                            <option value="W">WayForPay</option>
+                            <option value="H">{% if request.session.lang == "uk" %} Оплата на місці {% else %} Payment in place {% endif %}</option>
+                          </select>
+                      </div>
+                      <div class="col-sm-6">
+                        <label for="need_learning_branch">{% if request.session.lang == "uk" %} Потрібні навчальні палички {% else %} Need_learning_branch {% endif %}</label>
+                        <input type="checkbox" id="need_learning_branch" name="need_learning_branch" placeholder="{% if request.session.lang == "uk" %} Потрібні навчальні палички {% else %} Need_learning_branch {% endif %}*" />
+                      </div>
+                      <div class="col-sm-6">
+                        <label for="dont_recall">{% if request.session.lang == "uk" %} Не передзвонювати {% else %} Dont recall {% endif %}</label>
+                        <input type="checkbox" id="dont_recall" name="dont_recall" placeholder="dont_recall  *" />
+                      </div>
+                      <!-- <div class="col-sm-12">
                         <h4 class="cart-title">{% if request.session.lang == "uk" %} Засіб сплати {% else %} Payment method {% endif %}</h4>
                       </div>
                       <div class="col-sm-6">
@@ -78,20 +100,14 @@
                         <p style="padding-top: 20px; text-align: left; font-size: 10px">*Three digits number on the back of your card</p>
                       </div>
                     </div>
-                    <textarea name="comments" id="comments" cols="30" rows="3" placeholder="Addtional Notes"></textarea>
+                    <textarea name="comments" id="comments" cols="30" rows="3" placeholder="Addtional Notes"></textarea> -->
                     <div class="clearfix"></div>
-                    <button onclick="sendData()" class="btn color-bg">{% if request.session.lang == "uk" %} Сплатити {% else %} Confirm and Pay {% endif %}<i class="fal fa-long-arrow-right"></i></button>
+                    <button onclick="send_order_data()" class="btn color-bg">{% if request.session.lang == "uk" %} Сплатити 
+                      {% else %} Confirm and Pay {% endif %}<i class="fal fa-long-arrow-right"></i></button>
                   </fieldset>
                 </form>
               </div>
             </div>
-            <script>
-              function sendData() {
-                var oldForm = document.forms.custom_form,
-                  formData = new FormData(oldForm);
-                console.log(formData.get("street_address"), formData === oldForm);
-              }
-            </script>
             <div class="col-md-4">
               <!-- CART TOTALS  -->
               {% if object.get_total %}
