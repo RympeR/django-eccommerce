@@ -51,7 +51,12 @@
                                         <div class="shop-header-title_opt">
                                             <ul>
                                                 <li>
-                                                    <span class="menu-single-preice">Price:
+                                                    <span class="menu-single-preice">
+                                                        {% if request.session.lang == "uk" %}
+                                                            Ціна:
+                                                        {% else %}
+                                                           Price:
+                                                        {% endif %}
                                                         {% if item.discount_price %}
                                                         <strong>${{ object.discount_price }}</strong>
                                                         {% else %}
@@ -60,10 +65,10 @@
                                                     </span>
                                                 </li>
                                                 <li>
-                                                    <div class="menu-single_rating">
+                                                    <!-- div class="menu-single_rating">
                                                         <span>3 reviews</span>
                                                         <div class="star-rating" data-starrating="5"></div>
-                                                    </div>
+                                                    </div> -->
                                                 </li>
                                             </ul>
                                         </div>
