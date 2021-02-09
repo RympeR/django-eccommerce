@@ -4778,3 +4778,9 @@ section {
 .mb-5{
 	margin-bottom: 1.4em!important;
 }
+.label-block{
+	margin-top: 1em;
+}
+label.mr{
+	margin-right: 1em;
+}
