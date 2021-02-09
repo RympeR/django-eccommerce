@@ -43,7 +43,7 @@
             <section class="hidden-section">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-11">
                             <div class="fl-wrap post-container">
                                 <!-- post -->
                                 {% if request.session.lang == "uk" %}
@@ -51,7 +51,7 @@
                                         <div class="post fl-wrap fw-post">
                                             <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
                                             <ul class="blog-title-opt">
-                                                <li><a href="#">{{ post.date_added }}</a></li>
+                                                <li><a href="#">{{ post.date_added|date:"SHORT_DATE_FORMAT" }}</a></li>
                                             </ul>
                                             <!-- blog media -->
                                             <div class="blog-media fl-wrap">
@@ -74,7 +74,7 @@
                                                 <div class="pr-tags fl-wrap">
                                                     <ul>
 
-                                                        <li><a href="#">{{ post.date_added }}</a></li>
+                                                        <li><a href="#">{{ post.date_added|date:"SHORT_DATE_FORMAT" }}</a></li>
                                                         {% comment %}
                                                             <li> - </li>
                                                             {% for tag in post.tag.all %}
@@ -96,7 +96,7 @@
                                         <div class="post fl-wrap fw-post">
                                             <h2><a href="{{ post.get_absolute_url }}">{{ post.title_eng  }}</a></h2>
                                             <ul class="blog-title-opt">
-                                                <li><a href="#">{{ post.date_added }}</a></li>
+                                                <li><a href="#">{{ post.date_added|date:"SHORT_DATE_FORMAT" }}</a></li>
                                             </ul>
                                             <!-- blog media -->
                                             <div class="blog-media fl-wrap">
@@ -119,7 +119,7 @@
                                                 <div class="pr-tags fl-wrap">
                                                     <ul>
 
-                                                        <li><a href="#">{{ post.date_added }}</a></li>
+                                                        <li><a href="#">{{ post.date_added|date:"SHORT_DATE_FORMAT" }}</a></li>
                                                         {% comment %}
                                                             <li> - </li>
                                                             {% for tag in post.tag.all %}

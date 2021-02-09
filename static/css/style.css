@@ -1989,7 +1989,7 @@ section.parallax-section.hero-section .section-title h2 {
 	margin-left:-10px;
 }
 .single-slider-wrap img{
-	width:100%;
+	width:90%;
 	height:auto;
 }
 /*------events------------------------------------------------*/ 
@@ -2981,6 +2981,7 @@ section.parallax-section.hero-section .section-title h2 {
     font-size: 17px;
     font-weight: 600;
     position: relative;
+    font-family: 'Oswald', sans-serif;
 }
 .grid-item-details h3 a{
 	color:#333;
@@ -3475,7 +3476,7 @@ h4.cart-title {
     float: left;
     width: 100%;
     padding-bottom: 10px;
-    font-family: 'Playfair Display', cursive;
+    font-family: 'Oswald', sans-serif;
 }
 .post:before {
 	content:'';

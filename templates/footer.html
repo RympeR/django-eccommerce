@@ -8,9 +8,9 @@
             <div class="footer-social">
                 <span class="footer-social-title">
                     {% if request.session.lang == "uk" %}
-                        Спостережити :
+                        Спостігати за нами :
                     {% else %}
-                        Follow :
+                        Follow us :
                     {% endif %}
                 </span>
                 <ul>
@@ -37,24 +37,24 @@
                                 <ul>
                                     <li><a class="footer-widget-title" href="{% url  'core:menu' %}">
                                             {% if request.session.lang == "uk" %}
-                                                Меню
+                                                МЕНЮ
                                             {% else %}
-                                                Menu
+                                                MENU
                                             {% endif %}
                                         </a>
                                     </li>
                                     <li><a class="footer-widget-title" href="{% url  'proposition:all_prospositions' %}">
                                         {% if request.session.lang == "uk" %}
-                                            Акції
+                                            АКЦІЇ
                                         {% else %}
-                                            Promotions
+                                            PROMOTIONS
                                         {% endif %}</a>
                                     </li>
                                     <li><a class="footer-widget-title" href="{% url  'core:shop' %}">
                                         {% if request.session.lang == "uk" %}
-                                            Пошук по компонентам
+                                            ПОШУК ПО КОМПОНЕНТАМ
                                         {% else %}
-                                            Search by components
+                                            SEARCH BY COMPONENTS
                                         {% endif %}</a>
                                     </li>
                                 </ul>
