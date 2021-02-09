@@ -268,9 +268,11 @@ class CheckoutView(View):
         street_address = self.request.POST['street_address']
         apartment_address = self.request.POST['apartment_address']
         payment_option = self.request.POST['payment_option']
+        comment = self.request.POST['comment']
         order.name=name
         order.phone_number=phone_order_number
         order.person_amount=person_amount
+        order.comment=comment
         order.need_learning_branch=bool(need_learning_branch)
         order.dont_recall=bool(dont_recall)
         
@@ -310,6 +312,7 @@ class CheckoutView(View):
                 Адрес улицы: {street_address}
                 Адрес дома: {apartment_address}
                 Тип оплаты: {'На месте' if payment_option=='H' else 'wayforpay на сайте'}
+                Комментарий: {comment}
             '''
             send_mail(
                 f'Заказ номер {self.request.session.get("session_id")}',

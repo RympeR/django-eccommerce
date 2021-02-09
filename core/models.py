@@ -182,6 +182,7 @@ class Order(models.Model):
         'Address', related_name='shipping_address', on_delete=models.SET_NULL, blank=True, null=True)
     coupon = models.ForeignKey(
         'Coupon', on_delete=models.SET_NULL, blank=True, null=True)
+    comment = models.CharField('комментарий', max_length=255,null=True, blank=True)
     being_delivered = models.BooleanField(default=False)
     need_learning_branch = models.BooleanField(default=False)
     dont_recall = models.BooleanField(default=False)

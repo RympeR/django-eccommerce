@@ -28,6 +28,8 @@
     <script src="{% static 'js/plugins.js' %}"></script>
     <script src="{% static 'js/scripts.js' %}"></script>
     <script src="{% static 'js/map.js' %}"></script>
+    <script src="{% static 'js/jquery.maskedinput.js' %}"></script>
+    
 </body>
 <script>
 $('#payment_option').change(function() {
@@ -37,7 +39,10 @@ $('#payment_option').change(function() {
         $('#wayforpay').css('display', 'block');
     }
 });
+jQuery(function($){
 
+   $("#phone").mask("+38(999)-999-99-99");
+});
 function send_order_data() {
 
     $.ajax({
@@ -53,6 +58,7 @@ function send_order_data() {
             apartment_address: $('#apartment_address').val(),
             payment_option: $('#payment_option').val(),
             csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
+            comment: $('#comments').val(),
         },
         success: function(result) {
             window.location.href = '{% url "core:shop" %}'
