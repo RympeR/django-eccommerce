@@ -3808,12 +3808,12 @@ h4.cart-title {
 .tags-widget .tagcloud a {
     float: left;
     color: #eee;
-    padding: 12px 15px;
+    padding: 22px 25px;
     background: #292929;
     margin: 0 4px 4px 0;
    	font-family: 'Playfair Display', cursive;
     font-style: italic;
-    font-size: 11px;
+    font-size: 15px;
 }
 .main-sidebar-widget {
 	margin-bottom:30px;
