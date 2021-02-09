@@ -34,49 +34,49 @@
                     <!-- CHECKOUT TABLE -->
                     <div class="row">
                         <div class="d-flex justify-content-center section-title">
-                            <h2 class='mb-5'>ЯК ЗРОБИТИ ЗАМОВЛЕННЯ</h2>
+                            <h2 class='mb-5'>{% if request.session.lang == "uk" %}ЯК ЗРОБИТИ ЗАМОВЛЕННЯ{% else %}HOW TO MAKE AN ORDER{% endif %}</h2>
                             <div class="col-12 col-md-6">
                                 <div class="d-flex justify-content-center">
-                                    <p style="text-align: center;"><span style="color: #000000;"><img loading="lazy" class="wp-image-15055 size-full aligncenter" src="{% static 'images/windows.png' %}" alt="" width="96" height="96">&nbsp; &nbsp;
-                                            Сайт&nbsp;– через мобільний або ПК.</span></p>
-                                    <p style="text-align: center;"><span style="color: #000000;">Оберіть вподобані вами страви та здійсніть замовлення через сайт.</span></p>
+                                    <p style="text-align: center;"><span style="color: #000000;"><img loading="lazy" class="wp-image-15055 size-full aligncenter" src="{% static 'images/windows.png' %}" alt="" width="96" height="96">&nbsp; &nbsp;{% if request.session.lang == "uk" %}Сайт&nbsp;– через мобільний або ПК.{% else %}Site &nbsp; - via mobile or PC.{% endif %}
+                                            </span></p>
+                                    <p style="text-align: center;"><span style="color: #000000;">{% if request.session.lang == "uk" %}Оберіть вподобані вами страви та здійсніть замовлення через сайт.{% else %}Choose your favorite dishes and place an order through the site.{% endif %}</span></p>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="d-flex justify-content-center">
-                                    <p style="text-align: center;"><span style="color: #000000;"><a style="color: #000000;" href="tel:+38(094)-167-58-43"><img loading="lazy" class="wp-image-15056 size-full aligncenter" src="{% static 'images/mobile.png' %}" alt="" width="96" height="96" > &nbsp; </a>Телефон – за номером.</span></p>
-                                    <p style="text-align: center;"><span style="color: #000000;">Телефонуйте за номером, якщо виникнуть питання чи ви матимете бажання зробити замовлення по телефону.</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="d-flex justify-content-center section-title">
-                            <h2 class='mb-5'>ОПЛАТА</h2>
-                            <div class="col-12 col-md-6">
-                                <div class="d-flex justify-content-center">
-                                    <p style="text-align: center;"><span style="color: #000000;"><img loading="lazy" class="wp-image-15057 size-full aligncenter" src="{% static 'images/card.png' %}" alt="" width="96" height="96"  sizes="(max-width: 96px) 100vw, 96px">&nbsp; &nbsp;Безконтактно&nbsp;– карткой</span></p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="d-flex justify-content-center">
-                                    <p style="text-align: center;"><span style="color: #000000;"><img loading="lazy" class="wp-image-15058 size-full aligncenter" src="{% static 'images/cash.png' %}" alt="" width="96" height="96" sizes="(max-width: 96px) 100vw, 96px">&nbsp; &nbsp;Кеш&nbsp;– готівка кур’єру</span></p>
+                                    <p style="text-align: center;"><span style="color: #000000;"><a style="color: #000000;" href="tel:+38(094)-167-58-43"><img loading="lazy" class="wp-image-15056 size-full aligncenter" src="{% static 'images/mobile.png' %}" alt="" width="96" height="96" > &nbsp; </a>{% if request.session.lang == "uk" %}Телефон – за номером.{% else %}Phone - by number.{% endif %}</span></p>
+                                    <p style="text-align: center;"><span style="color: #000000;">{% if request.session.lang == "uk" %}Телефонуйте за номером, якщо виникнуть питання чи ви матимете бажання зробити замовлення по телефону.{% else %}Call the number if you have questions about whether you want to place an order by phone.{% endif %}</span></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="d-flex justify-content-center section-title">
-                            <h2 class='mb-5'>ЯК ОТРИМАТИ ЗАМОВЛЕННЯ</h2>
+                            <h2 class='mb-5'>{% if request.session.lang == "uk" %}ОПЛАТА{% else %}PAYMENT{% endif %}</h2>
                             <div class="col-12 col-md-6">
                                 <div class="d-flex justify-content-center">
-                                    <p><img loading="lazy" class="wp-image-15063 alignleft" src="https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icon1-currier-e1607274054854.png" alt="" width="118" height="72" style="margin-right: 1.5em;"><span style="color: #000000;" >БЕЗКОШТОВНА доставка</span></p>
-                                    <p style="text-align: center;"><span style="color: #000000;"> Доставляемо замовлення безкоштовно у центрi мiста<br>Суму доставки в зони які не вказані уточнювати у оператора</span></p>
+                                    <p style="text-align: center;"><span style="color: #000000;"><img loading="lazy" class="wp-image-15057 size-full aligncenter" src="{% static 'images/card.png' %}" alt="" width="96" height="96"  sizes="(max-width: 96px) 100vw, 96px">&nbsp; &nbsp;{% if request.session.lang == "uk" %}Безконтактно&nbsp;– карткой{% else %}Contactless &nbsp; by card{% endif %}</span></p>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
-                        		<p><img loading="lazy" class="alignleft" src="https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icon1-time-300x292.png" alt="" width="62" height="60" srcset="https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icon1-time-300x292.png 300w, https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icon1-time.png 546w" sizes="(max-width: 62px) 100vw, 62px" style="margin-right: 2.5em;"><span style="color: #000000;" >ПЕРЕДЗАМОВЛЕННЯ</span></p>
-                        		<p style="text-align: center;"><span style="color: #000000;"> Можна замовити будь-що з меню на конкретну дату та час і ми доставимо вам.</span></p>
+                                <div class="d-flex justify-content-center">
+                                    <p style="text-align: center;"><span style="color: #000000;"><img loading="lazy" class="wp-image-15058 size-full aligncenter" src="{% static 'images/cash.png' %}" alt="" width="96" height="96" sizes="(max-width: 96px) 100vw, 96px">&nbsp; &nbsp;{% if request.session.lang == "uk" %}Кеш&nbsp;– готівка кур’єру{% else %}Cash &nbsp; - courier cash{% endif %}</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="d-flex justify-content-center section-title">
+                            <h2 class='mb-5'>{% if request.session.lang == "uk" %}ЯК ОТРИМАТИ ЗАМОВЛЕННЯ{% else %}HOW TO GET ORDER{% endif %}</h2>
+                            <div class="col-12 col-md-6">
+                                <div class="d-flex justify-content-center">
+                                    <p><img loading="lazy" class="wp-image-15063 alignleft" src="https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icon1-currier-e1607274054854.png" alt="" width="118" height="72" style="margin-right: 1.5em;"><span style="color: #000000;"> {% if request.session.lang == "uk" %}БЕЗКОШТОВНА доставка{% else %}FREE DELIVERY{% endif %}</span></p>
+                                    <p style="text-align: center;"><span style="color: #000000;">{% if request.session.lang == "uk" %}Доставляемо замовлення безкоштовно у центрi мiста<br>Суму доставки в зони які не вказані уточнювати у оператора{% else %}We deliver the order free of charge in the city center <br> The amount of delivery to the zones which are not specified to specify at the operator{% endif %}</span></p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                        		<p><img loading="lazy" class="alignleft" src="https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icon1-time-300x292.png" alt="" width="62" height="60" srcset="https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icon1-time-300x292.png 300w, https://www.gastronomwinebar.com/wp-content/uploads/2020/12/icon1-time.png 546w" sizes="(max-width: 62px) 100vw, 62px" style="margin-right: 2.5em;"><span style="color: #000000;" >{% if request.session.lang == "uk" %}ПЕРЕДЗАМОВЛЕННЯ{% else %}PRE-ORDER{% endif %}</span></p>
+                        		<p style="text-align: center;"><span style="color: #000000;">{% if request.session.lang == "uk" %}Можна замовити будь-що з меню на конкретну дату та час і ми доставимо вам.{% else %}You can order anything from the menu for a specific date and time and we will deliver it to you.{% endif %} </span></p>
                         	</div>
                         </div>
                     </div>
