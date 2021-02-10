@@ -174,7 +174,7 @@ class Order(models.Model):
     ref_code = models.CharField(max_length=20, blank=True, null=True)
     items = models.ManyToManyField(OrderItem)
     name = models.CharField(max_length=50, blank=False, null=True)
-    phone_number = models.CharField(max_length=11, blank=False, null=True)
+    phone_number = models.CharField(max_length=20, blank=False, null=True)
     person_amount = models.IntegerField(blank=False, null=True)
     start_date = models.DateTimeField(auto_now_add=True)
     ordered = models.BooleanField(default=False)
