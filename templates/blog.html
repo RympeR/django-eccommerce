@@ -43,7 +43,7 @@
             <section class="hidden-section">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12s">
+                        <div class="col-md-12">
                             <div class="fl-wrap post-container">
                                 <!-- post -->
                                 {% if request.session.lang == "uk" %}
@@ -161,28 +161,26 @@
                     </div>
                     <!--  sidebar end-->
                 </div>
+                <div class="section-bg">
+                    <div class="bg" data-bg="{% static 'images/bg/dec/section-bg.png' %}"></div>
+                </div>
+            </section>
+            <!--  section end  -->
+            <div class="brush-dec2 brush-dec_bottom"></div>
         </div>
-        <div class="section-bg">
-            <div class="bg" data-bg="{% static 'images/bg/dec/section-bg.png' %}"></div>
-        </div>
-        </section>
-                <div class="fl-wrap limit-box"></div>
-        <!--  section end  -->
-        {% comment %} <div class="brush-dec2 brush-dec_bottom"></div> {% endcomment %}
+        <!-- content end  -->
+        <!-- footer -->
+        <div class="height-emulator fl-wrap"></div>
+        {% include "footer.html" %}
+        <!-- footer end-->
     </div>
-    <!-- content end  -->
-    <!-- footer -->
-    <div class="height-emulator fl-wrap"></div>
-    {% include "footer.html" %}
-    <!-- footer end-->
-</div>
-<!-- wrapper end -->
-{% include "reservation.html" %}
-<!-- cursor-->
-<div class="element">
-    <div class="element-item"></div>
-</div>
-<!-- cursor end-->
+    <!-- wrapper end -->
+    {% include "reservation.html" %}
+    <!-- cursor-->
+    <div class="element">
+        <div class="element-item"></div>
+    </div>
+    <!-- cursor end-->
 </div>
 <!-- Main end -->
 <!--=============== scripts  ===============-->

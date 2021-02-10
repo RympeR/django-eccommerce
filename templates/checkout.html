@@ -78,7 +78,7 @@
                                                 <input type="checkbox" id="dont_recall" name="dont_recall" placeholder="dont_recall  *" />
                                             </div>
                                             <div class="col-12 col-sm-6" style="margin-top: 20px;">
-                                                <label class='mr' style="float: left;margin-bottom: 10px;" for="payment_option"><h4 class="cart-title">{% if request.session.lang == "uk" %} Оберіть засіб сплати {% else %} Choose payment way {% endif %}</h4></label>
+                                                <label class='mr' style="float: left;margin-bottom: 10px;margin-top: 20px;" for="payment_option"><h4 class="cart-title">{% if request.session.lang == "uk" %} Оберіть засіб сплати {% else %} Choose payment way {% endif %}</h4></label>
                                                 <select name="payment_option" class='nice-select chosen-select no-search-select' id="payment_option">
                                                     <option value="W">WayForPay</option>
                                                     <option value="H">{% if request.session.lang == "uk" %} Оплата на місці {% else %} Payment in place {% endif %}</option>
