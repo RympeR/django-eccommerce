@@ -113,7 +113,11 @@
                                                 Category
                                             {% endif %} : </span>
                                             <ul>
-                                                <li><a href="#">{{ object.category }} </a></li>
+                                                <li><a href="#">{% if request.session.lang == "uk" %}
+                                                {{ object.category.category_name }}
+                                            {% else %}
+                                                {{ object.category.category_eng_name }}
+                                            {% endif %} </a></li>
                                             </ul>
                                         </div>
                                         <p>
