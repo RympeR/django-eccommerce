@@ -8,15 +8,18 @@ def make_refund_accepted(modeladmin, request, queryset):
 make_refund_accepted.short_description = 'Update orders to refund granted'
 
 class MainSliderAdmin(admin.ModelAdmin):
-    fields = (
-        'slider_title',
-        'slider_text',
-        'button_text',
-        'image',
-        'slider_eng_title',
-        'slider_eng_text',
-        'button_eng_text',
-    )
+    # fields = (
+    #     'slider_title',
+    #     'slider_text',
+    #     'button_text',
+    #     'image',
+    #     'slider_ru_title',
+    #     'slider_ru_text',
+    #     'button_ru_text',
+    #     'slider_eng_title',
+    #     'slider_eng_text',
+    #     'button_eng_text',
+    # )
     list_display = [
         'admin_photo',
         'slider_title',
@@ -64,18 +67,18 @@ class AddressAdmin(admin.ModelAdmin):
     search_fields = ['sessinoOrder', 'street_address', 'apartment_address']
 
 class ItemAdmin(admin.ModelAdmin):
-    fields = (
-        'title',
-        'title_eng',
-        'price',
-        'discount_price',
-        'category',
-        'slug',
-        'description',
-        'english_description',
-        'image',
-        'item_tag',
-    )
+    # fields = (
+    #     'title',
+    #     'title_eng',
+    #     'price',
+    #     'discount_price',
+    #     'category',
+    #     'slug',
+    #     'description',
+    #     'english_description',
+    #     'image',
+    #     'item_tag',
+    # )
     list_display = [
         'admin_photo',
         'title',

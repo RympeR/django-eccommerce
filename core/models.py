@@ -30,7 +30,7 @@ class Category(models.Model):
     category_ru_name = models.CharField(
         'Категория Ru', max_length=200, null=True, blank=True)
     
-    label = models.CharField(max_length=20, blank=True, null=True)
+    label = models.CharField('Метка', max_length=20, blank=True, null=True)
 
     class Meta:
         db_table = 'category'
@@ -49,7 +49,7 @@ class ItemTag(models.Model):
     item_tag_eng_name = models.CharField('Тэг Eng', max_length=20, null=True, blank=True)
     item_tag_ru_name = models.CharField('Тэг Ru', max_length=20, null=True, blank=True)
     display_on_main = models.BooleanField('Отображается на главной')
-    slug = models.SlugField(null=True, blank=True)
+    slug = models.SlugField('Ярлык', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Тэг'
@@ -65,18 +65,18 @@ class ItemTag(models.Model):
 
 
 class Item(models.Model):
-    title = models.CharField(max_length=100)
-    title_eng = models.CharField(max_length=100, null=True, blank=True)
-    title_ru = models.CharField(max_length=100, null=True, blank=True)
-    price = models.FloatField()
-    discount_price = models.FloatField(blank=True, null=True)
+    title = models.CharField('Заголовок uk', max_length=100)
+    title_eng = models.CharField('Заголовок eng', max_length=100, null=True, blank=True)
+    title_ru = models.CharField('Заголовок ru', max_length=100, null=True, blank=True)
+    price = models.FloatField('Цена')
+    discount_price = models.FloatField('Цена со скидкой', blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
-    slug = models.SlugField()
-    description = models.TextField()
-    ru_description = models.TextField(null=True, blank=True)
-    english_description = models.TextField(null=True, blank=True)
-    image = models.ImageField(upload_to='photos', blank=True, null=True)
+    slug = models.SlugField('Ярлык')
+    description = models.TextField('Описание')
+    ru_description = models.TextField('Описание ru',null=True, blank=True)
+    english_description = models.TextField('Описание eng',null=True, blank=True)
+    image = models.ImageField('Изображение товара',upload_to='photos', blank=True, null=True)
     item_tag = models.ManyToManyField(ItemTag, verbose_name='Тэги товара')
 
     @property
@@ -134,7 +134,7 @@ class UserProfile(models.Model):
 
 class SessionOrder(models.Model):
     id = models.AutoField(primary_key=True)
-    approved = models.BooleanField(null=True, default=False)
+    approved = models.BooleanField('Подтвержден',null=True, default=False)
 
     class Meta:
         verbose_name = 'Номер заказа в сессии'
@@ -147,9 +147,9 @@ class SessionOrder(models.Model):
 class OrderItem(models.Model):
     sessionOrder = models.ForeignKey(
         SessionOrder, null=True, blank=True, on_delete=models.CASCADE)
-    ordered = models.BooleanField(default=False)
+    ordered = models.BooleanField('Заказан', default=False)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1)
+    quantity = models.IntegerField('Количество', default=1)
 
     class Meta:
         verbose_name = 'Продукт в заказе'
@@ -176,24 +176,24 @@ class OrderItem(models.Model):
 class Order(models.Model):
     sessionOrder = models.ForeignKey(
         SessionOrder, null=True, blank=True, on_delete=models.CASCADE)
-    ref_code = models.CharField(max_length=20, blank=True, null=True)
+    ref_code = models.CharField('Пригласительный код', max_length=20, blank=True, null=True)
     items = models.ManyToManyField(OrderItem)
-    name = models.CharField(max_length=50, blank=False, null=True)
-    phone_number = models.CharField(max_length=40, blank=False, null=True)
-    person_amount = models.IntegerField(blank=False, null=True)
+    name = models.CharField('Имя', max_length=50, blank=False, null=True)
+    phone_number = models.CharField('Номер телефона', max_length=40, blank=False, null=True)
+    person_amount = models.IntegerField('Количесто людей', blank=False, null=True)
     start_date = models.DateTimeField(auto_now_add=True)
-    ordered = models.BooleanField(default=False)
+    ordered = models.BooleanField('Заказан', default=False)
     address = models.ForeignKey(
         'Address', related_name='shipping_address', on_delete=models.SET_NULL, blank=True, null=True)
     coupon = models.ForeignKey(
         'Coupon', on_delete=models.SET_NULL, blank=True, null=True)
     comment = models.CharField('комментарий', max_length=255,null=True, blank=True)
-    being_delivered = models.BooleanField(default=False)
-    need_learning_branch = models.BooleanField(default=False)
-    dont_recall = models.BooleanField(default=False)
-    received = models.BooleanField(default=False)
-    refund_requested = models.BooleanField(default=False)
-    refund_granted = models.BooleanField(default=False)
+    being_delivered = models.BooleanField('Был доставлен', default=False)
+    need_learning_branch = models.BooleanField('Нужны учебные палочки', default=False)
+    dont_recall = models.BooleanField('Не перезванивать', default=False)
+    received = models.BooleanField('Товар получен', default=False)
+    refund_requested = models.BooleanField('Возврат запроше', default=False)
+    refund_granted = models.BooleanField('Возврат выполнен', default=False)
 
     '''
     1. Item added to cart
@@ -224,8 +224,8 @@ class Order(models.Model):
 class Address(models.Model):
     sessionOrder = models.ForeignKey(
         SessionOrder, null=True, blank=True, on_delete=models.CASCADE)
-    street_address = models.CharField(max_length=100)
-    apartment_address = models.CharField(max_length=100)
+    street_address = models.CharField('Улица',max_length=100)
+    apartment_address = models.CharField('Квартира',max_length=100)
 
     class Meta:
         verbose_name = 'Адрес'
@@ -238,8 +238,8 @@ class Address(models.Model):
 class Payment(models.Model):
     sessionOrder = models.ForeignKey(
         SessionOrder, null=True, blank=True, on_delete=models.CASCADE)
-    amount = models.FloatField()
-    paytype = models.CharField(choices=PAYMENT_CHOICES, max_length=20)
+    amount = models.FloatField('Цена')
+    paytype = models.CharField('Способ оплаты', choices=PAYMENT_CHOICES, max_length=20)
     timestamp = models.DateTimeField(auto_now_add=True)
     class Meta:
         verbose_name = 'Оплата'
@@ -250,9 +250,9 @@ class Payment(models.Model):
 
 
 class Coupon(models.Model):
-    code = models.CharField(max_length=15)
-    discount_percent = models.IntegerField()
-    amount = models.IntegerField()
+    code = models.CharField('Код', max_length=15)
+    discount_percent = models.IntegerField('Процент скидки')
+    amount = models.IntegerField('Количество использований')
 
     class Meta:
         verbose_name = 'Купон'
