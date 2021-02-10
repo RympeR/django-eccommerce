@@ -23,6 +23,9 @@
                         {% if request.session.lang == "uk" %}
                             <h4>Замовляй їжу з нашим сервісом</h4>
                             <h2>Наш магазин</h2>
+                        {% elif request.session.lang == "ru" %}
+                            <h4>Заказывай еду с нашим сервисом</h4>
+                            <h2>Наш магазин</h2>
                         {% else %}
                             <h4>Order food with our service </h4>
                             <h2>Our shop</h2>
@@ -54,6 +57,8 @@
                                                     <span class="menu-single-preice">
                                                         {% if request.session.lang == "uk" %}
                                                             Ціна:
+                                                        {% elif request.session.lang == "ru" %}
+                                                            Цена:
                                                         {% else %}
                                                            Price:
                                                         {% endif %}
@@ -109,15 +114,20 @@
                                         <div class="pr-tags fl-wrap">
                                             <span>{% if request.session.lang == "uk" %}
                                                 Категорія
+                                            {% elif request.session.lang == "ru" %}
+                                                Категория
                                             {% else %}
                                                 Category
                                             {% endif %} : </span>
                                             <ul>
-                                                <li><a href="#">{% if request.session.lang == "uk" %}
-                                                {{ object.category.category_name }}
-                                            {% else %}
-                                                {{ object.category.category_eng_name }}
-                                            {% endif %} </a></li>
+                                                <li><a href="#">
+                                                    {% if request.session.lang == "uk" %}
+                                                        {{ object.category.category_name }}
+                                                    {% elif request.session.lang == "ru" %}
+                                                        {{ object.category.category_ru_name }}
+                                                    {% else %}
+                                                        {{ object.category.category_eng_name }}
+                                                    {% endif %} </a></li>
                                             </ul>
                                         </div>
                                         <p>
@@ -128,6 +138,8 @@
 
                                             <button class="btn"><a href="{{ object.get_add_to_cart_url }}" style="color:#fff" >{% if request.session.lang == "uk" %}
                                                 Замовити
+                                            {% elif request.session.lang == "ru" %}
+                                                Заказать
                                             {% else %}
                                                 Add to cart
                                             {% endif %}</a> <i
@@ -140,103 +152,7 @@
                                     </div>
                                 </div>
                                 <!-- post end-->
-                                <!-- <div id="commentswrap" class="reviews-wrap fl-wrap">
-                                            title
-                                            <h6 class="comments-title">Reviews</h6>
-                                            <ul class="commentlist clearafix">
-                                                <li class="comment">
-                                                    <div class="comment-body">
-                                                        <div class="comment-author">
-                                                            <img alt='' src='images/avatar/1.jpg' width="50" height="50">
-                                                        </div>
-                                                        <cite class="fn"><a href="#">Liza Svenik</a><span class="star-rating" data-starrating="5"></span></cite>
-                                                        <div class="comment-meta">
-                                                            <h6>January 02, 2020 at 07:39 am</h6>
-                                                        </div>
-                                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo.</p>
-                                                        <span class="comment-numder">.01</span>
-                                                    </div>
-                                                </li>
-                                                <li class="comment">
-                                                    comment body
-                                                    <div class="comment-body">
-                                                        <div class="comment-author">
-                                                            <img alt='' src='images/avatar/1.jpg' width="50" height="50">
-                                                        </div>
-                                                        <cite class="fn"><a href="#">Andy</a><span class="star-rating" data-starrating="5"></span></cite>
-                                                        <div class="comment-meta">
-                                                            <h6>January 02, 2020 at 07:39 am</h6>
-                                                        </div>
-                                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo.</p>
-                                                        <span class="comment-numder">.02</span>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div> -->
-                                <!-- <div id="respond" class="clearafix review-form">
-                                            <h6 class="comments-title">Add Review</h6>
-                                            <form  class="custom-form fl-wrap">
-                                                <fieldset>
-                                                    <div class="leave-rating-wrap">
-                                                        <span class="leave-rating-title">Your rating for this product: </span>
-                                                        <div class="leave-rating">
-                                                            <input type="radio" name="rating" id="rating-1" value="1"/>
-                                                            <label for="rating-1" class="fal fa-star"></label>
-                                                            <input type="radio" name="rating" id="rating-2" value="2"/>
-                                                            <label for="rating-2" class="fal fa-star"></label>
-                                                            <input type="radio" name="rating" id="rating-3" value="3"/>
-                                                            <label for="rating-3" class="fal fa-star"></label>
-                                                            <input type="radio" name="rating" id="rating-4" value="4"/>
-                                                            <label for="rating-4" class="fal fa-star"></label>
-                                                            <input type="radio" name="rating" id="rating-5" value="5"/>
-                                                            <label for="rating-5" class="fal fa-star"></label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <input type="text" name="name" id="namecom" placeholder="Your Name *" value=""/>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <input type="text"  name="email" id="emailcom" placeholder="Email Address *" value=""/>
-                                                        </div>
-                                                    </div>
-                                                    <textarea name="comments"  id="commentscom" cols="40" rows="3" placeholder="Your Message:"></textarea>
-                                                    <div class="clearfix"></div>
-                                                    <button class="btn float-btn  color-bg" id="submitcom">Add Review <i class="fal fa-long-arrow-right"></i></button>
-                                                </fieldset>
-                                            </form>
-                                        </div> -->
-                                <!--end respond-->
-                                <!--post-related-->
-                                {% comment %}
-                                <div class="post-related fl-wrap">
-                                    <h6 class="comments-title">You Might Also Like</h6>
-                                    <!-- post-related -->
-                                    <div class=" row">
-                                        <!-- 1  -->
-                                        <div class="item-related col-md-4">
-                                            <a href="#"><img src="images/menu/1.jpg" alt=""></a>
-                                            <h3><a href="#">Victoria's Filet Mignon</a></h3>
-                                            <span class="post-date post-price">$27.00</span>
-                                        </div>
-                                        <!-- 1 end-->
-                                        <!-- 2  -->
-                                        <div class="item-related col-md-4">
-                                            <a href="#"><img src="images/menu/1.jpg" alt=""></a>
-                                            <h3><a href="#">Soft shell crab</a></h3>
-                                            <span class="post-date post-price">$15.00</span>
-                                        </div>
-                                        <!-- 2 end-->
-                                        <!-- 3  -->
-                                        <div class="item-related col-md-4">
-                                            <a href="#"><img src="images/menu/1.jpg" alt=""></a>
-                                            <h3><a href="#">Salmon Riverland</a></h3>
-                                            <span class="post-date post-price">$143.00</span>
-                                        </div>
-                                        <!-- 3 end-->
-                                    </div>
-                                </div>
-                                {% endcomment %}
+ 
                                 <!-- post-related  end-->
                             </div>
                             <div class="clearfix"></div>
@@ -244,6 +160,8 @@
                             <div class="clearfix"></div> -->
                             <a href="{% url 'core:shop' %}" class="btn  shop-btn">{% if request.session.lang == "uk" %}
                                 Назад до магазину 
+                            {% elif request.session.lang == "ru" %}
+                                Назад в магазин
                             {% else %}
                                 Back to Shop
                             {% endif %}<i

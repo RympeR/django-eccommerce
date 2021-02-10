@@ -27,6 +27,9 @@ class Category(models.Model):
     category_name = models.CharField('Категория', max_length=200)
     category_eng_name = models.CharField(
         'Категория Eng', max_length=200, null=True, blank=True)
+    category_ru_name = models.CharField(
+        'Категория Ru', max_length=200, null=True, blank=True)
+    
     label = models.CharField(max_length=20, blank=True, null=True)
 
     class Meta:
@@ -43,8 +46,8 @@ class Category(models.Model):
 
 class ItemTag(models.Model):
     item_tag_name = models.CharField('Тэг', max_length=20)
-    item_tag_eng_name = models.CharField(
-        'Тэг Eng', max_length=20, null=True, blank=True)
+    item_tag_eng_name = models.CharField('Тэг Eng', max_length=20, null=True, blank=True)
+    item_tag_ru_name = models.CharField('Тэг Ru', max_length=20, null=True, blank=True)
     display_on_main = models.BooleanField('Отображается на главной')
     slug = models.SlugField(null=True, blank=True)
 
@@ -64,12 +67,14 @@ class ItemTag(models.Model):
 class Item(models.Model):
     title = models.CharField(max_length=100)
     title_eng = models.CharField(max_length=100, null=True, blank=True)
+    title_ru = models.CharField(max_length=100, null=True, blank=True)
     price = models.FloatField()
     discount_price = models.FloatField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     slug = models.SlugField()
     description = models.TextField()
+    ru_description = models.TextField(null=True, blank=True)
     english_description = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='photos', blank=True, null=True)
     item_tag = models.ManyToManyField(ItemTag, verbose_name='Тэги товара')
@@ -274,16 +279,16 @@ class Refund(models.Model):
 class MainSlider(models.Model):
     slider_title = models.CharField(
         'Заголовок слайда', max_length=35, default='Изучите наше меню')
-    slider_eng_title = models.CharField(
-        'Заголовок слайда eng', max_length=35, default='Изучите наше меню', null=True, blank=True)
+    slider_eng_title = models.CharField('Заголовок слайда eng', max_length=35, default='Изучите наше меню', null=True, blank=True)
+    slider_ru_title = models.CharField('Заголовок слайда ru', max_length=35, default='Изучите наше меню', null=True, blank=True)
     slider_text = models.CharField('Текст слайда', max_length=50)
-    slider_eng_text = models.CharField(
-        'Текст слайда eng', max_length=50, null=True, blank=True)
+    slider_eng_text = models.CharField('Текст слайда eng', max_length=50, null=True, blank=True)
+    slider_ru_text = models.CharField('Текст слайда ru', max_length=50, null=True, blank=True)
     image = models.ImageField(upload_to='photos', blank=True, null=True)
     button_text = models.CharField(
         'Текст кнопки', blank=True, null=True, max_length=20)
-    button_eng_text = models.CharField(
-        'Текст кнопки', blank=True, null=True, max_length=20)
+    button_eng_text = models.CharField('Текст кнопки eng', blank=True, null=True, max_length=20)
+    button_ru_text = models.CharField('Текст кнопки ru', blank=True, null=True, max_length=20)
 
     @property
     def short_description(self):

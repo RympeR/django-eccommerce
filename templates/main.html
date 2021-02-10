@@ -109,13 +109,20 @@ $(document).ready(function() {
         $("#shop").removeClass("act-link");
         $("#delivery").removeClass("act-link");
     }
-    if (sessionStorage.lang == "uk") {
+    if (localStorage.lang == "uk") {
         $(".en-lang").removeClass("act-lang");
+        $(".ru-lang").removeClass("act-lang");
         $(".uk-lang").addClass("act-lang");
-    } else if (sessionStorage.lang == "en") {
+    } else if (localStorage.lang == "en") {
+
+        $(".ru-lang").removeClass("act-lang");
         $(".uk-lang").removeClass("act-lang");
         $(".en-lang").addClass("act-lang");
-    } else {}
+    } else {
+        $(".en-lang").removeClass("act-lang");
+        $(".uk-lang").removeClass("act-lang");
+        $(".ru-lang").addClass("act-lang");
+    }
 });
 
 $(".uk-lang").click(function() {
@@ -123,7 +130,20 @@ $(".uk-lang").click(function() {
         url: '{% url "core:uk" %}',
         type: "get",
         success: function(result) {
-            sessionStorage.lang = "uk";
+            localStorage.lang = "uk";
+            location.reload();
+        },
+        error: function(result) {
+            console.log(result, "location is bad");
+        },
+    });
+});
+$(".ru-lang").click(function() {
+    $.ajax({
+        url: '{% url "core:ru" %}',
+        type: "get",
+        success: function(result) {
+            localStorage.lang = "ru";
             location.reload();
         },
         error: function(result) {
@@ -136,7 +156,7 @@ $(".en-lang").click(function() {
         url: '{% url "core:en" %}',
         type: "get",
         success: function(result) {
-            sessionStorage.lang = "en";
+            localStorage.lang = "en";
             location.reload();
         },
         error: function(result) {

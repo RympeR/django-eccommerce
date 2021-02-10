@@ -3,12 +3,14 @@
 <footer class="fl-wrap dark-bg fixed-footer">
     <div class="container">
         <div class="footer-top fl-wrap">
-            <a href="{% url 'core:menu' %}" class="footer-logo"><img src='{% static "images/logo.png" %}' alt=""></a>
-            <div class="lang-wrap"><a href="#" class='uk-lang act-lang'>Uk</a><span>/</span><a class='en-lang' href="#">En</a></div>
+            <!-- <a href="{% url 'core:menu' %}" class="footer-logo"><img src='{% static "images/logo.png" %}' alt=""></a> -->
+            <div class="lang-wrap"><a href="#" class='uk-lang act-lang'>Uk</a><span>/</span><a class='en-lang' href="#">En</a><span>/</span><a class='ru-lang' href="#">Ru</a></div>
             <div class="footer-social">
                 <span class="footer-social-title">
                     {% if request.session.lang == "uk" %}
                         Спостерігати за нами :
+                    {% elif request.session.lang == "ru" %}
+                        Следить за нами :
                     {% else %}
                         Follow us :
                     {% endif %}
@@ -28,6 +30,8 @@
                         <div class="footer-widget-title">
                             {% if request.session.lang == "uk" %}
                                 Розділи :
+                            {% elif request.session.lang == "ru" %}
+                                Разделы :
                             {% else %}
                                 Sections :
                             {% endif %}
@@ -38,6 +42,8 @@
                                     <li><a class="footer-widget-title" href="{% url  'core:menu' %}">
                                             {% if request.session.lang == "uk" %}
                                                 МЕНЮ
+                                            {% elif request.session.lang == "ru" %}
+                                                МЕНЮ
                                             {% else %}
                                                 MENU
                                             {% endif %}
@@ -46,6 +52,8 @@
                                     <li><a class="footer-widget-title" href="{% url  'proposition:all_prospositions' %}">
                                         {% if request.session.lang == "uk" %}
                                             АКЦІЇ
+                                        {% elif request.session.lang == "ru" %}
+                                            АКЦИИ
                                         {% else %}
                                             PROMOTIONS
                                         {% endif %}</a>
@@ -53,6 +61,8 @@
                                     <li><a class="footer-widget-title" href="{% url  'core:shop' %}">
                                         {% if request.session.lang == "uk" %}
                                             ПОШУК ПО КОМПОНЕНТАМ
+                                        {% elif request.session.lang == "ru" %}
+                                            ПОИСК ПО КОМПОНЕНТАМ
                                         {% else %}
                                             SEARCH BY COMPONENTS
                                         {% endif %}</a>
@@ -69,6 +79,8 @@
                         <div class="footer-widget-title">
                             {% if request.session.lang == "uk" %}
                                 Графік роботи:
+                            {% elif request.session.lang == "ru" %}
+                                График работы:
                             {% else %}
                                 Work schedule: 
                             {% endif %}
@@ -80,6 +92,8 @@
                                         <span>
                                             {% if request.session.lang == "uk" %}
                                                 Пн-Пт :
+                                            {% elif request.session.lang == "ru" %}
+                                                Пн-Пт :
                                             {% else %}
                                                 Mon-Fri from
                                             {% endif %}
@@ -90,6 +104,8 @@
                                         <span>
                                             {% if request.session.lang == "uk" %}
                                                 Сб-Нд :
+                                            {% elif request.session.lang == "ru" %}
+                                                Сб-Вс :
                                             {% else %}
                                                 Sat-Sun from
                                             {% endif %}
@@ -107,6 +123,8 @@
                     <div class="footer-widget">
                         <div class="footer-widget-title">{% if request.session.lang == "uk" %}
                             Зателефонувати
+                        {% elif request.session.lang == "ru" %}
+                            Позвонить
                         {% else %}
                             Call
                         {% endif %}</div>
@@ -128,6 +146,8 @@
             <div class="copyright">&#169; tokyo.od.ua 2021 . All rights reserved. </div>
             <div class="to-top"><span>{% if request.session.lang == "uk" %}
                 Перейти до верху
+            {% elif request.session.lang == "ru" %}
+                Перейти на верх
             {% else %}
                 Go to the top 
             {% endif %} </span><i class="fal fa-angle-double-up"></i></div>

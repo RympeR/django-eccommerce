@@ -24,6 +24,8 @@
                             <p>
                                 {% if request.session.lang == "uk" %}
                                     На жаль, сторінку, яку ви шукали, не вдалося знайти. 
+                                {% elif request.session.lang == "ru" %}
+                                    К сожалению, найти страницу не удалось
                                 {% else %}
                                     We're sorry, but the Page you were looking for, couldn't be found.
                                 {% endif %}
@@ -33,6 +35,8 @@
                             <a href="{% url  'core:menu' %}" class="btn">
                                 {% if request.session.lang == "uk" %}
                                     Повернутися на головну сторінку
+                                {% elif request.session.lang == "ru" %}
+                                    Вернуться на главную
                                 {% else %}
                                     Back to Home Page
                                 {% endif %}

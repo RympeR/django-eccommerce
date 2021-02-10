@@ -13,7 +13,8 @@ from .views import (
     CheckoutView,
     switch_to_Ukraiunian_link,
     switch_to_English_link,
-    deliveryAndPayPage
+    deliveryAndPayPage,
+    switch_to_Russian_link,   
 )
 
 app_name = 'core'
@@ -22,6 +23,7 @@ urlpatterns = [
     # path('', home_view, name='home-view'),
     path('uk/', switch_to_Ukraiunian_link, name='uk'),
     path('en/', switch_to_English_link, name='en'),
+    path('ru/', switch_to_Russian_link, name='ru'),
     path('', itemview, name='menu'),
     path('delivery/', deliveryAndPayPage, name='delivery'),
     path('shop/', ShopView.as_view(), name='shop'),

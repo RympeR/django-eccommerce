@@ -18,7 +18,7 @@
                 <div class="overlay"></div>
                 <div class="container">
                     <div class="section-title">
-                        <h2>{% if request.session.lang == "uk" %} Акції {% else %} Promotions {% endif %}</h2>
+                        <h2>{% if request.session.lang == "uk" %} Акції {% elif request.session.lang == "ru" %} Акции {% else %} Promotions {% endif %}</h2>
                         <!-- <h2>Our Journal</h2> -->
                         <div class="dots-separator fl-wrap"><span></span></div>
                     </div>
@@ -69,6 +69,39 @@
                                             </ul>
                                         </div>
                                         {{ object.description|safe }}
+                                    </div>
+                                </div>
+                                {% elif request.session.lang == "ru" %}
+                                <div class="post fl-wrap fw-post">
+                                    <h2><a href="{{ post.get_absolute_url }}">{{ object.title_ru }}</a></h2>
+                                    <ul class="blog-title-opt">
+                                        <li><a href="#">{{ object.date_added|date:"SHORT_DATE_FORMAT" }}</a></li>
+                                    </ul>
+                                    <!-- blog media -->
+                                    <div class="blog-media fl-wrap">
+                                        <div class="single-slider-wrap">
+                                            <div class="single-slider fl-wrap">
+                                                <div class="swiper-container">
+                                                    <div class="swiper-wrapper lightgallery">
+                                                        <div class="swiper-slide hov_zoom">
+                                                            <img src="{{ object.proposition_photo.url }}" alt="" /><a href="{{ object.proposition_photo.url }}" class="box-media-zoom popup-image"><i class="fal fa-search"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- blog media end -->
+                                    <div class="blog-text fl-wrap">
+                                        <div class="pr-tags fl-wrap">
+                                            <span>Теги : </span>
+                                            <ul>
+                                                {% for category in object.tag.all %}
+                                                <li><a href="#"> {{ category.tag_ru_name }} </a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                        {{ object.description_ru|safe }}
                                     </div>
                                 </div>
                                 {% else %}

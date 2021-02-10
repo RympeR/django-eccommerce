@@ -10,7 +10,9 @@ class Tag(models.Model):
     tag_name = models.CharField(
         'Название тэга', max_length=30, null=False, blank=False)
     tag_eng_name = models.CharField(
-        'Название тэга', max_length=30, null=True, blank=True)
+        'Название тэга eng', max_length=30, null=True, blank=True)
+    tag_ru_name = models.CharField(
+        'Название тэга ru', max_length=30, null=True, blank=True)
 
     class Meta:
         verbose_name = 'Тэг'
@@ -25,11 +27,15 @@ class Proposition(models.Model):
         'Заголовок', max_length=80, null=False, blank=False)
     title_eng = models.CharField(
         'Заголовок eng', max_length=80, null=True, blank=True)
+    title_ru = models.CharField(
+        'Заголовок ru', max_length=80, null=True, blank=True)
+
     tag = models.ManyToManyField(Tag)
     date_added = models.DateField(auto_now=True)
     proposition_photo = models.ImageField(blank=True, null=True)
     description = HTMLField()
     description_eng = HTMLField(null=True, blank=True)
+    description_ru = HTMLField(null=True, blank=True)
     slug = models.SlugField()
 
     def short_description(self):

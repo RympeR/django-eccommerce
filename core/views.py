@@ -27,6 +27,10 @@ def switch_to_English_link(request):
     return HttpResponse('switched to english')
 
 
+def switch_to_Russian_link(request):
+    request.session['lang'] = 'ru'
+    return HttpResponse('switched to russian')
+
 def switch_to_Ukraiunian_link(request):
     request.session['lang'] = 'uk'
     return HttpResponse('switched to ukrainian ')

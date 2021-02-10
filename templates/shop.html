@@ -28,6 +28,9 @@
 						{% if request.session.lang == "uk" %}
 							<h4>Замовляй їжу з нашим сервісом</h4>
 							<h2>Наш магазин</h2>
+						{% elif request.session.lang == "ru" %}
+                            <h4>Заказывай еду с нашим сервисом</h4>
+                            <h2>Наш магазин</h2>
 						{% else %}
 							<h4>Order food with our service</h4>
 							<h2>Our shop</h2>
@@ -88,6 +91,37 @@
 													</div>
 												</div>
 											{% endfor %} 
+										{% elif request.session.lang == "ru" %}
+											{% for item in items %}
+												<div class="gallery-item {{ item.category.label }}">
+													<div class="grid-item-holder hov_zoom">
+														<a
+															href="{{ item.image.url }}"
+															class="box-media-zoom popup-image"
+															><i class="fal fa-search"></i
+														></a>
+														<img src="{{ item.image.url }}" alt="" />
+													</div>
+													<div class="grid-item-details">
+														<a href="{{ item.get_absolute_url }}"
+															><h3>{{ item.title_ru }}</h3></a
+														>
+														<p>{{ item.ru_description }}</p>
+														<div class="grid-item_price">
+															{% if item.discount_price %}
+															<span>₴{{ item.discount_price }}</span>
+															{% else %}
+															<span>₴{{ item.price }}</span>
+															{% endif %}
+															<a
+																href="{{ item.get_add_to_cart_url }}"
+																class="add_cart"
+																>Заказать</a
+															>
+														</div>
+													</div>
+												</div>
+											{% endfor %} 
 										{% else %} 
 											{% for item in items %}
 												<div class="gallery-item {{ item.category.label }}">
@@ -133,7 +167,15 @@
 										</div>
 										<div class="grid-item-details">
 											<a href="{{ item.get_absolute_url }}">
-												<h3>{{ item.title }}</h3>
+												{% if request.session.lang == "uk" %} 
+													<h3>{{ item.title }}</h3>
+												{% elif request.session.lang == "ru" %}
+													<h3>{{ item.title_ru }}</h3>
+												{% else %} 
+													<h3>{{ item.title_eng }}</h3>
+												{% endif %}
+												
+												
 											</a>
 											<p>{{ item.description }}</p>
 											<div class="grid-item_price">
@@ -146,7 +188,9 @@
 													href="{{ item.get_add_to_cart_url }}"
 													class="add_cart"
 													>{% if request.session.lang == "uk" %} 
-													Замовити 
+													Замовити
+													{% elif request.session.lang == "ru" %}
+													Заказать
 													{% else %} Add to cart {% endif %}</a
 												>
 											</div>
@@ -190,7 +234,7 @@
 								<!-- main-sidebar-widget-->
 								<div class="main-sidebar-widget fl-wrap">
 									<h3>
-										{% if request.session.lang == "uk" %} Компоненти {% else %}
+										{% if request.session.lang == "uk" %} Компоненти {% elif request.session.lang == "ru" %} Компоненты {% else %}
 										Components {% endif %}
 									</h3>
 									<div class="tags-widget">
@@ -198,7 +242,11 @@
 											{% if request.session.lang == "uk" %} 
 												{% for tag in request|product_tags %}
 													<a href="{% url 'core:shop-product' tag.slug %}">{{ tag.item_tag_name }}</a>
-												{% endfor %} 
+												{% endfor %}
+											{% elif request.session.lang == "ru" %}
+												{% for tag in request|product_tags %}
+													<a href="{% url 'core:shop-product' tag.slug %}">{{ tag.item_tag_ru_name }}</a>
+												{% endfor %}
 											{% else %} 
 												{% for tag in request|product_tags%}
 													<a href="{% url 'core:shop-product' tag.slug %}">{{ tag.item_tag_eng_name }}</a>

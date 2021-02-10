@@ -20,6 +20,9 @@
                         {% if request.session.lang == "uk" %}
                         <h4>Замовляйте їжу з доставкою додому</h4>
                         <h2>Процес оформлення замовлення</h2>
+                        {% elif request.session.lang == "ru" %}
+                        <h4>Заказывайте еду с доставкой домой</h4>
+                        <h2>Процесс оформления заказа</h2>
                         {% else %}
                         <h4>Order food with home delivery</h4>
                         <h2>Checkout Process</h2>
@@ -43,45 +46,45 @@
                         <div class="col-md-8">
                             <div class="check-out_wrap fl-wrap">
                                 <h4 class="cart-title">
-                                    {% if request.session.lang == "uk" %} Ваша інформація {% else %} Your Information {% endif %}</h4>
+                                    {% if request.session.lang == "uk" %} Ваша інформація {% elif request.session.lang == "ru" %} Ваша информация {% else %} Your Information {% endif %}</h4>
                                 <form class="custom-form" name="custom_form">
                                     <fieldset>
                                         {% csrf_token %}
                                         <div class="row">
                                             <div class="col-12 col-sm-6">
-                                                <input type="text" required id="name" name="name" placeholder="{% if request.session.lang == "uk" %} Ваше ім'я {% else %} Your Name {% endif %}*" value="" />
+                                                <input type="text" required id="name" name="name" placeholder="{% if request.session.lang == "uk" %} Ваше ім'я {% elif request.session.lang == "ru" %} Ваше имя {% else %} Your Name {% endif %}*" value="" />
                                             </div>
                                             <div class="col-12 col-sm-6">
-                                                <input type="text" required id="phone" name="phone" placeholder="{% if request.session.lang == "uk" %} Телефон {% else %} Phone {% endif %}*" value="" />
+                                                <input type="text" required id="phone" name="phone" placeholder="{% if request.session.lang == "uk" %} Телефон {% elif request.session.lang == "ru" %} Телефон {% else %} Phone {% endif %}*" value="" />
                                             </div>
                                             <div class="col-12 col-sm-6">
-                                                <input type="number" required id="person_amount" name="person_amount" placeholder="{% if request.session.lang == "uk" %} Кількість персон {% else %} Person amount {% endif %}*" value="" />
+                                                <input type="number" required id="person_amount" name="person_amount" placeholder="{% if request.session.lang == "uk" %} Кількість персон {% elif request.session.lang == "ru" %} Количество персон {% else %} Person amount {% endif %}*" value="" />
                                             </div>
                                             <div class="col-12 col-sm-6">
-                                                <input type="text" required id="street_address" name="street_address" placeholder="{% if request.session.lang == "uk" %} Вулиця {% else %} Street address {% endif %}*" value="" />
+                                                <input type="text" required id="street_address" name="street_address" placeholder="{% if request.session.lang == "uk" %} Вулиця {% elif request.session.lang == "ru" %} Улица {% else %} Street address {% endif %}*" value="" />
                                             </div>
                                             <div class="col-12 col-sm-6">
-                                                <input type="text" required id="apartment_address" name="apartment_address" placeholder="{% if request.session.lang == "uk" %} Адреса квартири {% else %} Apartment address {% endif %}*" value="" />
+                                                <input type="text" required id="apartment_address" name="apartment_address" placeholder="{% if request.session.lang == "uk" %} Адреса квартири {% elif request.session.lang == "ru" %} Адрес квартиры {% else %} Apartment address {% endif %}*" value="" />
                                             </div>
                                             
                                             
                                             <div class="col-12 col-sm-6 float-left"  style="margin: 0 0 20px">
-                                                <label class='mr float-left' for="need_learning_branch">{% if request.session.lang == "uk" %} Потрібні навчальні палички {% else %} Need learning branch {% endif %}</label>
-                                                <input type="checkbox" class='float-left' id="need_learning_branch" name="need_learning_branch" placeholder="{% if request.session.lang == "uk" %} Потрібні навчальні палички {% else %} Need learning branch {% endif %}*" />
+                                                <label class='mr float-left' for="need_learning_branch">{% if request.session.lang == "uk" %} Потрібні навчальні палички{% elif request.session.lang == "ru" %} Нужны учебные палочки {% else %} Need learning branch {% endif %}</label>
+                                                <input type="checkbox" class='float-left' id="need_learning_branch" name="need_learning_branch" placeholder="{% if request.session.lang == "uk" %} Потрібні навчальні палички  {% else %} Need learning branch {% endif %}*" />
                                             </div>
                                             
                                             <div class="col-12 col-sm-8">
-                                                <textarea name="comments" id="comments" cols="30" rows="3" placeholder="{% if request.session.lang == "uk" %} Коментар {% else %} Addtional Notes {% endif %}"></textarea>
+                                                <textarea name="comments" id="comments" cols="30" rows="3" placeholder="{% if request.session.lang == "uk" %} Коментар {% elif request.session.lang == "ru" %} Комментарий {% else %} Addtional Notes {% endif %}"></textarea>
                                             </div>
                                             <div class="col-12 col-sm-7" style="text-align:left;margin-top: 10px;">
-                                                <label class='mr' for="dont_recall">{% if request.session.lang == "uk" %} Не передзвонювати {% else %} Dont recall {% endif %}</label>
+                                                <label class='mr' for="dont_recall">{% if request.session.lang == "uk" %} Не передзвонювати {% elif request.session.lang == "ru" %} Не перезванивать {% else %} Dont recall {% endif %}</label>
                                                 <input type="checkbox" id="dont_recall" name="dont_recall" placeholder="dont_recall  *" />
                                             </div>
                                             <div class="col-12 col-sm-6" style="margin-top: 20px;">
-                                                <label class='mr' style="float: left;margin-bottom: 10px;margin-top: 20px;" for="payment_option"><h4 class="cart-title">{% if request.session.lang == "uk" %} Оберіть засіб сплати {% else %} Choose payment way {% endif %}</h4></label>
+                                                <label class='mr' style="float: left;margin-bottom: 10px;margin-top: 20px;" for="payment_option"><h4 class="cart-title">{% if request.session.lang == "uk" %} Оберіть засіб сплати {% elif request.session.lang == "ru" %} Выберите способ оплаты {% else %} Choose payment way {% endif %}</h4></label>
                                                 <select name="payment_option" class='nice-select chosen-select no-search-select' id="payment_option">
                                                     <option value="W">WayForPay</option>
-                                                    <option value="H">{% if request.session.lang == "uk" %} Оплата на місці {% else %} Payment in place {% endif %}</option>
+                                                    <option value="H">{% if request.session.lang == "uk" %} Оплата на місці {% elif request.session.lang == "ru" %} Оплата на месте {% else %} Payment in place {% endif %}</option>
                                                 </select>
                                             </div>
                                             <!-- <div class="col-sm-12">
@@ -107,7 +110,7 @@
                       </div>
                     </div>-->
                                             <div class="clearfix"></div>
-                                            <button onclick="send_order_data()" class="btn color-bg float-left ml-11">{% if request.session.lang == "uk" %} Сплатити
+                                            <button onclick="send_order_data()" class="btn color-bg float-left ml-11">{% if request.session.lang == "uk" %} Сплатити{% elif request.session.lang == "ru" %}Оплатить
                                                 {% else %} Confirm and Pay {% endif %}<i class="fal fa-long-arrow-right"></i></button>
                                     </fieldset>
                                 </form>
