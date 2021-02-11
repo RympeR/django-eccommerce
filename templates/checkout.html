@@ -64,7 +64,7 @@
                                                 <input type="text" required id="street_address" name="street_address" placeholder="{% if request.session.lang == "uk" %} Вулиця {% elif request.session.lang == "ru" %} Улица {% else %} Street address {% endif %}*" value="" />
                                             </div>
                                             <div class="col-12 col-sm-6">
-                                                <input type="text" required id="apartment_address" name="apartment_address" placeholder="{% if request.session.lang == "uk" %} Адреса квартири {% elif request.session.lang == "ru" %} Адрес квартиры {% else %} Apartment address {% endif %}*" value="" />
+                                                <input type="text" required id="apartment_address" name="apartment_address" placeholder="{% if request.session.lang == "uk" %} Адреса та квартира {% elif request.session.lang == "ru" %} Адрес и квартира {% else %} Apartment address {% endif %}*" value="" />
                                             </div>
                                             
                                             
@@ -83,8 +83,8 @@
                                             <div class="col-12 col-sm-6" style="margin-top: 20px;">
                                                 <label class='mr' style="float: left;margin-bottom: 10px;margin-top: 20px;" for="payment_option"><h4 class="cart-title">{% if request.session.lang == "uk" %} Оберіть засіб сплати {% elif request.session.lang == "ru" %} Выберите способ оплаты {% else %} Choose payment way {% endif %}</h4></label>
                                                 <select name="payment_option" class='nice-select chosen-select no-search-select' id="payment_option">
-                                                    <option value="W">WayForPay</option>
-                                                    <option value="H">{% if request.session.lang == "uk" %} Оплата на місці {% elif request.session.lang == "ru" %} Оплата на месте {% else %} Payment in place {% endif %}</option>
+                                                    <option value="W">{% if request.session.lang == "uk" %} На сайті {% elif request.session.lang == "ru" %} На сайте {% else %} On website {% endif %} WayForPay</option>
+                                                    <option value="H">{% if request.session.lang == "uk" %} Оплата готівкою кур’єру {% elif request.session.lang == "ru" %} Оплата наличкой курьеру {% else %} Cash payment for courier {% endif %}</option>
                                                 </select>
                                             </div>
                                             <!-- <div class="col-sm-12">
