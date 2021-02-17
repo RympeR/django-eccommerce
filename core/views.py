@@ -1,5 +1,4 @@
 from django.http import request
-from django.shortcuts import render
 import random
 import string
 from django.conf import settings
