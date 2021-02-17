@@ -28,7 +28,8 @@ SECRET_KEY = 'h1k-)8$s)%^7(5ue%#83$3$1ot71(!t5$vaol22i2s2$i%gxkk'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'tokyo-test.herokuapp.com',
+    'tokyo.od.ua',
+    '185.233.36.129',
     '127.0.0.1',
     '*'
 ]
@@ -135,8 +136,10 @@ STATICFILES_DIRS = (
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 STATIC_URL = '/static/'
-MEDIA_URL = '/photos/'
-# MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'photos')
+MEDIA_URL = '/media/'
+#MEDIA_ROOT = '/home/django-eccommerce/'
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+
 django_heroku.settings(locals())
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

@@ -71,12 +71,12 @@ class Item(models.Model):
     price = models.FloatField('Цена')
     discount_price = models.FloatField('Цена со скидкой', blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-
+    weight = models.IntegerField(verbose_name='Вес')
     slug = models.SlugField('Ярлык')
     description = models.TextField('Описание')
     ru_description = models.TextField('Описание ru',null=True, blank=True)
     english_description = models.TextField('Описание eng',null=True, blank=True)
-    image = models.ImageField('Изображение товара',upload_to='photos', blank=True, null=True)
+    image = models.ImageField('Изображение товара', blank=True, null=True)
     item_tag = models.ManyToManyField(ItemTag, verbose_name='Тэги товара')
 
     @property
@@ -119,7 +119,7 @@ class UserProfile(models.Model):
     phone = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=200, null=True)
     profile_pc = models.ImageField(
-        upload_to='photos', default='1.jpg', null=True, blank=True)
+        default='1.jpg', null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     stripe_customer_id = models.CharField(max_length=50, blank=True, null=True)
     one_click_purchasing = models.BooleanField(default=False)
@@ -284,7 +284,7 @@ class MainSlider(models.Model):
     slider_text = models.CharField('Текст слайда', max_length=50)
     slider_eng_text = models.CharField('Текст слайда eng', max_length=50, null=True, blank=True)
     slider_ru_text = models.CharField('Текст слайда ru', max_length=50, null=True, blank=True)
-    image = models.ImageField(upload_to='photos', blank=True, null=True)
+    image = models.ImageField(blank=True, null=True)
     button_text = models.CharField(
         'Текст кнопки', blank=True, null=True, max_length=20)
     button_eng_text = models.CharField('Текст кнопки eng', blank=True, null=True, max_length=20)
