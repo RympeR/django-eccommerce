@@ -78,6 +78,7 @@ class Item(models.Model):
     english_description = models.TextField('Описание eng',null=True, blank=True)
     image = models.ImageField('Изображение товара', blank=True, null=True)
     item_tag = models.ManyToManyField(ItemTag, verbose_name='Тэги товара')
+    is_sushi_set = models.BooleanField(default=False, verbose_name='Это сушисет?')
 
     @property
     def short_description(self):
@@ -111,7 +112,11 @@ class Item(models.Model):
             'slug': self.slug
         })
 
-
+class SetItem(models.Model):
+    sushi_set = models.ForeignKey('Item', verbose_name='Суши сет', null=True, blank=True, on_delete=models.CASCADE,related_name = 'source')
+    sushi = models.ForeignKey('Item', verbose_name='Входящие суши', null=True, blank=True, on_delete=models.CASCADE,related_name = 'target')
+    sushi_amount = models.IntegerField(default=1, verbose_name='Количество')
+    
 class UserProfile(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -215,7 +220,11 @@ class Order(models.Model):
     def get_total(self):
         total = 0
         for order_item in self.items.all():
-            total += order_item.get_final_price()
+            if order_item.is_sushi_set:
+                for sushi_item in order_item:
+                    total += 0
+            else:
+                total += order_item.get_final_price()
         if self.coupon:
             total -= total*(self.coupon.discount_percent / 100)
         return total

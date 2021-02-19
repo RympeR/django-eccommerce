@@ -1705,3 +1705,85 @@ Not Found: /config/getuser
 [2021-02-18 01:03:02 +0200] [21241] [INFO] Booting worker with pid: 21241
 [2021-02-18 01:03:02 +0200] [21242] [INFO] Booting worker with pid: 21242
 [2021-02-18 01:03:03 +0200] [21245] [INFO] Booting worker with pid: 21245
+Not Found: /shop/images/bg/dec/section-bg.png
+Not Found: /shop/images/bg/dec/section-bg.png
+[2021-02-18 02:01:37 +0200] [21238] [INFO] Handling signal: term
+[2021-02-18 00:01:37 +0000] [21241] [INFO] Worker exiting (pid: 21241)
+
+ SessionOrder matching query does not exist.
+
+
+ SessionOrder matching query does not exist.
+
+/home/venv/lib/python3.6/site-packages/django/views/generic/list.py:88: UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: <class 'core.models.Item'> QuerySet.
+  allow_empty_first_page=allow_empty_first_page, **kwargs)
+[2021-02-18 00:01:37 +0000] [21242] [INFO] Worker exiting (pid: 21242)
+
+ SessionOrder matching query does not exist.
+
+
+ SessionOrder matching query does not exist.
+
+[2021-02-18 00:01:37 +0000] [21245] [INFO] Worker exiting (pid: 21245)
+[2021-02-18 02:01:37 +0200] [21238] [INFO] Shutting down: Master
+[2021-02-18 02:01:37 +0200] [21477] [INFO] Starting gunicorn 20.0.4
+[2021-02-18 02:01:37 +0200] [21477] [INFO] Listening at: http://127.0.0.1:8000 (21477)
+[2021-02-18 02:01:37 +0200] [21477] [INFO] Using worker: sync
+[2021-02-18 02:01:37 +0200] [21480] [INFO] Booting worker with pid: 21480
+[2021-02-18 02:01:37 +0200] [21482] [INFO] Booting worker with pid: 21482
+[2021-02-18 02:01:37 +0200] [21484] [INFO] Booting worker with pid: 21484
+[2021-02-18 02:03:05 +0200] [21477] [INFO] Handling signal: term
+[2021-02-18 00:03:05 +0000] [21482] [INFO] Worker exiting (pid: 21482)
+[2021-02-18 00:03:05 +0000] [21480] [INFO] Worker exiting (pid: 21480)
+[2021-02-18 00:03:05 +0000] [21484] [INFO] Worker exiting (pid: 21484)
+[2021-02-18 02:03:05 +0200] [21477] [INFO] Shutting down: Master
+[2021-02-18 02:03:05 +0200] [21489] [INFO] Starting gunicorn 20.0.4
+[2021-02-18 02:03:05 +0200] [21489] [INFO] Listening at: http://127.0.0.1:8000 (21489)
+[2021-02-18 02:03:05 +0200] [21489] [INFO] Using worker: sync
+[2021-02-18 02:03:05 +0200] [21492] [INFO] Booting worker with pid: 21492
+[2021-02-18 02:03:05 +0200] [21494] [INFO] Booting worker with pid: 21494
+[2021-02-18 02:03:05 +0200] [21495] [INFO] Booting worker with pid: 21495
+Not Found: /favicon.ico
+Not Found: /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /solr/admin/info/system
+Not Found: /Autodiscover/Autodiscover.xml
+Not Found: /index.php
+Not Found: /console/
+Not Found: /_ignition/execute-solution
+Not Found: /wp-content/plugins/wp-file-manager/readme.txt
+Not Found: /api/jsonws/invoke
+Not Found: /favicon.ico
+Not Found: /cgi-bin/luci
+Not Found: /config/getuser
+Not Found: /favicon.ico
+Not Found: /delivery/images/bg/dec/section-bg.png
+Not Found: /favicon.ico
+Not Found: /shop/images/bg/dec/section-bg.png
+Not Found: /GponForm/diag_Form
+/home/venv/lib/python3.6/site-packages/django/views/generic/list.py:88: UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: <class 'core.models.Item'> QuerySet.
+  allow_empty_first_page=allow_empty_first_page, **kwargs)
+Not Found: /shop/images/bg/dec/section-bg.png
+Not Found: /favicon.ico
+Not Found: /shop/images/bg/dec/section-bg.png
+Not Found: /favicon.ico
+Not Found: /config/getuser
+Not Found: /0bef
+Not Found: /shell
+Not Found: /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /api/jsonws/invoke
+Not Found: /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /solr/admin/info/system
+Not Found: /index.php
+Not Found: /wp-content/plugins/wp-file-manager/readme.txt
+Not Found: /console/
+Not Found: /Autodiscover/Autodiscover.xml
+Not Found: /_ignition/execute-solution
+Not Found: /actuator/health
+Not Found: /login
+Not Found: /jenkins/login
+Not Found: /manager/html
+Not Found: /wp-login.php
+Not Found: /favicon.ico
+Not Found: /shop/images/bg/dec/section-bg.png
+Not Found: /shop/images/bg/dec/section-bg.png
