@@ -1787,3 +1787,62 @@ Not Found: /wp-login.php
 Not Found: /favicon.ico
 Not Found: /shop/images/bg/dec/section-bg.png
 Not Found: /shop/images/bg/dec/section-bg.png
+Not Found: /favicon.ico
+Not Found: /cgi-bin/luci
+Not Found: /robots.txt
+Not Found: /config/getuser
+Not Found: /shop/images/bg/dec/section-bg.png
+Not Found: /delivery/images/bg/dec/section-bg.png
+/home/venv/lib/python3.6/site-packages/django/views/generic/list.py:88: UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: <class 'core.models.Item'> QuerySet.
+  allow_empty_first_page=allow_empty_first_page, **kwargs)
+Not Found: /delivery/images/bg/dec/section-bg.png
+[2021-02-19 14:16:18 +0200] [21489] [INFO] Handling signal: term
+[2021-02-19 12:16:18 +0000] [21492] [INFO] Worker exiting (pid: 21492)
+
+ SessionOrder matching query does not exist.
+
+[2021-02-19 12:16:18 +0000] [21494] [INFO] Worker exiting (pid: 21494)
+[2021-02-19 12:16:18 +0000] [21495] [INFO] Worker exiting (pid: 21495)
+[2021-02-19 14:16:18 +0200] [21489] [INFO] Shutting down: Master
+[2021-02-19 14:16:18 +0200] [3664] [INFO] Starting gunicorn 20.0.4
+[2021-02-19 14:16:18 +0200] [3664] [INFO] Listening at: http://127.0.0.1:8000 (3664)
+[2021-02-19 14:16:18 +0200] [3664] [INFO] Using worker: sync
+[2021-02-19 14:16:18 +0200] [3667] [INFO] Booting worker with pid: 3667
+[2021-02-19 14:16:19 +0200] [3669] [INFO] Booting worker with pid: 3669
+[2021-02-19 14:16:19 +0200] [3671] [INFO] Booting worker with pid: 3671
+Not Found: /c/
+Not Found: /robots.txt
+Not Found: /manager/html
+Not Found: /TP/public/index.php
+Not Found: /TP/index.php
+Not Found: /thinkphp/html/public/index.php
+Not Found: /html/public/index.php
+Not Found: /public/index.php
+Not Found: /TP/html/public/index.php
+Not Found: /elrekt.php
+Not Found: /index.php
+Method Not Allowed (GET): /add-coupon/
+Method Not Allowed: /add-coupon/
+Method Not Allowed (GET): /add-coupon/
+Method Not Allowed: /add-coupon/
+Not Found: /shop/images/bg/dec/section-bg.png
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /api/jsonws/invoke
+Not Found: /solr/admin/info/system
+Not Found: /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /index.php
+Not Found: /wp-content/plugins/wp-file-manager/readme.txt
+Not Found: /console/
+Not Found: /Autodiscover/Autodiscover.xml
+Not Found: /_ignition/execute-solution
+Not Found: /aaa9
+Not Found: /aab9
+Not Found: /aaa9
+Not Found: /aab9
+Not Found: /0bef
+Not Found: /boaform/admin/formLogin
+Not Found: /config/getuser
+Not Found: /config/getuser
+Not Found: /phpmyadmin/

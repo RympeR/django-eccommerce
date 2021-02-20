@@ -220,11 +220,7 @@ class Order(models.Model):
     def get_total(self):
         total = 0
         for order_item in self.items.all():
-            if order_item.is_sushi_set:
-                for sushi_item in order_item:
-                    total += 0
-            else:
-                total += order_item.get_final_price()
+            total += order_item.get_final_price()
         if self.coupon:
             total -= total*(self.coupon.discount_percent / 100)
         return total
