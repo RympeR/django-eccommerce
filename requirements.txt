@@ -9,12 +9,13 @@ django-tinymce==3.2.0
 gunicorn==20.0.4
 idna==2.8
 Pillow==8.1.0
-psycopg2
+psycopg2==2.7.7
 pycodestyle==2.6.0
 pytz==2020.5
 requests==2.22.0
 sqlparse==0.4.1
 toml==0.10.2
 urllib3==1.25.11
+uWSGI==2.0.19.1
 wayforpay==1.0.1
 whitenoise==5.2.0
