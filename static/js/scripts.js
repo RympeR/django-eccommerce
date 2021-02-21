@@ -321,11 +321,11 @@ function initRestabook() {
     if ($(".product-slider").length > 0) {
         var j2 = new Swiper(".product-slider .swiper-container", {
             preloadImages: false,
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 0,
             observer: true,
             observeParents: true,
-            loop: true,
+            loop: false,
             autoHeight: true,
             grabCursor: true,
             mousewheel: false,

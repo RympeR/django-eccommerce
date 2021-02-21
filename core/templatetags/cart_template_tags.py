@@ -1,5 +1,12 @@
+from core.models import Category
+from core.models import ItemTag
+from core.models import MainSlider
+from core.models import MainSlider
+from core.models import Order
+from core.models import OrderItem
+from core.models import SessionOrder
+from core.models import SetItem
 from django import template
-from core.models import MainSlider, Order, OrderItem, Category, SessionOrder, MainSlider, ItemTag
 from django.db.models import Sum
 
 
@@ -81,3 +88,8 @@ def product_tags(request):
     if qs.exists():
         return qs
     return 0
+
+@register.filter
+def sushi_set_components(slug):
+    qs = SetItem.objects.filter(sushi_set__slug=slug)
+    return qs

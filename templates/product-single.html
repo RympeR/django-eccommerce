@@ -3,6 +3,7 @@
 {% load static %}
 <!-- lodaer  -->
 {% include "loader.html" %}
+{% load cart_template_tags %}
 <!-- loader end  -->
 <!-- main start  -->
 <div id="main">
@@ -63,9 +64,9 @@
                                                            Price:
                                                         {% endif %}
                                                         {% if item.discount_price %}
-                                                        <strong>${{ object.discount_price }}</strong>
+                                                            <strong>${{ object.discount_price }}</strong>
                                                         {% else %}
-                                                        <strong>${{ object.price }}</strong>
+                                                            <strong>${{ object.price }}</strong>
                                                         {% endif %}
                                                     </span>
                                                 </li>
@@ -89,22 +90,7 @@
                                                                 href="{{ object.image.url }}"
                                                                 class="box-media-zoom   popup-image"><i
                                                                     class="fal fa-search"></i></a></div>
-                                                        <div class="swiper-slide hov_zoom"><img
-                                                                src="{{ object.image.url }}" alt=""><a
-                                                                href="{{ object.image.url }}"
-                                                                class="box-media-zoom   popup-image"><i
-                                                                    class="fal fa-search"></i></a></div>
-                                                        <div class="swiper-slide hov_zoom"><img
-                                                                src="{{ object.image.url }}" alt=""><a
-                                                                href="{{ object.image.url }}"
-                                                                class="box-media-zoom   popup-image"><i
-                                                                    class="fal fa-search"></i></a></div>
                                                     </div>
-                                                    <div class="ss-slider-pagination"></div>
-                                                    <div class="ss-slider-cont ss-slider-cont-prev"><i
-                                                            class="fas fa-caret-left"></i></div>
-                                                    <div class="ss-slider-cont ss-slider-cont-next"><i
-                                                            class="fas fa-caret-right"></i></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -129,6 +115,34 @@
                                                         {{ object.category.category_eng_name }}
                                                     {% endif %} </a></li>
                                             </ul>
+
+                                        </div>
+                                        <div class="pr-tags fl-wrap">
+                                            {% if object.is_sushi_set %}
+                                                <span>
+                                                {% if request.session.lang == "uk" %}
+                                                    Сушi
+                                                {% elif request.session.lang == "ru" %}
+                                                    Суши
+                                                {% else %}
+                                                    Sushi
+                                                {% endif %} : </span>
+                                                <ul>
+                                                    {% for sushi in object.slug|sushi_set_components %}
+                                                    <li>
+                                                        <a href="{{ sushi.sushi.get_absolute_url }}">
+                                                        {% if request.session.lang == "uk" %}
+                                                            {{ sushi.sushi.title }}
+                                                        {% elif request.session.lang == "ru" %}
+                                                            {{ sushi.sushi.title_ru }}
+                                                        {% else %}
+                                                            {{ sushi.sushi.title_eng }}
+                                                        {% endif %} </a>
+                                                    </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endif %}
+
                                         </div>
                                         <p>
                                         </p>
@@ -168,110 +182,6 @@
                                     class="fal fa-long-arrow-right"></i></a>
                         </div>
                         <!--  sidebar  -->
-                        {% comment %}         
-                        <div class="col-md-4">
-                            <!-- main-sidebar -->
-                            <div class="main-sidebar fixed-bar fl-wrap">
-                                <!-- main-sidebar-widget-->
-                                <div class="main-sidebar-widget fl-wrap">
-                                    <div class="search-widget fl-wrap">
-                                        <form action="#">
-                                            <input name="se" id="se" type="text" class="search-inpt-item"
-                                                placeholder="Search.." value="Search..." />
-                                            <button class="search-submit color-bg" id="submit_btn"><i
-                                                    class="fa fa-search"></i> </button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <!-- main-sidebar-widget end-->
-                                <!-- main-sidebar-widget-->
-                                <div class="main-sidebar-widget fl-wrap">
-                                    <h3>Price Filter</h3>
-                                    <div class="price-rage-wrap shop-rage-wrap fl-wrap">
-                                        <a href="#" class="srw_btn color-bg">Update</a>
-                                        <div class="price-rage-item fl-wrap">
-                                            <input type="text" class="shop-price" data-min="0" data-max="1000"
-                                                name="shop-price" data-step="10" value="$$">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- main-sidebar-widget end-->
-                                <!-- main-sidebar-widget-->
-                                <div class="main-sidebar-widget fl-wrap">
-                                    <h3>Popular Products</h3>
-                                    <div class="recent-post-widget">
-                                        <ul>
-                                            <li>
-                                                <div class="recent-post-img"><a href="#"><img src="images/all/1.jpg"
-                                                            alt=""></a></div>
-                                                <div class="recent-post-content">
-                                                    <h4><a href="#">Victoria's Filet Mignon</a></h4>
-                                                    <div class="recent-post-opt">
-                                                        <span class="post-date">Price: <strong>$25</strong></span>
-                                                        <a href="#" class="post-comments">0 Reviews</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="recent-post-img"><a href="#"><img src="images/all/1.jpg"
-                                                            alt=""></a></div>
-                                                <div class="recent-post-content">
-                                                    <h4><a href="#">Prime Cuts of Beef</a></h4>
-                                                    <div class="recent-post-opt">
-                                                        <span class="post-date">Price: <strong>$54</strong></span>
-                                                        <a href="#" class="post-comments">2 Reviews</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="recent-post-img"><a href="#"><img src="images/all/1.jpg"
-                                                            alt=""></a></div>
-                                                <div class="recent-post-content">
-                                                    <h4><a href="#">Meatball tagliatelle</a></h4>
-                                                    <div class="recent-post-opt">
-                                                        <span class="post-date">Price: <strong>$47</strong></span>
-                                                        <a href="#" class="post-comments">5 Reviews</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- main-sidebar-widget end-->
-                                <!-- main-sidebar-widget-->
-                                <div class="main-sidebar-widget fl-wrap">
-                                    <h3>Categories</h3>
-                                    <div class="category-widget">
-                                        <ul class="cat-item">
-                                            <li><a href="#">Seafood</a><span>12</span></li>
-                                            <li><a href="#">Drinks</a><span>21</span></li>
-                                            <li><a href="#">Desserts</a><span>34</span></li>
-                                            <li><a href="#">Starter</a><span>8</span></li>
-                                            <li><a href="#">Main Dishes</a><span>9</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- main-sidebar-widget end-->
-                                <!-- main-sidebar-widget-->
-                                <div class="main-sidebar-widget fl-wrap">
-                                    <h3>Resent tags </h3>
-                                    <div class="tags-widget">
-                                        <div class="tagcloud">
-                                            <a href="#">Lifystyle</a>
-                                            <a href="#">Travel</a>
-                                            <a href="#">Trip</a>
-                                            <a href="#">Outdoor</a>
-                                            <a href="#">Camping</a>
-                                            <a href="#">Photos</a>
-                                            <a href="#">Adventure</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- main-sidebar-widget end-->
-                            </div>
-                            <!-- main-sidebar end-->
-                        </div>
-                        {% endcomment %}
                         <!--  sidebar end-->
                     </div>
                     <div class="fl-wrap limit-box"></div>
