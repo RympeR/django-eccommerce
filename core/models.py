@@ -73,7 +73,7 @@ class Item(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     weight = models.IntegerField(verbose_name='Вес')
     slug = models.SlugField('Ярлык')
-    description = models.TextField('Описание')
+    description = models.TextField('Описание', null=True, blank=True)
     ru_description = models.TextField('Описание ru',null=True, blank=True)
     english_description = models.TextField('Описание eng',null=True, blank=True)
     image = models.ImageField('Изображение товара', blank=True, null=True)

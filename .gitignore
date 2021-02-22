@@ -1,4 +1,8 @@
 venv/
 staticfiles/*
+<<<<<<< HEAD
 db.sqlite3
 */__pycache__/*
+=======
+db.sqlite3
+>>>>>>> da8b4abbd18f82eef32f069e57fe51c05cb9cc84
