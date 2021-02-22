@@ -8,3 +8,115 @@ Not Found: /favicon.ico
 Not Found: /favicon.ico
 Not Found: /favicon.ico
 Not Found: /favicon.ico
+[2021-02-22 08:36:31 +0200] [10450] [INFO] Handling signal: term
+[2021-02-22 06:36:31 +0000] [10453] [INFO] Worker exiting (pid: 10453)
+[2021-02-22 06:36:31 +0000] [10454] [INFO] Worker exiting (pid: 10454)
+[2021-02-22 06:36:31 +0000] [10456] [INFO] Worker exiting (pid: 10456)
+[2021-02-22 08:36:32 +0200] [10450] [INFO] Shutting down: Master
+[2021-02-22 08:36:32 +0200] [10871] [INFO] Starting gunicorn 20.0.4
+[2021-02-22 08:36:32 +0200] [10871] [INFO] Listening at: http://127.0.0.1:8000 (10871)
+[2021-02-22 08:36:32 +0200] [10871] [INFO] Using worker: sync
+[2021-02-22 08:36:32 +0200] [10874] [INFO] Booting worker with pid: 10874
+[2021-02-22 08:36:32 +0200] [10875] [INFO] Booting worker with pid: 10875
+[2021-02-22 08:36:32 +0200] [10878] [INFO] Booting worker with pid: 10878
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+[2021-02-22 08:38:28 +0200] [10871] [INFO] Handling signal: term
+[2021-02-22 06:38:28 +0000] [10874] [INFO] Worker exiting (pid: 10874)
+[2021-02-22 06:38:28 +0000] [10875] [INFO] Worker exiting (pid: 10875)
+[2021-02-22 06:38:28 +0000] [10878] [INFO] Worker exiting (pid: 10878)
+[2021-02-22 08:38:28 +0200] [10871] [INFO] Shutting down: Master
+[2021-02-22 08:38:29 +0200] [10966] [INFO] Starting gunicorn 20.0.4
+[2021-02-22 08:38:29 +0200] [10966] [INFO] Listening at: http://127.0.0.1:8000 (10966)
+[2021-02-22 08:38:29 +0200] [10966] [INFO] Using worker: sync
+[2021-02-22 08:38:29 +0200] [10969] [INFO] Booting worker with pid: 10969
+[2021-02-22 08:38:29 +0200] [10971] [INFO] Booting worker with pid: 10971
+[2021-02-22 08:38:29 +0200] [10972] [INFO] Booting worker with pid: 10972
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 413, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: attempt to write a readonly database
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/admin/sites.py", line 410, in login
+    return LoginView.as_view(**defaults)(request)
+  File "/home/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/utils/decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/views/decorators/debug.py", line 89, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/utils/decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/utils/decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/utils/decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/auth/views.py", line 63, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/views/generic/base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/views/generic/edit.py", line 142, in post
+    return self.form_valid(form)
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/auth/views.py", line 92, in form_valid
+    auth_login(self.request, form.get_user())
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/auth/__init__.py", line 108, in login
+    request.session.cycle_key()
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/sessions/backends/base.py", line 344, in cycle_key
+    self.create()
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/sessions/backends/db.py", line 55, in create
+    self.save(must_create=True)
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/sessions/backends/db.py", line 87, in save
+    obj.save(force_insert=must_create, force_update=not must_create, using=using)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 754, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 792, in save_base
+    force_update, using, update_fields,
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 895, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 935, in _do_insert
+    using=using, raw=raw,
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/query.py", line 1249, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1397, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 413, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: attempt to write a readonly database
+Not Found: /favicon.ico
+Not Found: /favicon.ico
