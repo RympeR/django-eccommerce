@@ -115,7 +115,7 @@ class Item(models.Model):
 class SetItem(models.Model):
     sushi_set = models.ForeignKey('Item', verbose_name='Суши сет', null=True, blank=True, on_delete=models.CASCADE,related_name = 'source')
     sushi = models.ForeignKey('Item', verbose_name='Входящие суши', null=True, blank=True, on_delete=models.CASCADE,related_name = 'target')
-    sushi_amount = models.IntegerField(default=1, verbose_name='Количество')
+    sushi_amount = models.FloatField(default=1, verbose_name='Количество')
     
 class UserProfile(models.Model):
     user = models.OneToOneField(

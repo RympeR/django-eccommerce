@@ -223,7 +223,7 @@
                 <table class="total-table">
                   <tbody>
                     <tr>
-                      <th>{% if request.session.lang == "uk" %} Перед підсумок {% elif request.session.lang == "ru" %} Пред итог {% else %} Before the result: {% endif %}</th>
+                      <th>{% if request.session.lang == "uk" %} Перед підсумок: {% elif request.session.lang == "ru" %} Пред итог: {% else %} Before the result: {% endif %}</th>
                       <td>₴{{ request|total_order }}</td>
                     </tr>
                     <!-- <tr>

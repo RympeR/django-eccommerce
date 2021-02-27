@@ -51,7 +51,13 @@
                                 <!-- post -->
                                 <div class="post fl-wrap fw-post">
                                     <div class="shop-header-title fl-wrap">
-                                        <h2>{{ object.title }}</h2>
+                                       	{% if request.session.lang == "uk" %}
+					    <h2>{{ object.title }}</h2>
+					 {% elif request.session.lang == "ru" %}
+					    <h2>{{ object.title_ru }}</h2>
+					 {% else %}
+					    <h2>{{object.title_eng }}</h2>
+					 {% endif %}
                                         <div class="shop-header-title_opt">
                                             <ul>
                                                 <li>
