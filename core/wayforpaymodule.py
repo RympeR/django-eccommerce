@@ -44,9 +44,8 @@ class WayForPayAPI:
         request_form = r"""function pay(){
                 var payment = new Wayforpay();
                     payment.run({""" + f"""
-                        merchantAccount: \'{self.merchant_account}\',
+                        merchantAccount: '{self.merchant_account}',
                         merchantDomainName: '{self.merchant_domain}',
-                        merchantAuthType: 'SimpleSignature ',
                         merchantTransactionType: 'AUTO',
                         merchantTransactionSecureType: 'AUTO',
                         orderReference: '{data['orderReference']}',
@@ -62,6 +61,7 @@ class WayForPayAPI:
                         straightWidget: true
                     """ + r"""},
                     function (response) {
+                        console.log('dude');			
                         window.location.href='';		
                     } , 			
                     function (response) {
@@ -78,7 +78,31 @@ class WayForPayAPI:
         return request_form
 
     def generate_payment_form(self, data, return_url=""):
-        ...
+        self.merchantSignature = self.get_request_signature({**self.options, **data})
+        request_form = f"""
+            <form method="post" action="https://secure.wayforpay.com/pay" hidden accept-charset="utf-8">
+                <input name="merchantAccount" value="{self.merchant_account}">
+                <input name="merchantAuthType" value="SimpleSignature">
+                <input name="merchantDomainName" value="{self.merchant_domain}">
+                <input name="orderReference" value="{data['orderReference']}">
+                <input name="orderDate" value="{data['orderDate']}">
+                <input name="amount" value="{data["amount"]}">
+                <input name="currency" value="UAH">
+                <input name="orderTimeout" value="49000">"""
+        for item in data['productName']:
+            request_form += f'''<input name="productName[]" value="{item}">\n'''
+        for item in data['productPrice']:
+            request_form += f'''<input name="productPrice[]" value="{item}">\n'''
+        for item in data['productCount']:
+            request_form += f'''<input name="productCount[]" value="{item}">\n'''
+        request_form += f"""
+                <input name="defaultPaymentSystem" value="card">
+                <input name="merchantSignature" value="{self.merchantSignature}">
+                <input type="submit" id="subm" value="Test">
+            </form>
+            
+        """
+        return request_form
 
     def get_signature(self, options, keys):
         hash_str = list()
@@ -93,8 +117,10 @@ class WayForPayAPI:
                 hash_str.append(str(options[datakey]))
         hash_str = ';'.join(hash_str)
         print(hash_str)
-        print(hmac.new(self.merchant_key.encode(), hash_str.encode(), hashlib.md5).hexdigest())
-        return hmac.new(self.merchant_key.encode(), hash_str.encode(), hashlib.md5).hexdigest()
+        self.merchant_key_encoded = bytes(str.encode(self.merchant_key))
+        _hash = hmac.new(self.merchant_key_encoded, hash_str.encode("utf-8"), hashlib.md5).hexdigest()
+        print(_hash)
+        return _hash
 
     def get_request_signature(self, options):
         return self.get_signature(options, self.__signature__keys)

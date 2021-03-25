@@ -71,6 +71,9 @@
                 console.log(result, "location is bad");
             },
         })
+        if ($('#payment_option').val() == 'W'){
+            $(document).ready(()=>{$('#subm').click();});
+        }
     }
 
     function add_coupon() {
