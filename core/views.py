@@ -12,8 +12,9 @@ from django.core.mail import send_mail
 from django.http import HttpResponse
 from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
 from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, SessionOrder
-from django.conf import settings    
-
+from django.conf import settings
+from .wayforpaymodule import WayForPayAPI
+from datetime import date
 # stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
@@ -29,6 +30,7 @@ def switch_to_English_link(request):
 def switch_to_Russian_link(request):
     request.session['lang'] = 'ru'
     return HttpResponse('switched to russian')
+
 
 def switch_to_Ukraiunian_link(request):
     request.session['lang'] = 'uk'
@@ -66,7 +68,7 @@ def checkout(request):
 
 class ShopView(ListView):
     model = Item
-    paginate_by = 1
+    paginate_by = 20
     template_name = "shop.html"
 
 
@@ -247,7 +249,46 @@ class AddCouponView(View):
 class CheckoutView(View):
 
     def get(self, *args, **kwargs):
-        context = {}
+        self.session_order = SessionOrder.objects.get(
+                pk=self.request.session.get('session_id')
+            )
+        try:
+            order = Order.objects.get(
+                sessionOrder=self.session_order, ordered=False)
+        except ObjectDoesNotExist:
+            print('\n non existing \n')
+            messages.info(self.request, "You do not have an active order")
+            return redirect("core:shop")
+        order_items = order.items.all()
+        wpay = WayForPayAPI(
+            'tokyo_od_ua',
+            'ee4fa5fb211d33f79dbb5fe9a6a45de7522c2929',
+            'http://tokyo.od.ua',
+        )
+        names = []
+        cost = []
+        amount = []
+        for item in order_items:
+            names.append(item.item.title_ru)
+        for item in order_items:
+            cost.append(item.item.price)
+        for item in order_items:
+            amount.append(item.quantity)
+        today = date.today()
+        data = {
+            'orderReference': order.pk,
+            'orderDate': today.strftime("%Y-%m-%d"),
+            'amount': order.get_total(),
+            'productName': names,
+            'productPrice': cost,
+            'productCount': list(map(int, amount)),
+        }
+        print(data)
+        widget = wpay.generate_widget(data)
+        context = {
+            'widget': widget
+        }
+        
 
         return render(self.request, "checkout.html", context)
 
@@ -272,25 +313,85 @@ class CheckoutView(View):
         apartment_address = self.request.POST['apartment_address']
         payment_option = self.request.POST['payment_option']
         comment = self.request.POST['comment']
-        order.name=name
-        order.phone_number=phone_order_number
-        order.person_amount=person_amount
-        order.comment=comment
-        order.need_learning_branch=bool(need_learning_branch)
-        order.dont_recall=bool(dont_recall)
-        
+        order.name = name
+        order.phone_number = phone_order_number
+        order.person_amount = person_amount
+        order.comment = comment
+        order.need_learning_branch = bool(need_learning_branch)
+        order.dont_recall = bool(dont_recall)
+
         shipping_address = Address(
-                            sessionOrder=self.session_order,
-                            street_address=street_address,
-                            apartment_address=apartment_address
-                        )
+            sessionOrder=self.session_order,
+            street_address=street_address,
+            apartment_address=apartment_address
+        )
         shipping_address.save()
 
         order.address = shipping_address
         order.save()
 
         if payment_option == 'W':
-            return redirect('core:payment', payment_option='wayforpay')
+            order_items = order.items.all()
+            # order_items.update(ordered=True)
+            # for item in order_items:
+            #     item.save()
+            payment = Payment(
+                sessionOrder=self.session_order,
+                amount=order.get_total(),
+                paytype='H'
+            )
+            payment.save()
+            order.payment = payment
+            # order.ordered = True
+            order.ref_code = create_ref_code()
+            order.save()
+            message = f'''
+                Имя: {name}
+                Номер телефона: {phone_order_number}
+                Кол-во персон: {person_amount}
+                Учебные палочки: {'Да' if need_learning_branch == 1 else 'Нет'}
+                Не перезванивать: {'Да' if dont_recall == 1 else 'Нет'}
+                Адрес улицы: {street_address}
+                Адрес дома: {apartment_address}
+                Тип оплаты: {'На месте' if payment_option=='H' else 'wayforpay на сайте'}
+                Комментарий: {comment}
+            '''
+            # send_mail(
+            #     f'Заказ номер {self.request.session.get("session_id")}',
+            #     message,
+            #     'georg.rashkov@gmail.com',
+            #     ['georg.rashkov@gmail.com'],
+            #     fail_silently=False,
+            # )
+            wpay = WayForPayAPI(
+                'tokyo_od_ua',
+                'ee4fa5fb211d33f79dbb5fe9a6a45de7522c2929',
+                'http://tokyo.od.ua/',
+            )
+            names = []
+            cost = []
+            amount = []
+            for item in order_items:
+                names.append(item.item.title_ru)
+            for item in order_items:
+                cost.append(item.item.price)
+            for item in order_items:
+                amount.append(item.quantity)
+            data = {
+                'orderReference': order.pk,
+                'totalCost': order.get_total(),
+                'productName': names,
+                'productPrice': list(map(int, cost)),
+                'productCount': list(map(int, amount)),
+            }
+            print(data)
+            widget = wpay.generate_widget(data)
+            context = {
+                'widget': widget
+            }
+            print(widget)
+            return render(self.request, "wayforpay.html", context=context)
+
         elif payment_option == 'H':
             order_items = order.items.all()
             order_items.update(ordered=True)
@@ -331,13 +432,14 @@ class CheckoutView(View):
             messages.warning(
                 self.request, "Invalid payment option selected")
             return redirect('core:checkout')
-        
+
         return render(self.request, "checkout.html")
 
 
 def deliveryAndPayPage(request):
     return render(request, 'delivery.html')
-    
+
+
 class RequestRefundView(View):
     def get(self, *args, **kwargs):
         form = RefundForm()
@@ -380,7 +482,7 @@ class PaymentView(View):
             context = {
                 'order': order,
                 'DISPLAY_COUPON_FORM': False,
-                'STRIPE_PUBLIC_KEY' : settings.STRIPE_PUBLIC_KEY
+                'STRIPE_PUBLIC_KEY': settings.STRIPE_PUBLIC_KEY
             }
             userprofile = self.request.user.userprofile
             if userprofile.one_click_purchasing:

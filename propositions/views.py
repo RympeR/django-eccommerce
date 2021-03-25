@@ -5,7 +5,7 @@ from .models import Proposition
 
 class PropositionsView(ListView):
     model = Proposition
-    paginate_by=1
+    paginate_by=20
     template_name="blog.html"
 
 class PropositionsViewDetailView(DetailView):

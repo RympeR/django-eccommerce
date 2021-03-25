@@ -11175,3 +11175,397 @@ Not Found: /.env
 Forbidden (CSRF cookie not set.): /
 Not Found: /.env
 Forbidden (CSRF cookie not set.): /
+[2021-03-25 23:49:05 +0200] [1364] [INFO] Handling signal: term
+[2021-03-25 21:49:05 +0000] [1367] [INFO] Worker exiting (pid: 1367)
+[2021-03-25 21:49:05 +0000] [1368] [INFO] Worker exiting (pid: 1368)
+[2021-03-25 21:49:05 +0000] [1370] [INFO] Worker exiting (pid: 1370)
+[2021-03-25 23:49:05 +0200] [1364] [INFO] Shutting down: Master
+[2021-03-25 23:49:06 +0200] [11574] [INFO] Starting gunicorn 20.0.4
+[2021-03-25 23:49:06 +0200] [11574] [INFO] Listening at: http://127.0.0.1:8000 (11574)
+[2021-03-25 23:49:06 +0200] [11574] [INFO] Using worker: sync
+[2021-03-25 23:49:06 +0200] [11577] [INFO] Booting worker with pid: 11577
+[2021-03-25 23:49:06 +0200] [11579] [INFO] Booting worker with pid: 11579
+[2021-03-25 23:49:06 +0200] [11580] [INFO] Booting worker with pid: 11580
+Not Found: /checkout/images/bg/dec/section-bg.png
+Not Found: /checkout/images/bg/dec/section-bg.png
+Not Found: /checkout/images/bg/dec/section-bg.png
+[2021-03-25 23:53:10 +0200] [11574] [INFO] Handling signal: term
+[2021-03-25 21:53:10 +0000] [11580] [INFO] Worker exiting (pid: 11580)
+{'orderReference': 127, 'orderDate': '2021-03-25', 'amount': 310.0, 'productName': ['Ямато', 'Яру'], 'productPrice': [160.0, 150.0], 'productCount': [1, 1]}
+tokyo_od_ua;http://tokyo.od.ua;127;2021-03-25;310.0;Ямато;Яру;1;1;160.0;150.0
+85d0c0eae55fd61eeb51000138e4358f
+{'orderReference': 135, 'orderDate': '2021-03-25', 'amount': 165.0, 'productName': ['Уми'], 'productPrice': [165.0], 'productCount': [1]}
+tokyo_od_ua;http://tokyo.od.ua;135;2021-03-25;165.0;Уми;1;165.0
+e43cccc37e29c3e95d7a4155611b1ad5
+[2021-03-25 21:53:10 +0000] [11577] [INFO] Worker exiting (pid: 11577)
+{'orderReference': 127, 'orderDate': '2021-03-25', 'amount': 310.0, 'productName': ['Ямато', 'Яру'], 'productPrice': [160.0, 150.0], 'productCount': [1, 1]}
+tokyo_od_ua;http://tokyo.od.ua;127;2021-03-25;310.0;Ямато;Яру;1;1;160.0;150.0
+85d0c0eae55fd61eeb51000138e4358f
+[2021-03-25 21:53:10 +0000] [11579] [INFO] Worker exiting (pid: 11579)
+[2021-03-25 23:53:10 +0200] [11574] [INFO] Shutting down: Master
+[2021-03-25 23:53:11 +0200] [11970] [INFO] Starting gunicorn 20.0.4
+[2021-03-25 23:53:11 +0200] [11970] [INFO] Listening at: http://127.0.0.1:8000 (11970)
+[2021-03-25 23:53:11 +0200] [11970] [INFO] Using worker: sync
+[2021-03-25 23:53:11 +0200] [11973] [INFO] Booting worker with pid: 11973
+[2021-03-25 23:53:11 +0200] [11974] [INFO] Booting worker with pid: 11974
+[2021-03-25 23:53:11 +0200] [11975] [INFO] Booting worker with pid: 11975
+Not Found: /checkout/images/bg/dec/section-bg.png
+Not Found: /checkout/images/bg/dec/section-bg.png
+[2021-03-25 23:53:42 +0200] [11970] [INFO] Handling signal: term
+[2021-03-25 21:53:42 +0000] [11973] [INFO] Worker exiting (pid: 11973)
+{'orderReference': 135, 'orderDate': '2021-03-25', 'amount': 165.0, 'productName': ['Уми'], 'productPrice': [165.0], 'productCount': [1]}
+tokyo_od_ua;http://tokyo.od.ua;135;2021-03-25;165.0;Уми;1;165.0
+e43cccc37e29c3e95d7a4155611b1ad5
+{'orderReference': 135, 'orderDate': '2021-03-25', 'amount': 165.0, 'productName': ['Уми'], 'productPrice': [165.0], 'productCount': [1]}
+tokyo_od_ua;http://tokyo.od.ua;135;2021-03-25;165.0;Уми;1;165.0
+e43cccc37e29c3e95d7a4155611b1ad5
+[2021-03-25 21:53:42 +0000] [11974] [INFO] Worker exiting (pid: 11974)
+[2021-03-25 21:53:42 +0000] [11975] [INFO] Worker exiting (pid: 11975)
+[2021-03-25 23:53:42 +0200] [11970] [INFO] Shutting down: Master
+[2021-03-25 23:53:43 +0200] [11996] [INFO] Starting gunicorn 20.0.4
+[2021-03-25 23:53:43 +0200] [11996] [INFO] Listening at: http://127.0.0.1:8000 (11996)
+[2021-03-25 23:53:43 +0200] [11996] [INFO] Using worker: sync
+[2021-03-25 23:53:43 +0200] [11999] [INFO] Booting worker with pid: 11999
+[2021-03-25 23:53:43 +0200] [12000] [INFO] Booting worker with pid: 12000
+[2021-03-25 23:53:43 +0200] [12001] [INFO] Booting worker with pid: 12001
+Not Found: /checkout/images/bg/dec/section-bg.png
+Not Found: /checkout/images/bg/dec/section-bg.png
+Not Found: /checkout/images/bg/dec/section-bg.png
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 413, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: attempt to write a readonly database
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/venv/lib/python3.6/site-packages/django/utils/deprecation.py", line 116, in __call__
+    response = self.process_response(request, response)
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/sessions/middleware.py", line 63, in process_response
+    request.session.save()
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/sessions/backends/db.py", line 81, in save
+    return self.create()
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/sessions/backends/db.py", line 55, in create
+    self.save(must_create=True)
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/sessions/backends/db.py", line 87, in save
+    obj.save(force_insert=must_create, force_update=not must_create, using=using)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 754, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 792, in save_base
+    force_update, using, update_fields,
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 895, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 935, in _do_insert
+    using=using, raw=raw,
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/query.py", line 1249, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1397, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 413, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: attempt to write a readonly database
+Not Found: /config/getuser
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 413, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: attempt to write a readonly database
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/venv/lib/python3.6/site-packages/django/utils/deprecation.py", line 116, in __call__
+    response = self.process_response(request, response)
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/sessions/middleware.py", line 63, in process_response
+    request.session.save()
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/sessions/backends/db.py", line 81, in save
+    return self.create()
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/sessions/backends/db.py", line 55, in create
+    self.save(must_create=True)
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/sessions/backends/db.py", line 87, in save
+    obj.save(force_insert=must_create, force_update=not must_create, using=using)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 754, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 792, in save_base
+    force_update, using, update_fields,
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 895, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 935, in _do_insert
+    using=using, raw=raw,
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/query.py", line 1249, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1397, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 413, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: attempt to write a readonly database
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 413, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: attempt to write a readonly database
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/venv/lib/python3.6/site-packages/django/utils/deprecation.py", line 116, in __call__
+    response = self.process_response(request, response)
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/sessions/middleware.py", line 63, in process_response
+    request.session.save()
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/sessions/backends/db.py", line 81, in save
+    return self.create()
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/sessions/backends/db.py", line 55, in create
+    self.save(must_create=True)
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/sessions/backends/db.py", line 87, in save
+    obj.save(force_insert=must_create, force_update=not must_create, using=using)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 754, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 792, in save_base
+    force_update, using, update_fields,
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 895, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 935, in _do_insert
+    using=using, raw=raw,
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/query.py", line 1249, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1397, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 413, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: attempt to write a readonly database
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 413, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: attempt to write a readonly database
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/venv/lib/python3.6/site-packages/django/utils/deprecation.py", line 116, in __call__
+    response = self.process_response(request, response)
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/sessions/middleware.py", line 63, in process_response
+    request.session.save()
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/sessions/backends/db.py", line 81, in save
+    return self.create()
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/sessions/backends/db.py", line 55, in create
+    self.save(must_create=True)
+  File "/home/venv/lib/python3.6/site-packages/django/contrib/sessions/backends/db.py", line 87, in save
+    obj.save(force_insert=must_create, force_update=not must_create, using=using)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 754, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 792, in save_base
+    force_update, using, update_fields,
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 895, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 935, in _do_insert
+    using=using, raw=raw,
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/query.py", line 1249, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1397, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 413, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: attempt to write a readonly database
+Not Found: /favicon.ico
+Not Found: /robots.txt
+Internal Server Error: /add-to-cart/Ikura_maki
+Traceback (most recent call last):
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/query.py", line 573, in get_or_create
+    return self.get(**kwargs), False
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/query.py", line 431, in get
+    self.model._meta.object_name
+core.models.OrderItem.DoesNotExist: OrderItem matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 413, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: attempt to write a readonly database
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/django-eccommerce/core/views.py", line 136, in add_to_cart
+    item=item
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/query.py", line 576, in get_or_create
+    return self._create_object_from_params(kwargs, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/query.py", line 610, in _create_object_from_params
+    obj = self.create(**params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/query.py", line 447, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 754, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 792, in save_base
+    force_update, using, update_fields,
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 895, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 935, in _do_insert
+    using=using, raw=raw,
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/query.py", line 1249, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1397, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 413, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: attempt to write a readonly database
+Not Found: /favicon.ico
+Internal Server Error: /add-to-cart/Ikura_maki
+Traceback (most recent call last):
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/query.py", line 573, in get_or_create
+    return self.get(**kwargs), False
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/query.py", line 431, in get
+    self.model._meta.object_name
+core.models.OrderItem.DoesNotExist: OrderItem matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 413, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: attempt to write a readonly database
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/venv/lib/python3.6/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/venv/lib/python3.6/site-packages/django/core/handlers/base.py", line 179, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/django-eccommerce/core/views.py", line 136, in add_to_cart
+    item=item
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/query.py", line 576, in get_or_create
+    return self._create_object_from_params(kwargs, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/query.py", line 610, in _create_object_from_params
+    obj = self.create(**params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/query.py", line 447, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 754, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 792, in save_base
+    force_update, using, update_fields,
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 895, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/base.py", line 935, in _do_insert
+    using=using, raw=raw,
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/query.py", line 1249, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/venv/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1397, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/venv/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 413, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: attempt to write a readonly database

@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+{% block main_body %}
+{% load static %}
+        <!-- lodaer  -->
+        {% include "loader.html" %}
+        <!-- loader end  -->
+        <!-- main start  -->
+        <div id="main">
+            <!-- header  -->
+            {% include "header.html" %}
+            <!--header end -->	
+            <!-- wrapper  -->	
+            <div id="wrapper">
+                <!-- content  -->	
+                <div class="content">
+                    <!--  section  -->  
+                    {{ widget }}
+                    <!--  section  end-->  
+                    <div class="brush-dec2 brush-dec_bottom"></div>
+                </div>
+                <!-- content end  -->
+                <!-- footer -->
+                <div class="height-emulator fl-wrap"></div>
+                
+                {% include "footer.html" %}
+                <!-- footer end-->                               
+            </div>
+            <!-- wrapper end -->
+            {% include "reservation.html" %}
+            <!-- cursor-->
+            <div class="element">
+                <div class="element-item"></div>
+            </div>
+            <!-- cursor end-->                                                    
+        </div>
+        <!-- Main end -->
+
+        {% endblock main_body %}
+          
+        
