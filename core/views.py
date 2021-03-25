@@ -14,7 +14,7 @@ from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
 from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, SessionOrder
 from django.conf import settings
 from .wayforpaymodule import WayForPayAPI
-
+from datetime import date
 # stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
@@ -274,11 +274,13 @@ class CheckoutView(View):
             cost.append(item.item.price)
         for item in order_items:
             amount.append(item.quantity)
+        today = date.today()
         data = {
             'orderReference': order.pk,
-            'totalCost': order.get_total(),
+            'orderDate': today.strftime("%Y-%m-%d"),
+            'amount': order.get_total(),
             'productName': names,
-            'productPrice': list(map(int, cost)),
+            'productPrice': cost,
             'productCount': list(map(int, amount)),
         }
         print(data)

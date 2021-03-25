@@ -12,6 +12,7 @@ class WayForPayAPI:
     __signature__keys = [
         'merchantAccount',
         'merchantDomainName',
+        'orderReference',
         'orderDate',
         'amount',
         'currency',
@@ -36,9 +37,10 @@ class WayForPayAPI:
             'merchantDomainName':self.merchant_domain,
             'merchantTransactionSecureType':'AUTO',
         }
-        self.merchantSignature = self.get_request_signature(self.options)
+        
 
     def generate_widget(self, data, return_url=""):
+        self.merchantSignature = self.get_request_signature({**self.options, **data})
         request_form = r"""function pay(){
                 var payment = new Wayforpay();
                     payment.run({""" + f"""
@@ -48,8 +50,8 @@ class WayForPayAPI:
                         merchantTransactionType: 'AUTO',
                         merchantTransactionSecureType: 'AUTO',
                         orderReference: '{data['orderReference']}',
-                        orderDate: '{today.strftime("%Y-%m-%d")}',
-                        amount: '{data["totalCost"]}',
+                        orderDate: '{data['orderDate']}',
+                        amount: '{data["amount"]}',
                         authorizationType: 'SimpleSignature',
                         currency: 'UAH',
                         productName:   {data['productName']} ,
@@ -86,11 +88,12 @@ class WayForPayAPI:
 
             if isinstance(options[datakey], list):
                 for _ in options[datakey]:
-                    hash_str.append(_)
+                    hash_str.append(str(_))
             else:
-                hash_str.append(options[datakey])
+                hash_str.append(str(options[datakey]))
         hash_str = ';'.join(hash_str)
         print(hash_str)
+        print(hmac.new(self.merchant_key.encode(), hash_str.encode(), hashlib.md5).hexdigest())
         return hmac.new(self.merchant_key.encode(), hash_str.encode(), hashlib.md5).hexdigest()
 
     def get_request_signature(self, options):
