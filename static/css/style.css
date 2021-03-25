@@ -31,6 +31,17 @@ html {
 	overflow-y: auto;
  
 }
+
+.cust-paginator{
+	width: 20%;
+}
+
+@media only screen and (max-width: 450px) {
+	.cust-paginator{
+		width: 32%;
+	}
+}
+
 body {
 	margin: 0;
 	padding: 0;

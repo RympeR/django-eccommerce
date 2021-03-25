@@ -24,6 +24,7 @@
 </head>
 
 <body>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
     {% block main_body %} {% block content %} {% endblock content %} {% endblock main_body %} {% block scripts %}
     {% endblock scripts %}
     <script src="{% static 'js/jquery.min.js' %}"></script>
@@ -63,7 +64,8 @@
                 comment: $('#comments').val(),
             },
             success: function (result) {
-                window.location.href = '{% url "core:shop" %}'
+                console.log(result, "sended");
+                // window.location.href = '{% url "core:shop" %}'
             },
             error: function (result) {
                 console.log(result, "location is bad");

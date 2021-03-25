@@ -1,9 +1,6 @@
 {% extends "main.html" %} {% block main_body %} {% load static %} {% load cart_template_tags %}
 <!-- lodaer  -->
 {% include "loader.html" %}
-
-{% load js %}
-
 <!-- loader end  -->
 <!-- main start  -->
 <div id="main">
@@ -147,15 +144,7 @@
                         </div>
                     </div>
                     <!-- /CHECKOUT TABLE -->
-
-                <script>
-                    {{ widget|safe }}
-                </script>
-                <script>
-                    $(document).ready(()=>{pay();});
-                </script>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                <script id='widget-wfp-script' language='javascript' type='text/javascript' src='https://secure.wayforpay.com/server/pay-widget.js'></script>
+                </div>
                 <div class="section-bg">
                     <div class="bg" data-bg="images/bg/dec/section-bg.png"></div>
                 </div>
