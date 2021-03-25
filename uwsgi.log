@@ -11135,3 +11135,43 @@ Not Found: /config/getuser
 [2021-03-25 15:41:17 +0200] [1367] [INFO] Booting worker with pid: 1367
 [2021-03-25 15:41:17 +0200] [1368] [INFO] Booting worker with pid: 1368
 [2021-03-25 15:41:17 +0200] [1370] [INFO] Booting worker with pid: 1370
+Not Found: /_ignition/execute-solution
+Not Found: /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /login
+Not Found: /jenkins/login
+Not Found: /manager/html
+Not Found: /wp-login.php
+Not Found: /boaform/admin/formLogin
+Not Found: /robots.txt
+Not Found: /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /solr/admin/info/system
+Not Found: /console/
+Not Found: /index.php
+Not Found: /wp-content/plugins/wp-file-manager/readme.txt
+Not Found: /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /api/jsonws/invoke
+Not Found: /Autodiscover/Autodiscover.xml
+Not Found: /_ignition/execute-solution
+Not Found: /_ignition/execute-solution
+Not Found: /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /login
+Not Found: /jenkins/login
+Not Found: /manager/html
+Not Found: /wp-login.php
+/home/venv/lib/python3.6/site-packages/django/views/generic/list.py:88: UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: <class 'core.models.Item'> QuerySet.
+  allow_empty_first_page=allow_empty_first_page, **kwargs)
+Not Found: /robots.txt
+/home/venv/lib/python3.6/site-packages/django/views/generic/list.py:88: UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: <class 'core.models.Item'> QuerySet.
+  allow_empty_first_page=allow_empty_first_page, **kwargs)
+Not Found: /boaform/admin/formLogin
+/home/venv/lib/python3.6/site-packages/django/views/generic/list.py:88: UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: <class 'core.models.Item'> QuerySet.
+  allow_empty_first_page=allow_empty_first_page, **kwargs)
+Not Found: /item/images/bg/dec/section-bg.png
+Not Found: /shop/images/bg/dec/section-bg.png
+Not Found: /shop/images/bg/dec/section-bg.png
+Not Found: /HNAP1/
+Not Found: /shop/images/bg/dec/section-bg.png
+Not Found: /.env
+Forbidden (CSRF cookie not set.): /
+Not Found: /.env
+Forbidden (CSRF cookie not set.): /
