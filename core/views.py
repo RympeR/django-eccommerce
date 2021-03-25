@@ -263,7 +263,7 @@ class CheckoutView(View):
         wpay = WayForPayAPI(
             'tokyo_od_ua',
             'ee4fa5fb211d33f79dbb5fe9a6a45de7522c2929',
-            'http://tokyo.od.ua',
+            'tokyo.od.ua',
         )
         names = []
         cost = []
@@ -274,20 +274,24 @@ class CheckoutView(View):
             cost.append(item.item.price)
         for item in order_items:
             amount.append(item.quantity)
-        today = date.today()
+        import calendar
+        import time
+        ts = calendar.timegm(time.gmtime())
         data = {
-            'orderReference': order.pk,
-            'orderDate': today.strftime("%Y-%m-%d"),
+            'orderReference': self.session_order.pk,
+            'orderDate': ts,
             'amount': order.get_total(),
+            'currency': 'UAH',
             'productName': names,
             'productPrice': cost,
             'productCount': list(map(int, amount)),
         }
         print(data)
-        widget = wpay.generate_widget(data)
+        widget = wpay.generate_payment_form(data)
         context = {
             'widget': widget
         }
+        print(widget)
         
 
         return render(self.request, "checkout.html", context)
@@ -332,9 +336,9 @@ class CheckoutView(View):
 
         if payment_option == 'W':
             order_items = order.items.all()
-            # order_items.update(ordered=True)
-            # for item in order_items:
-            #     item.save()
+            order_items.update(ordered=True)
+            for item in order_items:
+                item.save()
             payment = Payment(
                 sessionOrder=self.session_order,
                 amount=order.get_total(),
@@ -356,41 +360,16 @@ class CheckoutView(View):
                 Тип оплаты: {'На месте' if payment_option=='H' else 'wayforpay на сайте'}
                 Комментарий: {comment}
             '''
-            # send_mail(
-            #     f'Заказ номер {self.request.session.get("session_id")}',
-            #     message,
-            #     'georg.rashkov@gmail.com',
-            #     ['georg.rashkov@gmail.com'],
-            #     fail_silently=False,
-            # )
-            wpay = WayForPayAPI(
-                'tokyo_od_ua',
-                'ee4fa5fb211d33f79dbb5fe9a6a45de7522c2929',
-                'http://tokyo.od.ua/',
+
+            send_mail(
+                f'Заказ номер {self.request.session.get("session_id")}',
+                message,
+                'georg.rashkov@gmail.com',
+                ['georg.rashkov@gmail.com'],
+                fail_silently=False,
             )
-            names = []
-            cost = []
-            amount = []
-            for item in order_items:
-                names.append(item.item.title_ru)
-            for item in order_items:
-                cost.append(item.item.price)
-            for item in order_items:
-                amount.append(item.quantity)
-            data = {
-                'orderReference': order.pk,
-                'totalCost': order.get_total(),
-                'productName': names,
-                'productPrice': list(map(int, cost)),
-                'productCount': list(map(int, amount)),
-            }
-            print(data)
-            widget = wpay.generate_widget(data)
-            context = {
-                'widget': widget
-            }
-            print(widget)
-            return render(self.request, "wayforpay.html", context=context)
+            del self.request.session['session_id']
+            return redirect('core:shop')
 
         elif payment_option == 'H':
             order_items = order.items.all()

@@ -123,6 +123,32 @@
                                             </ul>
 
                                         </div>
+                                    <div class="blog-text fl-wrap">
+                                        <div class="pr-tags fl-wrap">
+                                            <span>{% if request.session.lang == "uk" %}
+                                                Склад
+                                            {% elif request.session.lang == "ru" %}
+                                                Состав
+                                            {% else %}
+                                                Components
+                                            {% endif %} : </span>
+                                                <ul>
+                                                    {% for tag in object.item_tag.all %}
+                                                    <li>
+                                                        <a href="#">
+                                                        {% if request.session.lang == "uk" %}
+                                                            {{ tag.item_tag_name }}
+                                                        {% elif request.session.lang == "ru" %}
+                                                            {{ tag.item_tag_ru_name }}
+                                                        {% else %}
+                                                            {{ tag.item_tag_eng_name }}
+                                                        {% endif %}
+                                                        </a>
+                                                    </li>
+                                                    {% endfor %}
+                                                </ul>
+
+                                        </div>
                                         <div class="pr-tags fl-wrap">
                                             {% if object.is_sushi_set %}
                                                 <span>
@@ -144,8 +170,8 @@
                                                         {% else %}
                                                             {{ sushi.sushi.title_eng }}
                                                         {% endif %} : 
-							{{ sushi.sushi_amount }}
-							</a>
+                                                            {{ sushi.sushi_amount }}
+                                                        </a>
                                                     </li>
                                                     {% endfor %}
                                                 </ul>
@@ -194,9 +220,7 @@
                     </div>
                     <div class="fl-wrap limit-box"></div>
                 </div>
-                <div class="section-bg">
-                    <div class="bg" data-bg="images/bg/dec/section-bg.png"></div>
-                </div>
+                
             </section>
             <!--  section end  -->
             <div class="brush-dec2 brush-dec_bottom"></div>
