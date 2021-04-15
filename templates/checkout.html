@@ -86,8 +86,8 @@
                                             <div class="col-12 col-sm-6" style="margin-top: 20px;">
                                                 <label class='mr' style="float: left;margin-bottom: 10px;margin-top: 20px;" for="payment_option"><h4 class="cart-title">{% if request.session.lang == "uk" %} Оберіть засіб сплати {% elif request.session.lang == "ru" %} Выберите способ оплаты {% else %} Choose payment way {% endif %}</h4></label>
                                                 <select name="payment_option" class='nice-select chosen-select no-search-select' id="payment_option">
-                                                    <option value="W">{% if request.session.lang == "uk" %} На сайті {% elif request.session.lang == "ru" %} На сайте {% else %} On website {% endif %} WayForPay</option>
-                                                    <option value="H">{% if request.session.lang == "uk" %} Оплата готівкою кур’єру {% elif request.session.lang == "ru" %} Оплата наличкой курьеру {% else %} Cash payment for courier {% endif %}</option>
+                                                    <option value="W">{% if request.session.lang == "uk" %} Оплата банківською картою {% elif request.session.lang == "ru" %} Оплата банковской картой {% else %} Payemnt with card {% endif %} WayForPay</option>
+                                                    <option value="H">{% if request.session.lang == "uk" %} Оплата готівкою {% elif request.session.lang == "ru" %} Оплата наличкой {% else %} Cash payment {% endif %}</option>
                                                 </select>
                                             </div>
                                             <!-- <div class="col-sm-12">
@@ -113,8 +113,8 @@
                       </div>
                     </div>-->
                                             <div class="clearfix"></div>
-                                            <button onclick="send_order_data()" class="btn color-bg float-left ml-11">{% if request.session.lang == "uk" %} Сплатити{% elif request.session.lang == "ru" %}Оплатить
-                                                {% else %} Confirm and Pay {% endif %}<i class="fal fa-long-arrow-right"></i></button>
+                                            <submit onclick="send_order_data()" class="btn color-bg float-left ml-11">{% if request.session.lang == "uk" %} Сплатити{% elif request.session.lang == "ru" %}Оплатить
+                                                {% else %} Confirm and Pay {% endif %}<i class="fal fa-long-arrow-right"></i></submit>
                                     </fieldset>
                                 </form>
                             </div>

@@ -47,33 +47,41 @@
     });
 
     function send_order_data() {
-
-        $.ajax({
-            url: '{% url "core:checkout" %}',
-            type: 'post',
-            data: {
-                name: $('#name').val(),
-                phone_order_number: $('#phone').val(),
-                person_amount: $('#person_amount').val(),
-                need_learning_branch: $('#need_learning_branch').attr("checked") ? 1 : 0,
-                dont_recall: $('#dont_recall').attr("checked") ? 1 : 0,
-                street_address: $('#street_address').val(),
-                apartment_address: $('#apartment_address').val(),
-                payment_option: $('#payment_option').val(),
-                csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
-                comment: $('#comments').val(),
-            },
-            success: function (result) {
-                console.log(result, "sended");
-                // window.location.href = '{% url "core:shop" %}'
-            },
-            error: function (result) {
-                console.log(result, "location is bad");
-            },
-        })
-        if ($('#payment_option').val() == 'W'){
-            $(document).ready(()=>{$('#subm').click();});
+        if ($('#name').val() == '' || $('#person_amount').val() == '' ||  $('#phone').val() == '' ) {
+            console.log($('#name').val())
+            console.log($('#person_amount').val())
+            console.log($('#phone').val())
+            console.log($('#phone').val())
+            alert('Заполните поля')
+        } else{
+            $.ajax({
+                url: '{% url "core:checkout" %}',
+                type: 'post',
+                data: {
+                    name: $('#name').val(),
+                    phone_order_number: $('#phone').val(),
+                    person_amount: $('#person_amount').val(),
+                    need_learning_branch: $('#need_learning_branch').attr("checked") ? 1 : 0,
+                    dont_recall: $('#dont_recall').attr("checked") ? 1 : 0,
+                    street_address: $('#street_address').val(),
+                    apartment_address: $('#apartment_address').val(),
+                    payment_option: $('#payment_option').val(),
+                    csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
+                    comment: $('#comments').val(),
+                },
+                success: function (result) {
+                    console.log(result, "sended");
+                    // window.location.href = '{% url "core:shop" %}'
+                },
+                error: function (result) {
+                    console.log(result, "location is bad");
+                },
+            })
+            if ($('#payment_option').val() == 'W'){
+                $(document).ready(()=>{$('#subm').click();});
+            }
         }
+        
     }
 
     function add_coupon() {

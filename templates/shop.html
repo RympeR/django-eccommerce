@@ -66,11 +66,11 @@
 									{% if request.session.lang == "uk" %}
 									{% for item in items %}
 									<div class="gallery-item {{ item.category.label }}">
-										<div class="grid-item-holder hov_zoom">
-											<a href="{{ item.image.url }}" class="box-media-zoom popup-image"><i
-													class="fal fa-search"></i></a>
-											<img src="{{ item.image.url }}" alt="" />
-										</div>
+										<a href="{{ item.get_absolute_url }}">
+											<div class="grid-item-holder hov_zoom">
+												<img src="{{ item.image.url }}" alt="" />
+											</div>
+										</a>
 										<div class="grid-item-details">
 											<a href="{{ item.get_absolute_url }}">
 												<h3>{{ item.title }}</h3>
@@ -78,9 +78,9 @@
 											<p>{{ item.description }}</p>
 											<div class="grid-item_price">
 												{% if item.discount_price %}
-												<span>₴{{ item.discount_price }}</span>
+												<span><span style="font-family: Poppins, sans-serif;">₴</span>{ item.discount_price }}</span>
 												{% else %}
-												<span>₴{{ item.price }}</span>
+												<span><span style="font-family: Poppins, sans-serif;">₴</span>{{ item.price }}</span>
 												{% endif %}
 												<a href="{{ item.get_add_to_cart_url }}" class="add_cart">Замовити</a>
 											</div>
@@ -90,11 +90,11 @@
 									{% elif request.session.lang == "ru" %}
 									{% for item in items %}
 									<div class="gallery-item {{ item.category.label }}">
-										<div class="grid-item-holder hov_zoom">
-											<a href="{{ item.image.url }}" class="box-media-zoom popup-image"><i
-													class="fal fa-search"></i></a>
-											<img src="{{ item.image.url }}" alt="" />
-										</div>
+										<a href="{{ item.get_absolute_url }}">
+											<div class="grid-item-holder hov_zoom">
+												<img src="{{ item.image.url }}" alt="" />
+											</div>
+										</a>
 										<div class="grid-item-details">
 											<a href="{{ item.get_absolute_url }}">
 												<h3>{{ item.title_ru }}</h3>
@@ -102,9 +102,9 @@
 											<p>{{ item.ru_description }}</p>
 											<div class="grid-item_price">
 												{% if item.discount_price %}
-												<span>₴{{ item.discount_price }}</span>
+												<span><span style="font-family: Poppins, sans-serif;">₴</span>{{ item.discount_price }}</span>
 												{% else %}
-												<span>₴{{ item.price }}</span>
+												<span><span style="font-family: Poppins, sans-serif;">₴</span>{{ item.price }}</span>
 												{% endif %}
 												<a href="{{ item.get_add_to_cart_url }}" class="add_cart">Заказать</a>
 											</div>
@@ -114,11 +114,11 @@
 									{% else %}
 									{% for item in items %}
 									<div class="gallery-item {{ item.category.label }}">
-										<div class="grid-item-holder hov_zoom">
-											<a href="{{ item.image.url }}" class="box-media-zoom popup-image"><i
-													class="fal fa-search"></i></a>
-											<img src="{{ item.image.url }}" alt="" />
-										</div>
+										<a href="{{ item.get_absolute_url }}">
+											<div class="grid-item-holder hov_zoom">
+												<img src="{{ item.image.url }}" alt="" />
+											</div>
+										</a>
 										<div class="grid-item-details">
 											<a href="{{ item.get_absolute_url }}">
 												<h3>{{ item.title_eng }}</h3>
@@ -126,9 +126,9 @@
 											<p>{{ item.english_description }}</p>
 											<div class="grid-item_price">
 												{% if item.discount_price %}
-												<span>₴{{ item.discount_price }}</span>
+												<span><span style="font-family: Poppins, sans-serif;">₴</span>{{ item.discount_price }}</span>
 												{% else %}
-												<span>₴{{ item.price }}</span>
+												<span><span style="font-family: Poppins, sans-serif;">₴</span>{{ item.price }}</span>
 												{% endif %}
 												<a href="{{ item.get_add_to_cart_url }}" class="add_cart">Add to
 													cart</a>
@@ -140,11 +140,11 @@
 									{% else %}
 									{% for item in object_list %}
 									<div class="gallery-item {{ item.get_label_display }}">
-										<div class="grid-item-holder hov_zoom">
-											<a href="{{ item.image.url }}" class="box-media-zoom popup-image"><i
-													class="fal fa-search"></i></a>
-											<img src="{{ item.image.url }}" alt="" />
-										</div>
+										<a href="{{ item.get_absolute_url }}">
+											<div class="grid-item-holder hov_zoom">
+												<img src="{{ item.image.url }}" alt="" />
+											</div>
+										</a>
 										<div class="grid-item-details">
 											<a href="{{ item.get_absolute_url }}">
 												{% if request.session.lang == "uk" %}
@@ -160,9 +160,9 @@
 											<p>{{ item.description }}</p>
 											<div class="grid-item_price">
 												{% if item.discount_price %}
-												<span>₴{{ item.discount_price }}</span>
+												<span><span style="font-family: Poppins, sans-serif;">₴</span>{{ item.discount_price }}</span>
 												{% else %}
-												<span>₴{{ item.price }}</span>
+												<span><span style="font-family: Poppins, sans-serif;">₴</span>{{ item.price }}</span>
 												{% endif %}
 												<a href="{{ item.get_add_to_cart_url }}"
 													class="add_cart">{% if request.session.lang == "uk" %}

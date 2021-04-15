@@ -236,9 +236,9 @@
                     </tr>
                   </tbody>
                 </table>
-                <button type="submit" class="cart-totals_btn color-bg">
-                  <a href="/checkout/"> {% if request.session.lang == "uk" %} Перейти до сплати {% elif request.session.lang == "ru" %} Перейти к оплате {% else %} Proceed to checkout {% endif %}</a>
-                </button>
+                <a href="/checkout/"><button type="submit" class="cart-totals_btn color-bg">
+                   {% if request.session.lang == "uk" %} Перейти до сплати {% elif request.session.lang == "ru" %} Перейти к оплате {% else %} Proceed to checkout {% endif %}
+                </button></a>
               </div>
               {% endif %}
               <!-- /CART TOTALS  -->
