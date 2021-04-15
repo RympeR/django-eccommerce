@@ -184,14 +184,14 @@
                                     <div class="shop-item-footer fl-wrap">
                                         <div class="qty_btn">
 
-                                            <button class="btn"><a href="{{ object.get_add_to_cart_url }}" style="color:#fff" >{% if request.session.lang == "uk" %}
+                                            <a href="{{ object.get_add_to_cart_url }}" style="color:#fff" ><button class="btn">{% if request.session.lang == "uk" %}
                                                 Замовити
                                             {% elif request.session.lang == "ru" %}
                                                 Заказать
                                             {% else %}
                                                 Add to cart
-                                            {% endif %}</a> <i
-                                                    class="fal fa-long-arrow-right"></i></button>
+                                            {% endif %} <i
+                                                    class="fal fa-long-arrow-right"></i></button></a>
                                         </div>
                                         <!-- <ul class="post-counter">
                                                     <li><i class="far fa-eye"></i><span>567</span></li>

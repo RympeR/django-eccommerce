@@ -156,7 +156,8 @@ def add_to_cart(request, slug):
 
         order.items.add(order_item)
         messages.info(request, "Товар был добавлен в корзину.")
-        return redirect("core:product", slug=slug)
+        return redirect("core:order-summary")
+        # return redirect("core:product", slug=slug)
 
 
 def remove_from_cart(request, slug):
@@ -350,6 +351,7 @@ class CheckoutView(View):
             order.ref_code = create_ref_code()
             order.save()
             message = f'''
+                Номер заказа: {order.pk}
                 Имя: {name}
                 Номер телефона: {phone_order_number}
                 Кол-во персон: {person_amount}
@@ -359,8 +361,14 @@ class CheckoutView(View):
                 Адрес дома: {apartment_address}
                 Тип оплаты: {'На месте' if payment_option=='H' else 'wayforpay на сайте'}
                 Комментарий: {comment}
-            '''
 
+            '''
+            for item in order_items:
+                message += f"""
+                    товар : {item.item.title_ru}
+                    цена : {item.item.price}
+                    кол-во : {item.quantity}
+                """
             send_mail(
                 f'Заказ номер {self.request.session.get("session_id")}',
                 message,
