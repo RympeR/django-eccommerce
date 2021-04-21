@@ -191,6 +191,19 @@
                                       {% endif %}
                                       <a href="{{ item.get_add_to_cart_url }}" class="add_cart"><button class='custom_btn_add'>Додати до кошику</button></a>
                                   </div>
+                                  <div class="pr-tags pr-main-tags fl-wrap">
+                                    <span>Склад : </span>
+                                        <ul>
+                                            {% for tag in item.item_tag.all %}
+                                            <li>
+                                                <a href="#">
+                                                    {{ tag.item_tag_name }}
+                                                </a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+
+                                </div>
                               </div>
                           </div>
                           {% endfor %}
@@ -215,6 +228,19 @@
                                       {% endif %}
                                       <a href="{{ item.get_add_to_cart_url }}" class="add_cart">Добавить в корзину</a>
                                   </div>
+                                  <div class="pr-tags pr-main-tags fl-wrap">
+                                    <span>Состав : </span>
+                                        <ul>
+                                            {% for tag in item.item_tag.all %}
+                                            <li>
+                                                <a href="#">
+                                                    {{ tag.item_tag_ru_name }}
+                                                </a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+
+                                </div>
                               </div>
                           </div>
                           {% endfor %}
@@ -237,6 +263,19 @@
                                     <span><span style="font-family: Poppins, sans-serif;">₴</span>{{ item.price }}</span>
                                     {% endif %}
                                     <a href="{{ item.get_add_to_cart_url }}" class="add_cart">Add to cart</a>
+                                </div>
+                                <div class="pr-tags pr-main-tags fl-wrap">
+                                    <span>Components : </span>
+                                        <ul>
+                                            {% for tag in item.item_tag.all %}
+                                            <li>
+                                                <a href="#">
+                                                    {{ tag.item_tag_eng_name }}
+                                                </a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+
                                 </div>
                             </div>
                         </div>
