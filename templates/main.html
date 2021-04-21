@@ -47,11 +47,11 @@
     });
 
     function send_order_data() {
-        if ($('#name').val() == '' || $('#person_amount').val() == '' ||  $('#phone').val() == '' ) {
+        if ($('#name').val() == '' || $('#person_amount').val() == '' ||  $('#phone').val() == '' || $('#street_address').val() == '') {
             console.log($('#name').val())
             console.log($('#person_amount').val())
             console.log($('#phone').val())
-            console.log($('#phone').val())
+            console.log($('#street_address').val())
             alert('Заполните поля')
         } else{
             $.ajax({

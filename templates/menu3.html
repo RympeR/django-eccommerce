@@ -15,7 +15,7 @@
             border: none;
             color: #000;
             font-style: inherit;
-            font-size: 12px;
+            font-size: 15px;
             font-weight: 600;
             font-family: 'Playfair Display',cursive;
             transition: all .2s ease-out;
@@ -24,6 +24,21 @@
         .custom_btn_add:hover
         {
             background-color: inherit;
+        }
+        @media screen and (max-width:450px) {
+            a.add_cart>.custom_btn_add{            
+                background: #fff;
+                border: none;
+                color: #000;
+                font-style: inherit;
+                font-size: 13px;
+                font-weight: 600;
+                font-family: 'Playfair Display',cursive;
+                transition: all .2s ease-out;
+            }
+        }
+        h4.slider_descrtiption{
+            color:white;
         }
     </style>
     <!-- header  -->
@@ -47,7 +62,7 @@
                                       <div class="grid-carousel-title">
                                           <h3>{{ slide.slider_title }}</h3>
                                           <div class="clearfix"></div>
-                                          <h4>{{ slide.slider_text }}</h4>
+                                          <h4 class="slider_descrtiption">{{ slide.slider_text }}</h4>
                                           <div class="bold-separator"><span></span></div>
                                           {% if slide.button_text %}
                                           <a href="#sec2" class="hero_btn custom-scroll-link">{{ slide.button_text }}<i class="fal fa-long-arrow-down"></i></a>
@@ -158,13 +173,13 @@
                         {% if request.session.lang == "uk" %}
                           {% for item in items %}
                           <div class="gallery-item {{ item.category.label }}">
-                              <a href="{{ item.get_absolute_url }}">
+                              <a>
                                     <div class="grid-item-holder hov_zoom">
                                         <img src="{{ item.image.url }}" alt="" />
                                     </div>
                                 </a>
                               <div class="grid-item-details">
-                                  <a href="{{ item.get_absolute_url }}">
+                                  <a>
                                       <h3>{{ item.title }}</h3>
                                   </a>
                                   <p>{{ item.description }}</p>
@@ -174,7 +189,7 @@
                                       {% else %}
                                       <span><span style="font-family: Poppins, sans-serif;">₴</span>{{ item.price }}</span>
                                       {% endif %}
-                                      <a href="{{ item.get_add_to_cart_url }}" class="add_cart"><button class='custom_btn_add'>Замовити</button></a>
+                                      <a href="{{ item.get_add_to_cart_url }}" class="add_cart"><button class='custom_btn_add'>Додати до кошику</button></a>
                                   </div>
                               </div>
                           </div>
@@ -182,13 +197,13 @@
                         {% elif request.session.lang == "ru" %}
                           {% for item in items %}
                           <div class="gallery-item {{ item.category.label }}">
-                              <a href="{{ item.get_absolute_url }}">
+                              <a>
                                     <div class="grid-item-holder hov_zoom">
                                         <img src="{{ item.image.url }}" alt="" />
                                     </div>
                                 </a>
                               <div class="grid-item-details">
-                                  <a href="{{ item.get_absolute_url }}">
+                                  <a>
                                       <h3>{{ item.title_ru }}</h3>
                                   </a>
                                   <p>{{ item.ru_description }}</p>
@@ -198,20 +213,20 @@
                                       {% else %}
                                       <span><span style="font-family: Poppins, sans-serif;">₴</span>{{ item.price }}</span>
                                       {% endif %}
-                                      <a href="{{ item.get_add_to_cart_url }}" class="add_cart">Заказать</a>
+                                      <a href="{{ item.get_add_to_cart_url }}" class="add_cart">Добавить в корзину</a>
                                   </div>
                               </div>
                           </div>
                           {% endfor %}
                         {% else %} {% for item in items %}
                             <div class="gallery-item {{ item.category.label }}">
-                                <a href="{{ item.get_absolute_url }}">
+                                <a>
                                     <div class="grid-item-holder hov_zoom">
                                         <img src="{{ item.image.url }}" alt="" />
                                     </div>
                                 </a>
                             <div class="grid-item-details">
-                                <a href="{{ item.get_absolute_url }}">
+                                <a>
                                     <h3>{{ item.title_eng }}</h3>
                                 </a>
                                 <p>{{ item.english_description }}</p>

@@ -144,11 +144,11 @@ def add_to_cart(request, slug):
             order_item.quantity += 1
             order_item.save()
             messages.info(request, "Количество было обновлено.")
-            return redirect("core:order-summary")
+            return redirect("core:menu")
         else:
             order.items.add(order_item)
             messages.info(request, "Товар был добавлен в корзину.")
-            return redirect("core:order-summary")
+            return redirect("core:menu")
     else:
         order = Order.objects.create(
             sessionOrder=session_order
@@ -156,7 +156,7 @@ def add_to_cart(request, slug):
 
         order.items.add(order_item)
         messages.info(request, "Товар был добавлен в корзину.")
-        return redirect("core:order-summary")
+        return redirect("core:menu")
         # return redirect("core:product", slug=slug)
 
 
@@ -420,8 +420,6 @@ class CheckoutView(View):
                 self.request, "Invalid payment option selected")
             return redirect('core:checkout')
 
-        return render(self.request, "checkout.html")
-
 
 def deliveryAndPayPage(request):
     return render(request, 'delivery.html')
@@ -460,57 +458,3 @@ class RequestRefundView(View):
             except ObjectDoesNotExist:
                 messages.info(self.request, "This order does not exist.")
                 return redirect("core:request-refund")
-
-
-class PaymentView(View):
-    def get(self, *args, **kwargs):
-        order = Order.objects.get(user=self.request.user, ordered=False)
-        if order.billing_address:
-            context = {
-                'order': order,
-                'DISPLAY_COUPON_FORM': False,
-                'STRIPE_PUBLIC_KEY': settings.STRIPE_PUBLIC_KEY
-            }
-            userprofile = self.request.user.userprofile
-            if userprofile.one_click_purchasing:
-                # fetch the users card list
-                cards = stripe.Customer.list_sources(
-                    userprofile.stripe_customer_id,
-                    limit=3,
-                    object='card'
-                )
-                card_list = cards['data']
-                if len(card_list) > 0:
-                    # update the context with the default card
-                    context.update({
-                        'card': card_list[0]
-                    })
-            return render(self.request, "payment.html", context)
-        else:
-            messages.warning(
-                self.request, "You have not added a billing address")
-            return redirect("core:checkout")
-
-    def post(self, *args, **kwargs):
-        order = Order.objects.get(user=self.request.user, ordered=False)
-        form = PaymentForm(self.request.POST)
-        userprofile = UserProfile.objects.get(user=self.request.user)
-        if form.is_valid():
-            token = form.cleaned_data.get('stripeToken')
-            save = form.cleaned_data.get('save')
-            use_default = form.cleaned_data.get('use_default')
-
-            if save:
-                if userprofile.stripe_customer_id != '' and userprofile.stripe_customer_id is not None:
-                    customer = stripe.Customer.retrieve(
-                        userprofile.stripe_customer_id)
-                    customer.sources.create(source=token)
-
-                else:
-                    customer = stripe.Customer.create(
-                        email=self.request.user.email,
-                    )
-                    customer.sources.create(source=token)
-                    userprofile.stripe_customer_id = customer['id']
-                    userprofile.one_click_purchasing = True
-                    userprofile.save()

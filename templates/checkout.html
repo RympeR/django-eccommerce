@@ -86,8 +86,8 @@
                                             <div class="col-12 col-sm-6" style="margin-top: 20px;">
                                                 <label class='mr' style="float: left;margin-bottom: 10px;margin-top: 20px;" for="payment_option"><h4 class="cart-title">{% if request.session.lang == "uk" %} Оберіть засіб сплати {% elif request.session.lang == "ru" %} Выберите способ оплаты {% else %} Choose payment way {% endif %}</h4></label>
                                                 <select name="payment_option" class='nice-select chosen-select no-search-select' id="payment_option">
-                                                    <option value="W">{% if request.session.lang == "uk" %} Оплата банківською картою {% elif request.session.lang == "ru" %} Оплата банковской картой {% else %} Payemnt with card {% endif %} WayForPay</option>
-                                                    <option value="H">{% if request.session.lang == "uk" %} Оплата готівкою {% elif request.session.lang == "ru" %} Оплата наличкой {% else %} Cash payment {% endif %}</option>
+                                                    <option value="W">{% if request.session.lang == "uk" %} Карткою Visa\Mastercard {% elif request.session.lang == "ru" %} Картой Visa\Mastercard {% else %} Visa\Mastercard card {% endif %} WayForPay</option>
+                                                    <option value="H">{% if request.session.lang == "uk" %} Готівкою {% elif request.session.lang == "ru" %} Наличными {% else %} Cash {% endif %}</option>
                                                 </select>
                                             </div>
                                             <!-- <div class="col-sm-12">

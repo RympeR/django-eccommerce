@@ -63,7 +63,7 @@
                             </li>
                             <li><a id="propositions" href="{% url  'proposition:all_prospositions' %}" class="act-link">{% if request.session.lang == "uk" %} Акції {% elif request.session.lang == "ru" %} Акции {% else %} Promotions {% endif %}</a></li>
                             <li><a id="delivery" href="{% url  'core:delivery' %}" class="act-link">{% if request.session.lang == "uk" %} Доставка та оплата {% elif request.session.lang == "ru" %} Доставка и оплата {% else %} Order and Payment {% endif %}</a></li>
-                            <li><a id="shop" href="{% url  'core:shop' %}">{% if request.session.lang == "uk" %} Пошук по компонентам {% elif request.session.lang == "ru" %} Поиск по компонентам {% else %} Search by components {% endif %}</a></li>
+                            <!-- <li><a id="shop" href="{% url  'core:shop' %}">{% if request.session.lang == "uk" %} Пошук по компонентам {% elif request.session.lang == "ru" %} Поиск по компонентам {% else %} Search by components {% endif %}</a></li> -->
                             {% comment %}
                             <li>
                                 <a href="#">Pages<i class="fas fa-caret-down"></i></a>
