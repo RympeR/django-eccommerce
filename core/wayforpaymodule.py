@@ -41,7 +41,9 @@ class WayForPayAPI:
 
     def generate_widget(self, data, return_url=""):
         self.merchantSignature = self.get_request_signature({**self.options, **data})
-        request_form = r"""function pay(){
+        request_form = r"""
+            <script type="text/javascript"> 
+            function pay(){
                 var payment = new Wayforpay();
                     payment.run({""" + f"""
                         merchantAccount: '{self.merchant_account}',
@@ -53,26 +55,25 @@ class WayForPayAPI:
                         amount: '{data["amount"]}',
                         authorizationType: 'SimpleSignature',
                         currency: 'UAH',
-                        productName:   {data['productName']} ,
-                        productPrice:  {data['productPrice']},
-                        productCount:  {data['productCount']},		
+                        productName:   '{data['productName']}' ,
+                        productPrice:  '{data['productPrice']}',
+                        productCount:  '{data['productCount']}',		
                         merchantSignature: '{self.merchantSignature}',
                         language: 'RU',
                         straightWidget: true
                     """ + r"""},
                     function (response) {
-                        console.log('dude');			
-                        window.location.href='';		
+                        console.log('dude');				
                     } , 			
                     function (response) {
-                        console.log('dude');			
+                        console.log('dude1');			
                     },
                     function (response) {
-                        console.log(response)
-                        window.location.href='';		
+                        console.log(response)	
                     } 
                 );
             }
+            </script>
             
         """
         return request_form
@@ -80,6 +81,8 @@ class WayForPayAPI:
     def generate_payment_form(self, data, return_url=""):
         self.merchantSignature = self.get_request_signature({**self.options, **data})
         request_form = f"""
+            <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script defer id='widget-wfp-script' language='javascript' type='text/javascript' src='https://secure.wayforpay.com/server/pay-widget.js'></script>   
             <form method="post" action="https://secure.wayforpay.com/pay" hidden accept-charset="utf-8">
                 <input name="merchantAccount" value="{self.merchant_account}">
                 <input name="merchantAuthType" value="SimpleSignature">

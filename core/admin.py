@@ -1,11 +1,16 @@
 from django.contrib import admin
-from .models import Item, OrderItem, Order, Payment, Coupon, Refund, Address, UserProfile, Category, SessionOrder, MainSlider, ItemTag, SetItem
+
+from .models import (Address, Category, Coupon, Item, ItemTag, MainSlider,
+                     Order, OrderItem, Payment, Refund, SessionOrder, SetItem,
+                     UserProfile)
+
 
 def make_refund_accepted(modeladmin, request, queryset):
     queryset.update(refund_requested=False, refund_granted=True)
 
 
 make_refund_accepted.short_description = 'Update orders to refund granted'
+
 
 class MainSliderAdmin(admin.ModelAdmin):
     # fields = (
@@ -33,16 +38,18 @@ class MainSliderAdmin(admin.ModelAdmin):
     readonly_fields = [
         'admin_photo'
     ]
+
+
 class OrderAdmin(admin.ModelAdmin):
     list_display = [
-                    'ordered',
-                    'being_delivered',
-                    'received',
-                    'refund_requested',
-                    'refund_granted',
-                    'address',
-                    'coupon',
-                    ]
+        'ordered',
+        'being_delivered',
+        'received',
+        'refund_requested',
+        'refund_granted',
+        'address',
+        'coupon',
+    ]
     list_display_links = [
         'address',
         'coupon'
@@ -52,7 +59,7 @@ class OrderAdmin(admin.ModelAdmin):
                    'received',
                    'refund_requested',
                    'refund_granted']
-    search_fields = [   
+    search_fields = [
         'ref_code'
     ]
     actions = [make_refund_accepted]
@@ -66,19 +73,8 @@ class AddressAdmin(admin.ModelAdmin):
     list_filter = ['street_address', 'apartment_address']
     search_fields = ['sessinoOrder', 'street_address', 'apartment_address']
 
+
 class ItemAdmin(admin.ModelAdmin):
-    # fields = (
-    #     'title',
-    #     'title_eng',
-    #     'price',
-    #     'discount_price',
-    #     'category',
-    #     'slug',
-    #     'description',
-    #     'english_description',
-    #     'image',
-    #     'item_tag',
-    # )
     list_display = [
         'admin_photo',
         'title',
@@ -95,6 +91,8 @@ class ItemAdmin(admin.ModelAdmin):
     readonly_fields = [
         'admin_photo'
     ]
+
+
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Category)
 admin.site.register(OrderItem)
@@ -108,4 +106,3 @@ admin.site.register(MainSlider, MainSliderAdmin)
 admin.site.register(SessionOrder)
 admin.site.register(ItemTag)
 admin.site.register(SetItem)
-
